@@ -45,8 +45,8 @@ export default {
     ];
 
     const publicpath = process.env.BASE_URL;
-    // const resume = `${publicpath}files/resume.pdf`;
-    const resume = "/files/resume.pdf";
+    const resume = `${publicpath}files/resume.pdf`;
+    // const resume = "/files/resume.pdf";
     const data = {
       download: resume,
     };
