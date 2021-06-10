@@ -62,7 +62,7 @@ export default {
 
 .section {
   &-about {
-    background: lighten(abs.$vars-c-lprimary, 6%);
+    background: lighten(abs.$vars-c-lprimary, 3%);
   }
 }
 
@@ -86,7 +86,6 @@ export default {
   &--line {
     height: 40%;
     width: 110%;
-    background: lighten(abs.$vars-c-lprimary, 12%);
     border-radius: 5px;
 
     position: absolute;
@@ -107,6 +106,9 @@ export default {
 
   :deep(.pgbar) {
     max-width: 80%;
+  }
+  :deep(.pgbar--bg) {
+    background: lighten(abs.$vars-c-lprimary, 20%);
   }
 }
 </style>

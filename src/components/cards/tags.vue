@@ -31,7 +31,7 @@ export default {
 
 .tag {
   display: inline-block;
-  background: lighten(abs.$vars-c-lprimary, 12%);
+  background: lighten(abs.$vars-c-lprimary, 20%);
   border-radius: 5px;
   margin-right: 1rem;
 

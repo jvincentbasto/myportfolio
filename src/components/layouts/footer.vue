@@ -7,7 +7,7 @@
   >
     <div class="section-margin block block--1">
       <div class="segment segment-titlegroup">
-        <h4 class="segment--title">my project</h4>
+        <h4 class="segment--title">my contacts</h4>
         <div class="segment--line">&nbsp;</div>
       </div>
 
@@ -17,8 +17,8 @@
         </div>
 
         <div class="col col--2">
-          <h4 class="pitch">Interested?</h4>
-          <h3 class="pitch">Lets Talk!</h3>
+          <h5 class="pitch pitch--1">are you interested?</h5>
+          <h1 class="pitch pitch--2">Lets Talk!</h1>
         </div>
       </div>
     </div>
@@ -103,13 +103,20 @@ export default {
   &--2 {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
+
+    padding-bottom: 2rem;
   }
 }
 
 // pitch
 .pitch {
   font-family: tsemibold;
+  &--1 {
+  }
+  &--2 {
+    margin-top: -2rem;
+  }
 }
 
 // link

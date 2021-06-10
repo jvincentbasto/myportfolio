@@ -3,15 +3,15 @@
   <div class="links">
     <div class="link">
       <div class="link-icongroup">
-        <div class="link-icon link-icon--facebook">&nbsp;</div>
-      </div>
-      <div class="link--text">facebook.com/jvincentbasto</div>
-    </div>
-    <div class="link">
-      <div class="link-icongroup">
         <div class="link-icon link-icon--github">&nbsp;</div>
       </div>
       <div class="link--text">github.com/jvincentbasto</div>
+    </div>
+    <div class="link">
+      <div class="link-icongroup">
+        <div class="link-icon link-icon--facebook">&nbsp;</div>
+      </div>
+      <div class="link--text">facebook.com/jvincentbasto</div>
     </div>
     <div class="link">
       <div class="link-icongroup">

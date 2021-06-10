@@ -1,21 +1,21 @@
 <template>
   <template v-if="data">
     <template v-if="data.download">
-      <a :href="data.download" class="btn" ref="btn" download="download">
+      <a target="__blank" :href="data.download" class="btn" ref="btn" download>
         <div class="btn--text">
           <slot>Button Primary</slot>
         </div>
         <div class="btn--border">&nbsp;</div>
       </a>
     </template>
-    <!--     <template v-else>
+    <template v-else>
       <a :href="data.hash" class="btn" ref="btn">
         <div class="btn--text">
           <slot>Button Primary</slot>
         </div>
         <div class="btn--border">&nbsp;</div>
       </a>
-    </template> -->
+    </template>
   </template>
 
   <template v-else>

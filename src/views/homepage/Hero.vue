@@ -168,7 +168,7 @@ export default {
     }
     &--2 {
       @include abs.mxs-respond(pphone) {
-        @include abs.mxs-font-type(haeding4);
+        @include abs.mxs-font-type(heading4);
       }
     }
   }

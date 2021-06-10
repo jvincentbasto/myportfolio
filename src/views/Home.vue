@@ -80,7 +80,7 @@ export default {
   &--line {
     height: 40%;
     width: 110%;
-    background: lighten(abs.$vars-c-lprimary, 12%);
+    background: lighten(abs.$vars-c-lprimary, 20%);
     border-radius: 5px;
 
     position: absolute;
@@ -90,7 +90,8 @@ export default {
 
 // general block
 .block {
-  // margin-bottom: 10rem;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
 }
 
 // general row

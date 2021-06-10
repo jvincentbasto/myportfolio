@@ -36,7 +36,7 @@ export default {
   &--container {
     height: 40rem;
     width: 50rem;
-    background: lighten(abs.$vars-c-lprimary, 12%);
+    background: lighten(abs.$vars-c-lprimary, 20%);
 
     // display: flex;
     // justify-contnet: center;

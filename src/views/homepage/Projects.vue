@@ -87,7 +87,6 @@ export default {
   &--line {
     height: 40%;
     width: 110%;
-    background: lighten(abs.$vars-c-lprimary, 12%);
     border-radius: 5px;
 
     position: absolute;
