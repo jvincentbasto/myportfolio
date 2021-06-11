@@ -17,8 +17,10 @@
         </div>
 
         <div class="col col--2">
-          <h5 class="pitch pitch--1">are you interested?</h5>
-          <h1 class="pitch pitch--2">Lets Talk!</h1>
+          <div class="pitch pitch-group">
+            <h6 class="pitch-content pitch-content--1">are you interested?</h6>
+            <h2 class="pitch-content pitch-content--2">Lets Talk!</h2>
+          </div>
         </div>
       </div>
     </div>
@@ -68,6 +70,10 @@ export default {
   &-margin {
     &--footer {
       margin-bottom: -2rem;
+
+      @include abs.mxs-respond(lphone) {
+        margin-bottom: -1rem;
+      }
     }
   }
 }
@@ -83,6 +89,10 @@ export default {
 .segment {
   &-titlegroup {
     margin-bottom: 8rem;
+
+    @include abs.mxs-respond(lphone) {
+      margin-bottom: 6rem;
+    }
   }
   &--title {
     color: abs.$vars-c-lprimary;
@@ -98,24 +108,77 @@ export default {
   margin-bottom: 4rem;
 }
 
+// row
+.row {
+  @include abs.mxs-respond(lphone) {
+    flex-wrap: wrap;
+    margin-bottom: -4rem;
+  }
+}
+
 // col
 .col {
+  @include abs.mxs-respond(lphone) {
+    flex: 1 1;
+  }
+  &--1 {
+    @include abs.mxs-respond(lphone) {
+      margin-bottom: 4rem;
+      margin-right: 8rem;
+    }
+  }
   &--2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
 
     padding-bottom: 2rem;
+
+    @include abs.mxs-respond(lphone) {
+      align-items: unset;
+    }
+  }
+}
+
+// links
+.col {
+  :deep(.links) {
+    @include abs.mxs-respond(ptablet) {
+      min-width: 40rem;
+    }
+    @include abs.mxs-respond(lphone) {
+      min-width: 22rem;
+    }
   }
 }
 
 // pitch
 .pitch {
-  font-family: tsemibold;
-  &--1 {
+  &-group {
+    @include abs.mxs-respond(lphone) {
+      min-width: 18rem;
+    }
   }
-  &--2 {
-    margin-top: -2rem;
+  &-content {
+    font-family: tsemibold;
+    &--1 {
+      @include abs.mxs-respond(ptablet) {
+        @include abs.mxs-font-type(subtitle1);
+      }
+      @include abs.mxs-respond(lphone) {
+        @include abs.mxs-font-type(body2);
+      }
+    }
+    &--2 {
+      margin-top: -2rem;
+      @include abs.mxs-respond(ptablet) {
+        @include abs.mxs-font-type(heading3);
+      }
+      @include abs.mxs-respond(lphone) {
+        @include abs.mxs-font-type(heading4);
+        margin-top: -1rem;
+      }
+    }
   }
 }
 

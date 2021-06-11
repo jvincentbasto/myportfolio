@@ -5,19 +5,19 @@
       <div class="link-icongroup">
         <div class="link-icon link-icon--github">&nbsp;</div>
       </div>
-      <div class="link--text">github.com/jvincentbasto</div>
+      <p class="link--text">github.com/jvincentbasto</p>
     </div>
     <div class="link">
       <div class="link-icongroup">
         <div class="link-icon link-icon--facebook">&nbsp;</div>
       </div>
-      <div class="link--text">facebook.com/jvincentbasto</div>
+      <p class="link--text">facebook.com/jvincentbasto</p>
     </div>
     <div class="link">
       <div class="link-icongroup">
         <div class="link-icon link-icon--gmail">&nbsp;</div>
       </div>
-      <div class="link--text">gmail/jvincentbasto@gmail.com</div>
+      <p class="link--text">gmail/jvincentbasto@gmail.com</p>
     </div>
   </div>
 </template>
@@ -28,6 +28,15 @@ export default {};
 
 <style scoped lang="scss">
 @use "~@/sass/abstracts/abstracts" as abs;
+
+// link text
+.link {
+  &--text {
+    @include abs.mxs-respond(lphone) {
+      @include abs.mxs-font-type(body2);
+    }
+  }
+}
 
 // links
 .link {
@@ -50,6 +59,11 @@ export default {};
     cursor: pointer;
     overflow: hidden;
     transition: all 0.3s ease-in-out;
+
+    @include abs.mxs-respond(lphone) {
+      height: 3rem;
+      width: 3rem;
+    }
   }
 
   &-icon {

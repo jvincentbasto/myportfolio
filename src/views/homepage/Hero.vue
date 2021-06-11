@@ -24,7 +24,9 @@
 
       <!-- bg block -->
       <div class="col col--2">
-        <div class="model">&nbsp;</div>
+        <div class="model-container">
+          <div class="model-img">&nbsp;</div>
+        </div>
       </div>
     </div>
 
@@ -63,12 +65,11 @@ export default {
 
   &--1 {
     margin-top: 10rem;
-    margin-bottom: 12rem;
+    margin-bottom: 4rem;
     display: flex;
 
     @include abs.mxs-respond(lphone) {
-      flex-wrap: wrap;
-      margin-bottom: 4rem;
+      margin-top: 4rem;
     }
   }
   &--2 {
@@ -84,9 +85,13 @@ export default {
 
 // general col
 .col {
-  flex: 1 0 50%;
-
+  @include abs.mxs-respond(lphone) {
+    flex: 1 1;
+  }
   &--1 {
+    @include abs.mxs-respond(lphone) {
+      padding-right: 4rem;
+    }
   }
   &--2 {
   }
@@ -95,28 +100,22 @@ export default {
 // row 1
 .row--1 {
   @include abs.mxs-respond(lphone) {
-    margin-top: 6rem;
+    flex-wrap: wrap;
+    margin-bottom: 4rem;
   }
 
   .col {
-    @include abs.mxs-respond(lphone) {
-      flex: 1 0 100%;
-    }
-
     &--1 {
       @include abs.mxs-respond(lphone) {
-        flex: 1 1;
+        margin-bottom: 4rem;
       }
     }
-
     &--2 {
       display: flex;
-      justify-content: center;
       position: relative;
 
       @include abs.mxs-respond(lphone) {
-        justify-content: flex-start;
-        margin-top: 10rem;
+        justify-content: unset;
       }
     }
   }
@@ -150,10 +149,8 @@ export default {
       min-width: 37rem;
     }
     @include abs.mxs-respond(lphone) {
-      min-width: 26rem;
-    }
-    @include abs.mxs-respond(lphone) {
-      margin-top: 0;
+      min-width: 28rem;
+      margin-right: 4rem;
     }
   }
 
@@ -167,7 +164,7 @@ export default {
       margin-bottom: -1rem;
     }
     &--2 {
-      @include abs.mxs-respond(pphone) {
+      @include abs.mxs-respond(lphone) {
         @include abs.mxs-font-type(heading4);
       }
     }
@@ -185,35 +182,49 @@ export default {
 
 // model
 .model {
-  height: 45rem;
-  width: 35rem;
-  background: darken(abs.$vars-c-lprimary, 10%);
-
-  position: absolute;
-  top: 0;
-  margin-left: 5rem;
-
-  @include abs.mxs-respond(lphone) {
+  &-container {
+    height: 45rem;
+    width: 100%;
     position: relative;
-    top: unset;
-    margin: 0;
+
+    display: flex;
+    justify-content: center;
+
+    @include abs.mxs-respond(ptablet) {
+      justify-content: unset;
+      margin-left: 6rem;
+    }
+    @include abs.mxs-respond(lphone) {
+      height: 40rem;
+      margin-left: unset;
+      min-width: 12rem;
+    }
+  }
+  &-img {
+    height: 100%;
+    width: 35rem;
+    background: darken(abs.$vars-c-lprimary, 10%);
+
+    position: absolute;
+    top: 0;
+
+    @include abs.mxs-respond(lphone) {
+      width: 30rem;
+      margin: unset;
+    }
   }
 }
 
 // bg
 .bg {
   &--bar {
-    height: 25rem;
+    height: 30rem;
     width: 100%;
     background: lighten(abs.$vars-c-lprimary, 3%);
 
     position: absolute;
     bottom: 0;
     left: 0;
-
-    @include abs.mxs-respond(lphone) {
-      height: 50rem;
-    }
   }
 }
 </style>

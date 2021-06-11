@@ -7,11 +7,11 @@
       </div>
 
       <div class="pg-block">
-        <pg-bar class="pg-item" :data="css"></pg-bar>
-        <pg-bar class="pg-item" :data="javascript"></pg-bar>
-        <pg-bar class="pg-item" :data="php"></pg-bar>
-        <pg-bar class="pg-item" :data="larvel"></pg-bar>
-        <pg-bar class="pg-item" :data="vue"></pg-bar>
+        <pg-bar :data="css"></pg-bar>
+        <pg-bar :data="javascript"></pg-bar>
+        <pg-bar :data="php"></pg-bar>
+        <pg-bar :data="larvel"></pg-bar>
+        <pg-bar :data="vue"></pg-bar>
       </div>
     </div>
   </section>
@@ -63,52 +63,6 @@ export default {
 .section {
   &-about {
     background: lighten(abs.$vars-c-lprimary, 3%);
-  }
-}
-
-// segment
-.segment {
-  &-titlegroup {
-    display: inline-block;
-    margin-bottom: 4rem;
-
-    position: relative;
-  }
-  &--title {
-    position: relative;
-    z-index: 10;
-    color: abs.$vars-c-dprimary;
-
-    @include abs.mxs-respond(lphone) {
-      @include abs.mxs-font-type(heading5);
-    }
-  }
-  &--line {
-    height: 40%;
-    width: 110%;
-    border-radius: 5px;
-
-    position: absolute;
-    bottom: 0;
-  }
-}
-
-// pgblock
-.pg {
-  &-block {
-    width: 100%;
-  }
-}
-
-// pg item
-.pg-item {
-  margin-bottom: 2rem;
-
-  :deep(.pgbar) {
-    max-width: 80%;
-  }
-  :deep(.pgbar--bg) {
-    background: lighten(abs.$vars-c-lprimary, 20%);
   }
 }
 </style>

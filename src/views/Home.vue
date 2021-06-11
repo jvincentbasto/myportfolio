@@ -1,5 +1,5 @@
 <template>
-  <media-queries />
+  <!-- <media-queries /> -->
 
   <Hero />
   <About />
@@ -13,7 +13,7 @@ import About from "./homepage/About.vue";
 import Skills from "./homepage/Skills.vue";
 import Projects from "./homepage/Projects.vue";
 
-import mediaQueries from "@/components/helpers/mediaQueries.vue";
+// import mediaQueries from "@/components/helpers/mediaQueries.vue";
 
 export default {
   components: {
@@ -21,7 +21,7 @@ export default {
     About,
     Skills,
     Projects,
-    mediaQueries,
+    // mediaQueries,
   },
 };
 </script>
