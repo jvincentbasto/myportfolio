@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import NavLink from "@/components/navs/NavLinkItem.vue";
+import NavLink from "@/components/navs/navLinkItem.vue";
 
 export default {
   props: ["data"],
