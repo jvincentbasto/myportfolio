@@ -11,11 +11,12 @@
             Vincent Basto
           </h3>
           <p class="headline-subtitle" ref="subtitle">
-            Aspiring to become a Full Stack Web Developer
+            Front End Web Developer
           </p>
           <p class="headline-text">
-            Welcome! I'm a Web Developer who enjoys building websites with
-            frameworks like Laravel and Vue js. How can I help you?
+            Welcome! I'm a guy who aspires to become a Full Stack Web Developer.
+            I enjoys building websites with javscript frameworks like Vue js.
+            How can I help you?
           </p>
 
           <btn-primary :data="{ hash: '#about' }">About Me</btn-primary>
@@ -25,7 +26,9 @@
       <!-- bg block -->
       <div class="col col--2">
         <div class="model-container">
-          <div class="model-img">&nbsp;</div>
+          <div class="model-img" ref="model" @click="colorSchemeTrigger()">
+            &nbsp;
+          </div>
         </div>
       </div>
     </div>
@@ -39,24 +42,109 @@
       <div class="col col--2"></div>
     </div>
 
-    <div class="bg bg--bar"></div>
+    <div class="bg bg--bar">&nbsp;</div>
   </section>
 </template>
 
 <script>
-import btnPrimary from "@/components/btns/btnPrimary.vue";
-import socialLinks from "@/components/links/socialLinks.vue";
+import BtnPrimary from "@/components/btns/BtnPrimary.vue";
+import SocialLinks from "@/components/links/SocialLinks.vue";
 
 export default {
   components: {
-    btnPrimary,
-    socialLinks,
+    BtnPrimary,
+    SocialLinks,
+  },
+  methods: {
+    colorSchemeInit() {
+      const html = document.querySelector("html");
+      const scheme = window.matchMedia("(prefers-color-scheme: dark)");
+      const matches = scheme.matches;
+
+      if (matches) html.setAttribute("dark", "");
+      else html.removeAttribute("dark");
+    },
+    colorSchemeTrigger() {
+      const html = document.querySelector("html");
+      const hasAttr = html.hasAttribute("dark") ? true : false;
+      const scheme = window.matchMedia("(prefers-color-scheme: dark)");
+      const matches = scheme.matches;
+      // for(let prop in html) console.log(prop)
+
+      if (!hasAttr) html.setAttribute("dark", "");
+      else if (matches) html.setAttribute("dark", "");
+      else html.removeAttribute("dark");
+
+      // else {
+      // const bool = html.getAttribute("dark");
+      // console.log("attr",html.getAttribute("dark"))
+
+      // if(eval(bool)) {
+      //   console.log("bool true",bool, typeof bool)
+      //   html.setAttribute("dark",false)
+      // }
+      // else {
+      //   console.log("bool false",bool, typeof bool)
+      //   html.setAttribute("dark",true)
+      // }
+      // }
+    },
+  },
+  mounted() {
+    // this.colorSchemeInit();
   },
 };
 </script>
 
+<!-- Global -->
+<style lang="scss">
+@use "~@/sass/styles" as styles;
+
+// option
+// :global() {}
+
+.section {
+  &-hero {
+    background: var(--c-lprimary);
+  }
+}
+
+// headline
+.headline {
+  &-title,
+  &-subtitle {
+    color: var(--c-dprimary);
+  }
+}
+
+// model
+.model {
+  &-img {
+    background: styles.fns-darken(var(--c-lprimary), 10);
+  }
+}
+
+// bg
+.bg {
+  &--bar {
+    background: styles.fns-lighten(var(--c-lprimary), 3);
+  }
+}
+
+/* dark */
+@include styles.mxs-themes() {
+  // model
+  .model {
+    &-img {
+      background: styles.fns-lighten(var(--c-lprimary), 10);
+    }
+  }
+}
+</style>
+
+<!-- Scoped -->
 <style scoped lang="scss">
-@use "~@/sass/abstracts/abstracts" as abs;
+@use "~@/sass/styles" as styles;
 
 // general row
 .row {
@@ -68,7 +156,7 @@ export default {
     margin-bottom: 4rem;
     display: flex;
 
-    @include abs.mxs-respond(lphone) {
+    @include styles.mxs-respond(lphone) {
       margin-top: 4rem;
     }
   }
@@ -77,7 +165,7 @@ export default {
     justify-content: center;
     margin-bottom: 5rem;
 
-    @include abs.mxs-respond(pphone) {
+    @include styles.mxs-respond(pphone) {
       justify-content: flex-start;
     }
   }
@@ -85,11 +173,11 @@ export default {
 
 // general col
 .col {
-  @include abs.mxs-respond(lphone) {
+  @include styles.mxs-respond(lphone) {
     flex: 1 1;
   }
   &--1 {
-    @include abs.mxs-respond(lphone) {
+    @include styles.mxs-respond(lphone) {
       padding-right: 4rem;
     }
   }
@@ -99,14 +187,14 @@ export default {
 
 // row 1
 .row--1 {
-  @include abs.mxs-respond(lphone) {
+  @include styles.mxs-respond(lphone) {
     flex-wrap: wrap;
     margin-bottom: 4rem;
   }
 
   .col {
     &--1 {
-      @include abs.mxs-respond(lphone) {
+      @include styles.mxs-respond(lphone) {
         margin-bottom: 4rem;
       }
     }
@@ -114,7 +202,7 @@ export default {
       display: flex;
       position: relative;
 
-      @include abs.mxs-respond(lphone) {
+      @include styles.mxs-respond(lphone) {
         justify-content: unset;
       }
     }
@@ -134,7 +222,6 @@ export default {
   &-hero {
     min-height: 75rem;
     padding: 7rem 0 0;
-    background: abs.$vars-c-lprimary;
     position: relative;
   }
 }
@@ -144,35 +231,37 @@ export default {
   &-block {
     position: relative;
     margin-top: 2rem;
+    max-width: 38rem;
 
-    @include abs.mxs-respond(ptablet) {
-      min-width: 37rem;
+    @include styles.mxs-respond(ptablet) {
+      min-width: 38rem;
     }
-    @include abs.mxs-respond(lphone) {
-      min-width: 28rem;
-      margin-right: 4rem;
+    @include styles.mxs-respond(lphone) {
+      min-width: 29rem;
+      margin-right: 2rem;
+    }
+    @include styles.mxs-respond(pphone) {
+      width: 29rem;
     }
   }
 
   &-title {
-    @include abs.mxs-respond(ltablet) {
+    @include styles.mxs-respond(ltablet) {
     }
-    color: abs.$vars-c-dprimary;
 
     &--1 {
       line-height: 1;
       margin-bottom: -1rem;
     }
     &--2 {
-      @include abs.mxs-respond(lphone) {
-        @include abs.mxs-font-type(heading4);
+      @include styles.mxs-respond(lphone) {
+        @include styles.mxs-font-size(heading4);
       }
     }
   }
   &-subtitle {
     font-family: tsemibold;
-    @include abs.mxs-font-type(subtitle2);
-    color: abs.$vars-c-dprimary;
+    @include styles.mxs-font-size(subtitle2);
     margin-bottom: 4rem;
   }
   &-text {
@@ -190,11 +279,11 @@ export default {
     display: flex;
     justify-content: center;
 
-    @include abs.mxs-respond(ptablet) {
+    @include styles.mxs-respond(ptablet) {
       justify-content: unset;
       margin-left: 6rem;
     }
-    @include abs.mxs-respond(lphone) {
+    @include styles.mxs-respond(lphone) {
       height: 40rem;
       margin-left: unset;
       min-width: 12rem;
@@ -203,12 +292,11 @@ export default {
   &-img {
     height: 100%;
     width: 35rem;
-    background: darken(abs.$vars-c-lprimary, 10%);
 
     position: absolute;
     top: 0;
 
-    @include abs.mxs-respond(lphone) {
+    @include styles.mxs-respond(lphone) {
       width: 30rem;
       margin: unset;
     }
@@ -220,7 +308,6 @@ export default {
   &--bar {
     height: 30rem;
     width: 100%;
-    background: lighten(abs.$vars-c-lprimary, 3%);
 
     position: absolute;
     bottom: 0;

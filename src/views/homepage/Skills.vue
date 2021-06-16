@@ -1,5 +1,5 @@
 <template>
-  <section class="section section-about" id="skills" ref="sectSkills">
+  <section class="section section-skill" id="skills" ref="sectSkills">
     <div class="section-margin block block--1">
       <div class="segment segment-titlegroup">
         <h4 class="segment--title">my skills</h4>
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import PgBar from "@/components/ProgressBar.vue";
+import PgBar from "@/components/charts/ProgressBar.vue";
 
 export default {
   components: {
@@ -58,11 +58,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@use "~@/sass/abstracts/abstracts" as abs;
+@use "~@/sass/styles" as styles;
 
 .section {
-  &-about {
-    background: lighten(abs.$vars-c-lprimary, 3%);
+  &-skills {
+    background: lighten(styles.$vars-c-lprimary, 3%);
   }
 }
 </style>

@@ -1,19 +1,21 @@
 <template>
-  <navbar />
+  <media-queries />
   <router-view />
   <my-footer />
 </template>
 
 <script>
-import navbar from "@/components/layouts/navbar.vue";
-import myFooter from "@/components/layouts/footer.vue";
+import myFooter from "@/components/layouts/Footer.vue";
+import MediaQueries from "@/components/helpers/MediaQueries.vue";
 
 export default {
   components: {
-    navbar,
     myFooter,
+    MediaQueries,
   },
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+@use "~@/sass/styles" as styles;
+</style>

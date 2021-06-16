@@ -19,7 +19,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@use "~@/sass/abstracts/abstracts" as abs;
+@use "~@/sass/styles" as styles;
 
 .tags {
   height: auto;
@@ -31,13 +31,13 @@ export default {
 
 .tag {
   display: inline-block;
-  background: lighten(abs.$vars-c-lprimary, 20%);
-  border-radius: 5px;
+  background: lighten(styles.$vars-c-lprimary, 20%);
   margin-right: 1rem;
 
   &--text {
-    padding: 1rem 2rem;
-    @include abs.mxs-font-type(captions);
+    padding: 5px 1.5rem;
+    @include styles.mxs-font-size(captions);
+    font-weight: 600;
   }
 }
 </style>

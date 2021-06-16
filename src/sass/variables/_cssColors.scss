@@ -1,0 +1,53 @@
+@use "~@/sass/mixins/mixins" as mxs;
+@use "~@/sass/functions/functions" as fns;
+
+
+/* root colors */
+:root {
+
+	--c-hue-primary: 202;
+	--c-sat-primary: 41%;
+	--c-lum-primary: 70%;
+
+
+	@include mxs.varHsl(--c-lprimary,202,41%,70%);
+	@include mxs.varHsl(--c-dprimary,202,41%,10%);
+	@include mxs.varHsl(--c-white,202,41%,90%);
+	@include mxs.varHsl(--c-grey,202,11%,70%);
+	@include mxs.varHsl(--c-black,202,11%,10%);
+
+
+	@include mxs.varHsl(--c-defwhite,0,0%,90%);
+	@include mxs.varHsl(--c-defblack,0,0%,0%);
+}
+
+
+/* export colors */
+:export {
+	hslLprimary: --hsl-lprimary;
+	hslDprimary: --hsl-dprimary;
+	hslWhite: --hsl-white;
+	hslGrey: --hsl-grey;
+	hslBlack: --hsl-black;
+
+
+	clPrimary: --c-lprimary;
+	cdPrimary: --c-dprimary;
+	cWhite: --c-white;
+	cBlack: --c-black;
+	cGrey: --c-grey;
+}
+
+
+// dark theme
+html[dark] {
+	@include mxs.varHsl(--c-defwhite,0,0%,0%);
+	@include mxs.varHsla(--c-defblack,0,0%,90%,.9);
+
+
+	@include mxs.varHsl(--c-lprimary,202,41%,10%);
+	@include mxs.varHsl(--c-dprimary,202,41%,70%);
+	@include mxs.varHsl(--c-white,202,11%,10%);
+	@include mxs.varHsl(--c-grey,202,11%,70%);
+	@include mxs.varHsl(--c-black,202,41%,90%);
+}

@@ -1,0 +1,13 @@
+// dark theme
+@mixin themes($theme: dark) {
+
+  @if $theme == dark {
+		html[dark] { @content };
+  }
+  @if $theme == sepia {
+		html[sepia] { @content };
+  }
+  // @else {
+		// html[dark] { @content };
+  // }
+}

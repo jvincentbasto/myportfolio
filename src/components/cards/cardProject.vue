@@ -3,14 +3,14 @@
     <!-- project content -->
     <div class="project-col project-col--1">
       <div class="content">
-        <h5 class="content--title">
+        <h6 class="content--title">
           {{ content.title ? content.title : "Project Title" }}
-        </h5>
-        <tags class="tags" :data="['Vue Js', 'Gsap']"></tags>
+        </h6>
+        <tags class="tags" :data="data.tags ? data.tags : []"></tags>
         <p class="content--text">
           {{ content.text ? content.text : "Project Content" }}
         </p>
-        <btn-primary>View</btn-primary>
+        <btn-primary :data="data.btn ? data.btn : {}">View</btn-primary>
       </div>
     </div>
 
@@ -31,15 +31,15 @@
 </template>
 
 <script>
-import btnPrimary from "@/components/btns/btnPrimary.vue";
-import tags from "@/components/cards/tags.vue";
+import BtnPrimary from "@/components/btns/BtnPrimary.vue";
+import Tags from "@/components/cards/Tags.vue";
 import { ref } from "vue";
 
 export default {
   props: ["data"],
   components: {
-    btnPrimary,
-    tags,
+    BtnPrimary,
+    Tags,
   },
   setup(props) {
     const content = ref(props.data.content);
@@ -69,7 +69,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@use "~@/sass/abstracts/abstracts" as abs;
+@use "~@/sass/styles" as styles;
 
 // project row
 .project-row {
@@ -77,7 +77,7 @@ export default {
   width: 100%;
 
   display: flex;
-  @include abs.mxs-respond(lphone) {
+  @include styles.mxs-respond(lphone) {
     flex-wrap: wrap;
   }
 }
@@ -85,15 +85,15 @@ export default {
 .project-col {
   flex: 1 0 50%;
 
-  @include abs.mxs-respond(lphone) {
+  @include styles.mxs-respond(lphone) {
     flex: 1 1;
   }
 
   &--1 {
     margin-bottom: 4rem;
 
-    @include abs.mxs-respond(lphone) {
-      @include abs.mxs-font-type(heading6);
+    @include styles.mxs-respond(lphone) {
+      @include styles.mxs-font-size(heading6);
     }
   }
   &--2 {
@@ -102,20 +102,20 @@ export default {
 
 .content {
   &--title {
-    color: abs.$vars-c-dprimary;
+    color: styles.$vars-c-dprimary;
     margin-bottom: 1rem;
   }
   &--text {
     max-width: 40rem;
     margin-bottom: 4rem;
 
-    @include abs.mxs-respond(ltablet) {
+    @include styles.mxs-respond(ltablet) {
       margin-right: 4rem;
     }
-    @include abs.mxs-respond(ptablet) {
+    @include styles.mxs-respond(ptablet) {
       min-width: 33rem;
     }
-    @include abs.mxs-respond(pphone) {
+    @include styles.mxs-respond(pphone) {
       min-width: 28rem;
     }
   }
@@ -130,19 +130,19 @@ export default {
 
       position: relative;
 
-      @include abs.mxs-respond(lphone) {
+      @include styles.mxs-respond(lphone) {
         height: 35rem;
       }
     }
     &--abs {
       height: 100%;
       width: 50rem;
-      background: lighten(abs.$vars-c-lprimary, 20%);
+      background: lighten(styles.$vars-c-lprimary, 20%);
 
       position: absolute;
       overflow: hidden;
 
-      @include abs.mxs-respond(lphone) {
+      @include styles.mxs-respond(lphone) {
         width: 40rem;
       }
     }
@@ -158,7 +158,7 @@ export default {
     position: absolute;
     top: 0;
 
-    @include abs.mxs-img-cover;
+    @include styles.mxs-img-cover;
 
     &--1 {
       z-index: 2;

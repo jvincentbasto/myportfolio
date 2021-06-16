@@ -20,12 +20,12 @@
 </template>
 
 <script>
-import cardInfoItem from "@/components/cards/cardInfoItem.vue";
+import CardInfoItem from "@/components/cards/CardInfoItem.vue";
 
 export default {
   props: ["data"],
   components: {
-    cardInfoItem,
+    CardInfoItem,
   },
   methods: {
     loopOver() {
@@ -37,6 +37,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@use "~@/sass/styles" as styles;
+
 .info {
   &-block {
     width: 100%;

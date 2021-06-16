@@ -9,7 +9,7 @@
       <div class="row row--1">
         <div class="col col--1">
           <card-info id="cardinfo" :data="myself"></card-info>
-          <btn-primary :data="data">Donwload Resume</btn-primary>
+          <btn-primary :data="data">Resume</btn-primary>
         </div>
         <div class="col col--2">
           <div class="illus illus-container--rel">
@@ -25,13 +25,13 @@
 </template>
 
 <script>
-import cardInfo from "@/components/cards/cardInfo.vue";
-import btnPrimary from "@/components/btns/btnPrimary.vue";
+import CardInfo from "@/components/cards/CardInfo.vue";
+import BtnPrimary from "@/components/btns/BtnPrimary.vue";
 
 export default {
   components: {
-    cardInfo,
-    btnPrimary,
+    CardInfo,
+    BtnPrimary,
   },
   setup() {
     // myself
@@ -67,6 +67,7 @@ export default {
 
     const resume = require("@/files/resume.pdf");
     const data = {
+      type: "download",
       download: resume,
     };
 
@@ -82,36 +83,36 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@use "~@/sass/abstracts/abstracts" as abs;
+@use "~@/sass/styles" as styles;
 
 #cardinfo {
   margin-bottom: 4rem;
-  @include abs.mxs-respond(ltablet) {
+  @include styles.mxs-respond(ltablet) {
     min-width: 45rem;
   }
-  @include abs.mxs-respond(lphone) {
+  @include styles.mxs-respond(lphone) {
     min-width: 30rem;
   }
 }
 
 // row
 .row {
-  @include abs.mxs-respond(lphone) {
+  @include styles.mxs-respond(lphone) {
     flex-wrap: wrap;
   }
 }
 
 // col
 .col {
-  @include abs.mxs-respond(lphone) {
+  @include styles.mxs-respond(lphone) {
     flex: 1 1;
   }
   &--1 {
     padding-right: 4rem;
-    @include abs.mxs-respond(lphone) {
+    @include styles.mxs-respond(lphone) {
       margin-bottom: 4rem;
     }
-    @include abs.mxs-respond(pphone) {
+    @include styles.mxs-respond(pphone) {
       margin-right: 0;
     }
   }
@@ -119,7 +120,7 @@ export default {
 
 .section {
   &-about {
-    background: lighten(abs.$vars-c-lprimary, 6%);
+    background: lighten(styles.$vars-c-lprimary, 6%);
   }
 }
 
@@ -131,7 +132,7 @@ export default {
       min-width: 20rem;
       position: relative;
 
-      @include abs.mxs-respond(lphone) {
+      @include styles.mxs-respond(lphone) {
         height: 22rem;
         min-width: 15rem;
       }
@@ -147,13 +148,13 @@ export default {
   &--bg {
     height: 16rem;
     width: 40rem;
-    background: lighten(abs.$vars-c-lprimary, 15%);
+    background: lighten(styles.$vars-c-lprimary, 15%);
 
     position: absolute;
     top: 0;
     left: 0;
 
-    @include abs.mxs-respond(lphone) {
+    @include styles.mxs-respond(lphone) {
       height: 14rem;
       width: 35rem;
     }
@@ -161,7 +162,7 @@ export default {
   &-img {
     height: 100%;
     width: 25rem;
-    @include abs.mxs-img-contain;
+    @include styles.mxs-img-contain;
 
     margin-top: 4rem;
     margin-left: 4rem;
@@ -169,7 +170,7 @@ export default {
     position: absolute;
     z-index: 2;
 
-    @include abs.mxs-respond(lphone) {
+    @include styles.mxs-respond(lphone) {
       width: 22rem;
     }
 

@@ -67,7 +67,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@use "~@/sass/abstracts/abstracts" as abs;
+@use "~@/sass/styles" as styles;
 
 .info {
   &-group {
@@ -76,11 +76,11 @@ export default {
   }
   &--title {
     margin-right: 5px;
-    @include abs.mxs-font-type(subtitle2);
+    @include styles.mxs-font-size(subtitle2);
     white-space: nowrap;
   }
   &--value {
-    @include abs.mxs-font-type(body1);
+    @include styles.mxs-font-size(body1);
   }
 }
 
@@ -90,7 +90,7 @@ export default {
   &-group {
   }
   &-item {
-    @include abs.mxs-font-type(body1);
+    @include styles.mxs-font-size(body1);
   }
 }
 </style>

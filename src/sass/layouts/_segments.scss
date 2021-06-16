@@ -1,0 +1,28 @@
+@use "~@/sass/styles" as styles;
+
+// segment
+.segment {
+  &-titlegroup {
+    display: inline-block;
+    margin-bottom: 4rem;
+
+    position: relative;
+  }
+  &--title {
+    position: relative;
+    z-index: 10;
+    color: styles.$vars-c-dprimary;
+
+    @include styles.mxs-respond(lphone) {
+      @include styles.mxs-font-size(heading5);
+    }
+  }
+  &--line {
+    height: 40%;
+    width: 110%;
+    background: lighten(styles.$vars-c-lprimary, 20%);
+
+    position: absolute;
+    bottom: 0;
+  }
+}

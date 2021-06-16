@@ -1,0 +1,21 @@
+@use "~@/sass/styles" as styles;
+
+
+.section {
+  height: auto;
+  min-height: 25vh;
+  width: auto;
+  max-width: 144rem;
+
+  overflow: hidden;
+
+  padding: 7rem 0;
+  background: var(--c-lprimary);
+
+  &-margin {
+    height: auto;
+    width: 100%;
+    max-width: 85%;
+    margin: auto;
+  }
+}

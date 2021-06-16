@@ -27,21 +27,21 @@
 
     <div class="section-margin section-margin--footer">
       <label class="section-copyright"
-        >&#169; 2021 jvincentbasto@gmail.com | All Rights Reserved</label
+        >&#169; 2021 John Vincent Basto | All Rights Reserved</label
       >
     </div>
   </footer>
 </template>
 
 <script>
-import socialLinks from "@/components/links/socialLinks.vue";
+import SocialLinks from "@/components/links/SocialLinks.vue";
 // import { gsap } from "gsap";
 // import { ScrollTrigger } from "gsap/ScrollTrigger";
 // gsap.registerPlugin(ScrollTrigger);
 
 export default {
   components: {
-    socialLinks,
+    SocialLinks,
   },
   methods: {},
   mounted() {},
@@ -49,20 +49,20 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@use "~@/sass/abstracts/abstracts" as abs;
+@use "~@/sass/styles" as styles;
 
 .section {
   &-footer {
     padding: 3rem 0;
     min-height: unset;
 
-    background: abs.$vars-c-black;
-    color: abs.$vars-c-lprimary;
+    background: styles.$vars-c-black;
+    color: styles.$vars-c-lprimary;
 
     position: relative;
     overflow: hidden;
 
-    @include abs.mxs-respond(lphone) {
+    @include styles.mxs-respond(lphone) {
       padding: 4rem 0 2rem;
     }
   }
@@ -71,7 +71,7 @@ export default {
     &--footer {
       margin-bottom: -2rem;
 
-      @include abs.mxs-respond(lphone) {
+      @include styles.mxs-respond(lphone) {
         margin-bottom: -1rem;
       }
     }
@@ -80,8 +80,8 @@ export default {
 
 .section {
   &-copyright {
-    @include abs.mxs-font-type(captions);
-    color: lighten(abs.$vars-c-black, 60%);
+    @include styles.mxs-font-size(captions);
+    color: lighten(styles.$vars-c-black, 60%);
   }
 }
 
@@ -90,15 +90,15 @@ export default {
   &-titlegroup {
     margin-bottom: 8rem;
 
-    @include abs.mxs-respond(lphone) {
+    @include styles.mxs-respond(lphone) {
       margin-bottom: 6rem;
     }
   }
   &--title {
-    color: abs.$vars-c-lprimary;
+    color: styles.$vars-c-lprimary;
   }
   &--line {
-    background: lighten(abs.$vars-c-black, 5%);
+    background: lighten(styles.$vars-c-black, 5%);
   }
 }
 
@@ -110,7 +110,7 @@ export default {
 
 // row
 .row {
-  @include abs.mxs-respond(lphone) {
+  @include styles.mxs-respond(lphone) {
     flex-wrap: wrap;
     margin-bottom: -4rem;
   }
@@ -118,11 +118,11 @@ export default {
 
 // col
 .col {
-  @include abs.mxs-respond(lphone) {
+  @include styles.mxs-respond(lphone) {
     flex: 1 1;
   }
   &--1 {
-    @include abs.mxs-respond(lphone) {
+    @include styles.mxs-respond(lphone) {
       margin-bottom: 4rem;
       margin-right: 8rem;
     }
@@ -134,7 +134,7 @@ export default {
 
     padding-bottom: 2rem;
 
-    @include abs.mxs-respond(lphone) {
+    @include styles.mxs-respond(lphone) {
       align-items: unset;
     }
   }
@@ -143,10 +143,10 @@ export default {
 // links
 .col {
   :deep(.links) {
-    @include abs.mxs-respond(ptablet) {
+    @include styles.mxs-respond(ptablet) {
       min-width: 40rem;
     }
-    @include abs.mxs-respond(lphone) {
+    @include styles.mxs-respond(lphone) {
       min-width: 22rem;
     }
   }
@@ -155,27 +155,27 @@ export default {
 // pitch
 .pitch {
   &-group {
-    @include abs.mxs-respond(lphone) {
+    @include styles.mxs-respond(lphone) {
       min-width: 18rem;
     }
   }
   &-content {
     font-family: tsemibold;
     &--1 {
-      @include abs.mxs-respond(ptablet) {
-        @include abs.mxs-font-type(subtitle1);
+      @include styles.mxs-respond(ptablet) {
+        @include styles.mxs-font-size(subtitle1);
       }
-      @include abs.mxs-respond(lphone) {
-        @include abs.mxs-font-type(body2);
+      @include styles.mxs-respond(lphone) {
+        @include styles.mxs-font-size(body2);
       }
     }
     &--2 {
       margin-top: -2rem;
-      @include abs.mxs-respond(ptablet) {
-        @include abs.mxs-font-type(heading3);
+      @include styles.mxs-respond(ptablet) {
+        @include styles.mxs-font-size(heading3);
       }
-      @include abs.mxs-respond(lphone) {
-        @include abs.mxs-font-type(heading4);
+      @include styles.mxs-respond(lphone) {
+        @include styles.mxs-font-size(heading4);
         margin-top: -1rem;
       }
     }
@@ -191,17 +191,20 @@ export default {
 
     .link {
       &-icongroup {
-        background: abs.$vars-c-lprimary;
+        background: styles.$vars-c-lprimary;
       }
       &-icon {
-        background: lighten(abs.$vars-c-black, 0%);
+        background: lighten(styles.$vars-c-black, 0%);
+      }
+      &--text {
+        color: styles.$vars-c-lprimary;
       }
 
       &-icongroup:hover {
-        background: lighten(abs.$vars-c-black, 0%);
+        background: lighten(styles.$vars-c-black, 0%);
       }
       &-icongroup:hover .link-icon {
-        background: abs.$vars-c-lprimary;
+        background: styles.$vars-c-lprimary;
       }
     }
   }

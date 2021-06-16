@@ -17,10 +17,10 @@ export default {};
 </script>
 
 <style scoped lang="scss">
-@use "~@/sass/abstracts/abstracts" as abs;
+@use "~@/sass/styles" as styles;
 
 .container {
-  background: abs.$vars-c-black;
+  background: styles.$vars-c-black;
 
   position: fixed;
   top: 8rem;
@@ -30,53 +30,53 @@ export default {};
 }
 
 .query {
-  color: abs.$vars-c-white;
+  color: styles.$vars-c-white;
   display: none;
 
   &--pphone {
-    @include abs.mxs-respond-minmax(320px, 480px) {
+    @include styles.mxs-respond-minmax(320px, 480px) {
       display: unset;
     }
   }
   &--pphone ~ * {
     display: none;
-    @include abs.mxs-respond-minmax(320px, 480px) {
+    @include styles.mxs-respond-minmax(320px, 480px) {
       display: none;
     }
   }
 
   &--lphone {
-    @include abs.mxs-respond-minmax(481px, 768px) {
+    @include styles.mxs-respond-minmax(481px, 768px) {
       display: unset;
     }
   }
   &--lphone ~ * {
     display: none;
-    @include abs.mxs-respond-minmax(481px, 768px) {
+    @include styles.mxs-respond-minmax(481px, 768px) {
       display: none;
     }
   }
 
   &--ptablet {
-    @include abs.mxs-respond-minmax(769px, 992px) {
+    @include styles.mxs-respond-minmax(769px, 992px) {
       display: unset;
     }
   }
   &--ptablet ~ * {
     display: none;
-    @include abs.mxs-respond-minmax(769px, 992px) {
+    @include styles.mxs-respond-minmax(769px, 992px) {
       display: none;
     }
   }
 
   &--ltablet {
-    @include abs.mxs-respond-minmax(993px, 1280px) {
+    @include styles.mxs-respond-minmax(993px, 1280px) {
       display: unset;
     }
   }
   &--ltablet ~ * {
     display: none;
-    @include abs.mxs-respond-minmax(993px, 1280px) {
+    @include styles.mxs-respond-minmax(993px, 1280px) {
       display: none;
     }
   }
@@ -84,37 +84,37 @@ export default {};
   &--laptop {
     // display: unset;
 
-    @include abs.mxs-respond-minmax(1281px, 1440px) {
+    @include styles.mxs-respond-minmax(1281px, 1440px) {
       display: unset;
     }
   }
   &--laptop ~ * {
     display: none;
-    @include abs.mxs-respond-minmax(1281px, 1440px) {
+    @include styles.mxs-respond-minmax(1281px, 1440px) {
       display: none;
     }
   }
 
   &--desktop {
-    @include abs.mxs-respond-minmax(1441px, 1920px) {
+    @include styles.mxs-respond-minmax(1441px, 1920px) {
       display: unset;
     }
   }
   &--desktop ~ * {
     display: none;
-    @include abs.mxs-respond-minmax(1441px, 1920px) {
+    @include styles.mxs-respond-minmax(1441px, 1920px) {
       display: none;
     }
   }
 
   &--ldesktop {
-    @include abs.mxs-respond-minmax(1921px, 2021px) {
+    @include styles.mxs-respond-minmax(1921px, 2021px) {
       display: unset;
     }
   }
   &--ldesktop ~ * {
     display: none;
-    @include abs.mxs-respond-minmax(1921px, 2021px) {
+    @include styles.mxs-respond-minmax(1921px, 2021px) {
       display: none;
     }
   }

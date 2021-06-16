@@ -1,45 +1,67 @@
 <template>
   <!-- social links -->
+
   <div class="links">
-    <div class="link">
-      <div class="link-icongroup">
-        <div class="link-icon link-icon--github">&nbsp;</div>
-      </div>
-      <p class="link--text">github.com/jvincentbasto</p>
-    </div>
-    <div class="link">
-      <div class="link-icongroup">
-        <div class="link-icon link-icon--facebook">&nbsp;</div>
-      </div>
-      <p class="link--text">facebook.com/jvincentbasto</p>
-    </div>
+    <template v-for="(obj, index) in links" :key="index">
+      <a :target="obj.target" :href="obj.link" class="link">
+        <div class="link-icongroup">
+          <div class="link-icon" :class="`link-icon--${obj.icon}`">&nbsp;</div>
+        </div>
+        <p class="link--text">{{ obj.text }}</p>
+      </a>
+    </template>
     <div class="link">
       <div class="link-icongroup">
         <div class="link-icon link-icon--gmail">&nbsp;</div>
       </div>
-      <p class="link--text">gmail/jvincentbasto@gmail.com</p>
+      <p class="link--text">jvincentbasto@gmail.com</p>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  setup() {
+    const target = "__blank";
+    const links = [
+      {
+        target,
+        text: "github.com/jvincentbasto",
+        icon: "github",
+        link: "https://github.com/jvincentbasto",
+      },
+      {
+        target,
+        text: "facebook.com/jvincentbasto",
+        icon: "facebook",
+        link: "https://www.facebook.com/jvincentbasto",
+      },
+    ];
+
+    return {
+      links,
+    };
+  },
+};
 </script>
 
 <style scoped lang="scss">
-@use "~@/sass/abstracts/abstracts" as abs;
+@use "~@/sass/styles" as styles;
 
 // link text
 .link {
   &--text {
-    @include abs.mxs-respond(lphone) {
-      @include abs.mxs-font-type(body2);
+    @include styles.mxs-respond(lphone) {
+      @include styles.mxs-font-size(body2);
     }
   }
 }
 
 // links
 .link {
+  max-width: fit-content;
+  cursor: pointer;
+
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
@@ -47,9 +69,8 @@ export default {};
   &-icongroup {
     height: 4rem;
     width: 4rem;
-    background: abs.$vars-c-dprimary;
+    background: styles.$vars-c-dprimary;
 
-    border-radius: 5px;
     margin-right: 1rem;
 
     display: flex;
@@ -60,7 +81,7 @@ export default {};
     overflow: hidden;
     transition: all 0.3s ease-in-out;
 
-    @include abs.mxs-respond(lphone) {
+    @include styles.mxs-respond(lphone) {
       height: 3rem;
       width: 3rem;
     }
@@ -70,38 +91,38 @@ export default {};
     height: 80%;
     width: 80%;
 
-    @include abs.mxs-img-contain;
-    background: lighten(abs.$vars-c-lprimary, 3%);
+    @include styles.mxs-img-contain;
+    background: lighten(styles.$vars-c-lprimary, 3%);
 
     transition: all 0.3s ease-in-out;
 
     &--facebook {
       // @supports(mask: url("~@/assets/.svg") ) {
       // mask: url("~@/assets/.svg")
-      // @include abs.mxs-svg-contain;
+      // @include styles.mxs-svg-contain;
       // }
       // background-image: url("~@/assets/.png");
     }
     &--github {
       // @supports(mask: url("~@/assets/.svg") ) {
       // mask: url("~@/assets/.svg")
-      // @include abs.mxs-svg-contain;
+      // @include styles.mxs-svg-contain;
       // }
       // background-image: url("~@/assets/.png");
     }
     &--gmail {
       // @supports(mask: url("~@/assets/.svg") ) {
       // mask: url("~@/assets/.svg")
-      // @include abs.mxs-svg-contain;
+      // @include styles.mxs-svg-contain;
       // }
       // background-image: url("~@/assets/.png");
     }
   }
   &-icongroup:hover {
-    background: lighten(abs.$vars-c-lprimary, 3%);
+    background: lighten(styles.$vars-c-lprimary, 3%);
   }
   &-icongroup:hover &-icon {
-    background: abs.$vars-c-dprimary;
+    background: styles.$vars-c-dprimary;
   }
 }
 </style>

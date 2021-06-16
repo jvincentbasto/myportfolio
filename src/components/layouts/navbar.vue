@@ -8,52 +8,34 @@
 
       <!-- nav logo -->
       <div class="nav-logo">
-        <navlinks :data="logo"></navlinks>
+        <nav-links :data="data.logo ? data.logo : logo"></nav-links>
       </div>
 
       <!-- nav links -->
       <div class="nav-links">
-        <navlinks :data="links"></navlinks>
+        <nav-links :data="data.links ? data.links : {}"></nav-links>
       </div>
 
       <!-- hamburger links -->
       <div class="nav-burger">
-        <burger-links :data="links"></burger-links>
+        <burger-links :data="data.links ? data.links : {}"></burger-links>
       </div>
     </div>
   </nav>
 </template>
 
 <script>
-import navlinks from "@/components/layouts/navlinks.vue";
-import BurgerLinks from "@/components/layouts/BurgerLinks.vue";
+import NavLinks from "@/components/navs/NavLinks.vue";
+import BurgerLinks from "@/components/navs/BurgerLinks.vue";
 // import styles from "@/sass/abstracts/_variables.scss";
 
 export default {
+  props: ["data"],
   components: {
-    navlinks,
+    NavLinks,
     BurgerLinks,
   },
   setup() {
-    const links = [
-      {
-        title: "About",
-        hash: "#about",
-      },
-      {
-        title: "Sklls",
-        hash: "#skills",
-      },
-      {
-        title: "Projects",
-        hash: "#projects",
-      },
-      {
-        title: "Contacts",
-        hash: "#contacts",
-      },
-    ];
-
     const logo = [
       {
         title: "vince.",
@@ -62,7 +44,6 @@ export default {
     ];
 
     return {
-      links,
       logo,
     };
   },
@@ -70,7 +51,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@use "~@/sass/abstracts/abstracts" as abs;
+@use "~@/sass/styles" as styles;
 
 .section {
   &-margin {
@@ -103,7 +84,7 @@ export default {
   left: 0;
   z-index: 5000;
 
-  background: abs.$vars-c-dprimary;
+  background: styles.$vars-c-dprimary;
 }
 
 // nav logo
@@ -116,20 +97,23 @@ export default {
       &::before {
         height: 10%;
         border-radius: 2px;
-        background: abs.$vars-c-lprimary;
+        background: styles.$vars-c-lprimary;
       }
       &--text {
         font-family: heading;
-        @include abs.mxs-font-type(heading6);
+        @include styles.mxs-font-size(heading6);
         font-size: 2.7rem;
 
-        color: abs.$vars-c-lprimary;
+        color: styles.$vars-c-lprimary;
         padding: 0;
 
-        @include abs.mxs-respond(ltablet) {
+        @include styles.mxs-respond(ltablet) {
           font-size: 2.4rem;
         }
       }
+    }
+    .link:hover .link--text {
+      color: styles.$vars-c-lprimary;
     }
   }
 }
@@ -144,14 +128,14 @@ export default {
   height: 7rem;
   width: 100%;
   display: none;
-  background: abs.$vars-c-dprimary;
+  background: styles.$vars-c-dprimary;
 
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1;
 
-  @include abs.mxs-respond(ptablet) {
+  @include styles.mxs-respond(ptablet) {
     display: block;
   }
 }
@@ -160,7 +144,7 @@ export default {
 .nav-burger {
   display: none;
 
-  @include abs.mxs-respond(ptablet) {
+  @include styles.mxs-respond(ptablet) {
     display: block;
   }
 }

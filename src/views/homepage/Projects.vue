@@ -1,5 +1,5 @@
 <template>
-  <section class="section section-about" id="projects" ref="sectProjects">
+  <section class="section section-projects" id="projects" ref="sectProjects">
     <div class="section-margin block block--1">
       <div class="segment segment-titlegroup">
         <h4 class="segment--title">my project</h4>
@@ -12,11 +12,11 @@
 </template>
 
 <script>
-import cardProject from "@/components/cards/cardProject.vue";
+import CardProject from "@/components/cards/CardProject.vue";
 
 export default {
   components: {
-    cardProject,
+    CardProject,
   },
   setup() {
     const content = {
@@ -35,14 +35,24 @@ export default {
         ypos: "-75rem",
       },
     };
+    const tags = ["Vue Js", "Sass", "Gsap"];
+    const btn = {
+      type: "router",
+      title: "View",
+      router: "/projects",
+    };
     const project = {
       content,
       showcase,
+      tags,
+      btn,
     };
 
     return {
       content,
       showcase,
+      tags,
+      btn,
       project,
     };
   },
@@ -50,11 +60,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@use "~@/sass/abstracts/abstracts" as abs;
+@use "~@/sass/styles" as styles;
 
 .section {
-  &-about {
-    background: lighten(abs.$vars-c-lprimary, 6%);
+  &-projects {
+    background: lighten(styles.$vars-c-lprimary, 6%);
   }
 }
 
