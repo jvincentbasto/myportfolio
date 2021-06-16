@@ -36,7 +36,7 @@
     <div class="section-margin row row--2">
       <!-- social links -->
       <div class="col col--1">
-        <social-links></social-links>
+        <!-- <social-links></social-links> -->
       </div>
 
       <div class="col col--2"></div>
@@ -46,14 +46,13 @@
   </section>
 </template>
 
-<script>
-import BtnPrimary from "@/components/btns/BtnPrimary.vue";
-import SocialLinks from "@/components/links/SocialLinks.vue";
+<script>import BtnPrimary from "@/components/btns/BtnPrimary.vue";
+// import SocialLinks from "@/components/links/SocialLinks.vue";
 
 export default {
   components: {
     BtnPrimary,
-    SocialLinks,
+    // SocialLinks,
   },
   methods: {
     colorSchemeInit() {
