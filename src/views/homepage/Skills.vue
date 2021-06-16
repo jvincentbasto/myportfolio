@@ -62,7 +62,7 @@ export default {
 
 .section {
   &-skills {
-    background: styles.fns-lighten(var(--c-lprimary), 3%);
+    background: styles.fns-lighten(var(--c-lprimary), 3);
   }
 }
 </style>
