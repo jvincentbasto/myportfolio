@@ -1,17 +1,17 @@
 <template>
-  <!-- <media-queries /> -->
+  <media-queries />
   <router-view />
-  <!-- <my-footer /> -->
+  <my-footer />
 </template>
 
 <script>
-// import myFooter from "@/components/layouts/Footer.vue";
-// import MediaQueries from "@/components/helpers/MediaQueries.vue";
+import MyFooter from "@/components/layouts/footer.vue";
+import MediaQueries from "@/components/helpers/mediaQueries.vue";
 
 export default {
   components: {
-    // myFooter,
-    // MediaQueries,
+    MyFooter,
+    MediaQueries,
   },
 };
 </script>
