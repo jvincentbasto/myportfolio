@@ -1,25 +1,25 @@
 <template>
-  <!-- <navbar :data="data" /> -->
+  <navbar :data="data" />
   <Hero />
-  <!-- <About />
+  <About />
   <Skills />
-  <Projects /> -->
+  <Projects />
 </template>
 
 <script>
-// import Navbar from "@/components/layouts/Navbar.vue";
+import Navbar from "@/components/layouts/navbar.vue";
 import Hero from "./homepage/Hero.vue";
-// import About from "./homepage/About.vue";
-// import Skills from "./homepage/Skills.vue";
-// import Projects from "./homepage/Projects.vue";
+import About from "./homepage/About.vue";
+import Skills from "./homepage/Skills.vue";
+import Projects from "./homepage/Projects.vue";
 
 export default {
   components: {
-    // Navbar,
+    Navbar,
     Hero,
-    // About,
-    // Skills,
-    // Projects,
+    About,
+    Skills,
+    Projects,
   },
   setup() {
     const links = [
