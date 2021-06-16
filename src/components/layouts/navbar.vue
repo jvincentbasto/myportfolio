@@ -25,8 +25,8 @@
 </template>
 
 <script>
-import NavLinks from "@/components/navs/NavLinks.vue";
-import BurgerLinks from "@/components/navs/BurgerLinks.vue";
+import NavLinks from "@/components/navs/navLinks.vue";
+import BurgerLinks from "@/components/navs/burgerLinks.vue";
 // import styles from "@/sass/abstracts/_variables.scss";
 
 export default {
