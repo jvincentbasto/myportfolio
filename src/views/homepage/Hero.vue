@@ -61,7 +61,7 @@ export default {
       const scheme = window.matchMedia("(prefers-color-scheme: dark)");
       const matches = scheme.matches;
 
-      if (matches) html.setAttribute("dark", "");
+      if (eval(matches)) html.setAttribute("dark", "");
       else html.removeAttribute("dark");
     },
     colorSchemeTrigger() {
