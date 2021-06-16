@@ -25,8 +25,8 @@
 </template>
 
 <script>
-import CardInfo from "@/components/cards/CardInfo.vue";
-import BtnPrimary from "@/components/btns/BtnPrimary.vue";
+import CardInfo from "@/components/cards/cardInfo.vue";
+import BtnPrimary from "@/components/btns/btnPrimary.vue";
 
 export default {
   components: {
