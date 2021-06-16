@@ -67,12 +67,12 @@ export default {
     colorSchemeTrigger() {
       const html = document.querySelector("html");
       const hasAttr = html.hasAttribute("dark") ? true : false;
-      const scheme = window.matchMedia("(prefers-color-scheme: dark)");
-      const matches = scheme.matches;
+      // const scheme = window.matchMedia("(prefers-color-scheme: dark)");
+      // const matches = scheme.matches;
       // for(let prop in html) console.log(prop)
 
       if (!hasAttr) html.setAttribute("dark", "");
-      else if (matches) html.setAttribute("dark", "");
+      // else if (matches) html.setAttribute("dark", "");
       else html.removeAttribute("dark");
 
       // else {
@@ -91,7 +91,7 @@ export default {
     },
   },
   mounted() {
-    // this.colorSchemeInit();
+    this.colorSchemeInit();
   },
 };
 </script>
