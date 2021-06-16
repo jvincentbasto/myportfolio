@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import PgBar from "@/components/charts/ProgressBar.vue";
+import PgBar from "@/components/charts/progressBar.vue";
 
 export default {
   components: {
