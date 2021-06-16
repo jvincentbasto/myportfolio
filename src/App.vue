@@ -1,7 +1,7 @@
 <template>
-  // <media-queries />
+  <!-- <media-queries /> -->
   <router-view />
-  // <my-footer />
+  <!-- <my-footer /> -->
 </template>
 
 <script>
