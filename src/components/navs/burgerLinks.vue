@@ -23,7 +23,7 @@
 
 <script>
 // import styles from "@/sass/abstracts/_variables.scss";
-import NavLinks from "@/components/navs/NavLinks.vue";
+import NavLinks from "@/components/navs/navLinks.vue";
 import { gsap } from "gsap";
 
 export default {
