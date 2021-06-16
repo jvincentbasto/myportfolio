@@ -50,6 +50,37 @@ export default {
 };
 </script>
 
+<style lang="scss">
+@use "~@/sass/styles" as styles;
+
+// navbar
+.nav {
+  background: var(--c-dprimary);
+}
+
+// nav logo
+.nav-logo {
+  :deep(*) {
+    .link {
+      &::before {
+        background: var(--c-lprimary);
+      }
+      &--text {
+        color: var(--c-lprimary);
+      }
+    }
+    .link:hover .link--text {
+      color: var(--c-lprimary);
+    }
+  }
+}
+
+// nav bg
+.nav-bg {
+  background: var(--c-dprimary);
+}
+</style>
+
 <style scoped lang="scss">
 @use "~@/sass/styles" as styles;
 
@@ -83,8 +114,6 @@ export default {
   top: 0;
   left: 0;
   z-index: 5000;
-
-  background: styles.$vars-c-dprimary;
 }
 
 // nav logo
@@ -97,23 +126,17 @@ export default {
       &::before {
         height: 10%;
         border-radius: 2px;
-        background: styles.$vars-c-lprimary;
       }
       &--text {
         font-family: heading;
         @include styles.mxs-font-size(heading6);
         font-size: 2.7rem;
-
-        color: styles.$vars-c-lprimary;
         padding: 0;
 
         @include styles.mxs-respond(ltablet) {
           font-size: 2.4rem;
         }
       }
-    }
-    .link:hover .link--text {
-      color: styles.$vars-c-lprimary;
     }
   }
 }
@@ -128,7 +151,6 @@ export default {
   height: 7rem;
   width: 100%;
   display: none;
-  background: styles.$vars-c-dprimary;
 
   position: fixed;
   top: 0;

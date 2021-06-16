@@ -68,6 +68,25 @@ export default {
 };
 </script>
 
+<style lang="scss">
+@use "~@/sass/styles" as styles;
+
+.content {
+  &--title {
+    color: var(--c-dprimary);
+  }
+}
+
+// showcase size
+.showcase {
+  &-container {
+    &--abs {
+      background: styles.fns-lighten(var(--c-lprimary), 20);
+    }
+  }
+}
+</style>
+
 <style scoped lang="scss">
 @use "~@/sass/styles" as styles;
 
@@ -102,7 +121,6 @@ export default {
 
 .content {
   &--title {
-    color: styles.$vars-c-dprimary;
     margin-bottom: 1rem;
   }
   &--text {
@@ -137,7 +155,6 @@ export default {
     &--abs {
       height: 100%;
       width: 50rem;
-      background: lighten(styles.$vars-c-lprimary, 20%);
 
       position: absolute;
       overflow: hidden;

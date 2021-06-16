@@ -36,6 +36,10 @@ export default {
 };
 </script>
 
+<style lang="scss">
+@use "~@/sass/styles" as styles;
+</style>
+
 <style scoped lang="scss">
 @use "~@/sass/styles" as styles;
 

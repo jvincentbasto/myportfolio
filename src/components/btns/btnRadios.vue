@@ -10,6 +10,17 @@
 
 <script></script>
 
+<style lang="scss">
+@use "~@/sass/styles" as styles;
+
+.btn {
+  &-radio div {
+    border: 0.4rem solid var(--c-black);
+    background: var(--c-secondary);
+  }
+}
+</style>
+
 <style scoped lang="scss">
 @use "~@/sass/styles" as styles;
 
@@ -25,10 +36,7 @@
     width: 2.4rem;
 
     border-radius: 10rem;
-    border: 0.4rem solid styles.$vars-c-black;
-
     margin-right: 0.6rem;
-    background: styles.$vars-c-secondary;
   }
   &-radio div:last-child {
     margin-right: 0rem;

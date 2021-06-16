@@ -41,6 +41,26 @@ export default {
 <style scoped lang="scss">
 @use "~@/sass/styles" as styles;
 
+// progress bar
+.pgbar {
+  & > * {
+    border: 2px solid var(--c-black);
+  }
+  &--border {
+    border-color: var(--c-black);
+  }
+  &--bg {
+    background: styles.fns-lighten(var(--c-lprimary), 15);
+  }
+  &--center-line {
+    border-right: 2px dashed rgba(0, 0, 0, 0.5);
+  }
+}
+</style>
+
+<style scoped lang="scss">
+@use "~@/sass/styles" as styles;
+
 // progress row
 .pg-row {
   height: 3rem;
@@ -135,21 +155,12 @@ export default {
   }
 
   &--border {
-    border-color: styles.$vars-c-black;
     width: 100%;
   }
 
   &--bg {
     border-radius: 0;
     border: none;
-
-    background: lighten(styles.$vars-c-lprimary, 15%);
-    // background-image: linear-gradient(
-    //   to right,
-    //   styles.$vars-c-lprimary,
-    //   rgba(styles.$vars-c-lprimary, 0.8) 90%,
-    //   rgba(styles.$vars-c-lprimary, 0)
-    // );
   }
 
   &--center-line {
@@ -157,7 +168,6 @@ export default {
     border: none;
 
     width: 50%;
-    border-right: 2px dashed rgba(0, 0, 0, 0.5);
   }
 }
 </style>

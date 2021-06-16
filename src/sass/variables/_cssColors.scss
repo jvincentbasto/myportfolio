@@ -9,7 +9,6 @@
 	--c-sat-primary: 41%;
 	--c-lum-primary: 70%;
 
-
 	@include mxs.varHsl(--c-lprimary,202,41%,70%);
 	@include mxs.varHsl(--c-dprimary,202,41%,10%);
 	@include mxs.varHsl(--c-white,202,41%,90%);
@@ -39,8 +38,23 @@
 }
 
 
+// light theme
+// @include mxs.themes(light) {
+
+// 	--c-lprimary: --c-lprimary;
+// 	--c-dprimary: --c-dprimary;
+// 	--c-white: --c-white;
+// 	--c-grey: --c-grey;
+// 	--c-black: --c-black;
+
+
+// 	--c-defwhite: --c-defwhite;
+// 	--c-defblack: --c-defblack;
+// }
+
+
 // dark theme
-html[dark] {
+@include mxs.themes(dark) {
 	@include mxs.varHsl(--c-defwhite,0,0%,0%);
 	@include mxs.varHsla(--c-defblack,0,0%,90%,.9);
 

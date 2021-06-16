@@ -46,9 +46,12 @@ Line Length (Characters per Line)
 	line-height: 150%;
 	font-family: tbody, sans-serif;
 }
-html[dark] * {
-	font-weight: 100;
+@include mxs.themes(dark) {
+	* {
+		font-weight: 100;
+	}
 }
+
 
 
 

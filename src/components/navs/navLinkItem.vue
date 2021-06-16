@@ -23,6 +23,16 @@ export default {
 };
 </script>
 
+<style lang="scss">
+@use "~@/sass/styles" as styles;
+
+.link {
+  &::before {
+    background: rgba(white, 0.1);
+  }
+}
+</style>
+
 <style scoped lang="scss">
 @use "~@/sass/styles" as styles;
 
@@ -39,7 +49,6 @@ export default {
     height: 100%;
     width: 0;
     border-radius: inherit;
-    background: rgba(white, 0.1);
 
     position: absolute;
     right: 0;

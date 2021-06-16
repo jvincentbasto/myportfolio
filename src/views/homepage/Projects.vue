@@ -59,14 +59,24 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @use "~@/sass/styles" as styles;
 
 .section {
   &-projects {
-    background: lighten(styles.$vars-c-lprimary, 6%);
+    background: styles.fns-lighten(var(--c-lprimary), 6);
   }
 }
+
+.segment {
+  &-titlegroup {
+    margin-bottom: 8rem;
+  }
+}
+</style>
+
+<style scoped lang="scss">
+@use "~@/sass/styles" as styles;
 
 .segment {
   &-titlegroup {

@@ -1,5 +1,6 @@
 @use "fonts";
 @use "~@/sass/functions/functions" as fns;
+@use "~@/sass/mixins/mixins" as mxs;
 
 
 // general
@@ -43,17 +44,19 @@ body {
 		width: 15px;
 	}
 	&::-webkit-scrollbar-track {
-		background: $scrollbar;
+		background: var(--c-white);
 	}
 	&::-webkit-scrollbar-thumb {
 		background: var(--c-dprimary);
 	}
 	&::-webkit-scrollbar-thumb:hover {
-		background: var(--c-black);
+		// background: var(--c-black);
 	}
 }
-html[dark] body {
-	$scrollbar: fns-lighten(var(--c-lprimary), 20);
+@include mxs.themes(dark) {
+	body {
+		$scrollbar: fns-lighten(var(--c-dprimary), 20);
+	}
 }
 
 

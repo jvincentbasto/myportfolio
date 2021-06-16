@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <p class="query query--pphone">480max: phone portrait</p>
+    <!--     <p class="query query--pphone">480max: phone portrait</p>
     <p class="query query--lphone">768max: phone landscape</p>
 
     <p class="query query--ptablet">992max: tablet portrait</p>
@@ -9,19 +9,31 @@
     <p class="query query--laptop">1440max: laptop</p>
     <p class="query query--desktop">1440min: desktop</p>
     <p class="query query--ldesktop">1920min: Large Desktop</p>
+ -->
   </div>
+  <slot>yogi</slot>
 </template>
 
 <script>
 export default {};
 </script>
 
+<style lang="scss">
+@use "~@/sass/styles" as styles;
+
+.container {
+  background: var(--c-black);
+}
+
+.query {
+  color: var(--c-white);
+}
+</style>
+
 <style scoped lang="scss">
 @use "~@/sass/styles" as styles;
 
 .container {
-  background: styles.$vars-c-black;
-
   position: fixed;
   top: 8rem;
   left: 50%;
@@ -30,7 +42,6 @@ export default {};
 }
 
 .query {
-  color: styles.$vars-c-white;
   display: none;
 
   &--pphone {

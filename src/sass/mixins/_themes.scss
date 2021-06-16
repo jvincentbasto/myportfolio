@@ -1,11 +1,17 @@
 // dark theme
-@mixin themes($theme: dark) {
+@mixin themes($theme: light) {
 
+  @if $theme == light {
+		html[theme="light"] { @content };
+  }
   @if $theme == dark {
-		html[dark] { @content };
+    html[theme="dark"] { @content };
   }
   @if $theme == sepia {
-		html[sepia] { @content };
+		html[theme="sepia"] { @content };
+  }
+  @if $theme == default {
+    html[theme="light"],html[theme="dark"],html[theme="sepia"] { @content };
   }
   // @else {
 		// html[dark] { @content };

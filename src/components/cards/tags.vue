@@ -18,6 +18,14 @@ export default {
 };
 </script>
 
+<style lang="scss">
+@use "~@/sass/styles" as styles;
+
+.tag {
+  background: styles.fns-lighten(var(--c-lprimary), 20);
+}
+</style>
+
 <style scoped lang="scss">
 @use "~@/sass/styles" as styles;
 
@@ -31,7 +39,6 @@ export default {
 
 .tag {
   display: inline-block;
-  background: lighten(styles.$vars-c-lprimary, 20%);
   margin-right: 1rem;
 
   &--text {

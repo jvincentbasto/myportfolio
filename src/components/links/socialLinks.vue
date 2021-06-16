@@ -18,7 +18,7 @@
     </div>
   </div>
 </template>
-
+<!--  -->
 <script>
 export default {
   setup() {
@@ -45,6 +45,26 @@ export default {
 };
 </script>
 
+<style lang="scss">
+@use "~@/sass/styles" as styles;
+
+// links
+.link {
+  &-icongroup {
+    background: var(--c-dprimary);
+  }
+  &-icon {
+    background: styles.fns-lighten(var(--c-lprimary), 3);
+  }
+  &-icongroup:hover {
+    background: styles.fns-lighten(var(--c-lprimary), 3);
+  }
+  &-icongroup:hover &-icon {
+    background: var(--c-dprimary);
+  }
+}
+</style>
+
 <style scoped lang="scss">
 @use "~@/sass/styles" as styles;
 
@@ -69,7 +89,6 @@ export default {
   &-icongroup {
     height: 4rem;
     width: 4rem;
-    background: styles.$vars-c-dprimary;
 
     margin-right: 1rem;
 
@@ -92,7 +111,6 @@ export default {
     width: 80%;
 
     @include styles.mxs-img-contain;
-    background: lighten(styles.$vars-c-lprimary, 3%);
 
     transition: all 0.3s ease-in-out;
 
@@ -117,12 +135,6 @@ export default {
       // }
       // background-image: url("~@/assets/.png");
     }
-  }
-  &-icongroup:hover {
-    background: lighten(styles.$vars-c-lprimary, 3%);
-  }
-  &-icongroup:hover &-icon {
-    background: styles.$vars-c-dprimary;
   }
 }
 </style>

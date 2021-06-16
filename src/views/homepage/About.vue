@@ -82,6 +82,23 @@ export default {
 };
 </script>
 
+<style lang="scss">
+@use "~@/sass/styles" as styles;
+
+.section {
+  &-about {
+    background: styles.fns-lighten(var(--c-lprimary), 6);
+  }
+}
+
+// illus
+.illus {
+  &--bg {
+    background: styles.fns-lighten(var(--c-lprimary), 15);
+  }
+}
+</style>
+
 <style scoped lang="scss">
 @use "~@/sass/styles" as styles;
 
@@ -118,12 +135,6 @@ export default {
   }
 }
 
-.section {
-  &-about {
-    background: lighten(styles.$vars-c-lprimary, 6%);
-  }
-}
-
 // illus
 .illus {
   &-container {
@@ -148,7 +159,6 @@ export default {
   &--bg {
     height: 16rem;
     width: 40rem;
-    background: lighten(styles.$vars-c-lprimary, 15%);
 
     position: absolute;
     top: 0;

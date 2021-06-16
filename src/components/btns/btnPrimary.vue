@@ -46,6 +46,33 @@ export default {
 };
 </script>
 
+<style lang="scss">
+@use "~@/sass/styles" as styles;
+
+// btn
+.btn {
+  &--content {
+    background: var(--c-dprimary);
+  }
+  &--text {
+    color: var(--c-lprimary);
+  }
+  &--border {
+    border: 2px solid var(--c-dprimary);
+  }
+}
+
+// btn icon
+.btn {
+  &-icongroup {
+    background: var(--c-dprimary);
+  }
+  &-icon {
+    background: styles.fns-lighten(var(--c-lprimary), 3);
+  }
+}
+</style>
+
 <style scoped lang="scss">
 @use "~@/sass/styles" as styles;
 
@@ -66,7 +93,6 @@ export default {
     align-items: center;
 
     padding: 1.5rem 3rem;
-    background: styles.$vars-c-dprimary;
     transition: all 0.3s ease-in-out;
 
     @include styles.mxs-respond(lphone) {
@@ -76,7 +102,6 @@ export default {
   &--text {
     font-family: tsemibold;
     @include styles.mxs-font-size(btn);
-    color: styles.$vars-c-lprimary;
 
     @include styles.mxs-respond(lphone) {
       font-size: 12px;
@@ -85,7 +110,6 @@ export default {
   &--border {
     height: 100%;
     width: 100%;
-    border: 2px solid styles.$vars-c-dprimary;
 
     position: absolute;
     top: 1rem;
@@ -103,7 +127,6 @@ export default {
     height: 2rem;
     width: 2rem;
 
-    background: styles.$vars-c-dprimary;
     margin-right: 1rem;
 
     display: flex;
@@ -123,7 +146,6 @@ export default {
     width: 100%;
 
     @include styles.mxs-img-contain;
-    background: lighten(styles.$vars-c-lprimary, 3%);
 
     transition: all 0.3s ease-in-out;
 

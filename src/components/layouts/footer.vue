@@ -48,6 +48,57 @@ export default {
 };
 </script>
 
+<style lang="scss">
+@use "~@/sass/styles" as styles;
+
+.section {
+  &-footer {
+    background: var(--c-black);
+    color: var(--c-lprimary);
+  }
+}
+
+.section {
+  &-copyright {
+    color: styles.fns-lighten(var(--c-black), 60);
+  }
+}
+
+// segment
+.segment {
+  &--title {
+    color: var(--c-lprimary);
+  }
+  &--line {
+    background: styles.fns-lighten(var(--c-black), 5);
+  }
+}
+
+// link
+.col--1 {
+  :deep(.link) {
+    .link {
+      &-icongroup {
+        background: var(--c-lprimary);
+      }
+      &-icon {
+        background: styles.fns-lighten(var(--c-black), 0);
+      }
+      &--text {
+        color: var(--c-lprimary);
+      }
+
+      &-icongroup:hover {
+        background: styles.fns-lighten(var(--c-black), 0);
+      }
+      &-icongroup:hover .link-icon {
+        background: var(--c-lprimary);
+      }
+    }
+  }
+}
+</style>
+
 <style scoped lang="scss">
 @use "~@/sass/styles" as styles;
 
@@ -55,9 +106,6 @@ export default {
   &-footer {
     padding: 3rem 0;
     min-height: unset;
-
-    background: styles.$vars-c-black;
-    color: styles.$vars-c-lprimary;
 
     position: relative;
     overflow: hidden;
@@ -81,7 +129,6 @@ export default {
 .section {
   &-copyright {
     @include styles.mxs-font-size(captions);
-    color: lighten(styles.$vars-c-black, 60%);
   }
 }
 
@@ -93,12 +140,6 @@ export default {
     @include styles.mxs-respond(lphone) {
       margin-bottom: 6rem;
     }
-  }
-  &--title {
-    color: styles.$vars-c-lprimary;
-  }
-  &--line {
-    background: lighten(styles.$vars-c-black, 5%);
   }
 }
 
@@ -188,25 +229,6 @@ export default {
     display: flex;
     align-items: center;
     margin-bottom: 1rem;
-
-    .link {
-      &-icongroup {
-        background: styles.$vars-c-lprimary;
-      }
-      &-icon {
-        background: lighten(styles.$vars-c-black, 0%);
-      }
-      &--text {
-        color: styles.$vars-c-lprimary;
-      }
-
-      &-icongroup:hover {
-        background: lighten(styles.$vars-c-black, 0%);
-      }
-      &-icongroup:hover .link-icon {
-        background: styles.$vars-c-lprimary;
-      }
-    }
   }
 }
 </style>

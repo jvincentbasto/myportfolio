@@ -57,12 +57,21 @@ export default {
 };
 </script>
 
+<style lang="scss">
+@use "~@/sass/styles" as styles;
+
+.section {
+  &-skills {
+    background: styles.fns-lighten(var(--c-lprimary), 3%);
+  }
+}
+</style>
+
 <style scoped lang="scss">
 @use "~@/sass/styles" as styles;
 
 .section {
   &-skills {
-    background: lighten(styles.$vars-c-lprimary, 3%);
   }
 }
 </style>

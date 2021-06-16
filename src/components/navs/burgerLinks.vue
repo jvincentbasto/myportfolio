@@ -55,6 +55,69 @@ export default {
 };
 </script>
 
+<style lang="scss">
+@use "~@/sass/styles" as styles;
+
+// burger btn
+.burger {
+  &-line {
+    background: var(--c-lprimary);
+  }
+}
+
+// scrollbar
+.scrollbar {
+  // Works on Divs | Track & Thumb
+  &::-webkit-scrollbar-track {
+    background: var(--c-dprimary);
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--c-black);
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--c-lprimary);
+  }
+}
+
+// burger Links
+.burgerblock {
+  .scrollbar {
+    @include styles.mxs-respond(ptablet) {
+      background: styles.fns-lighten(var(--c-dprimary), 0);
+    }
+  }
+}
+
+// burger link text
+.burgerblock {
+  :deep(*) {
+    .link:hover .link--text {
+      @include styles.mxs-respond(ptablet) {
+        color: var(--c-black);
+      }
+    }
+  }
+}
+
+// burger links psuedo
+.burgerblock {
+  :deep(*) {
+    .link::before {
+      @include styles.mxs-respond(ptablet) {
+        background: var(--c-lprimary);
+      }
+    }
+  }
+}
+
+// burger css functions
+.burger {
+  &-checkbox:checked ~ &-btn &-line {
+    background: var(--c-lprimary);
+  }
+}
+</style>
+
 <style scoped lang="scss">
 @use "~@/sass/styles" as styles;
 
@@ -95,7 +158,6 @@ export default {
     width: 100%;
     margin-bottom: 4px;
 
-    background: styles.$vars-c-lprimary;
     transition: all 0.3s ease-in-out;
 
     &:last-child {
@@ -122,16 +184,6 @@ export default {
     width: 0;
     height: 0;
   }
-  // Works on Divs | Track & Thumb
-  &::-webkit-scrollbar-track {
-    background: styles.$vars-c-dprimary;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: styles.$vars-c-black;
-  }
-  &::-webkit-scrollbar-thumb:hover {
-    background: styles.$vars-c-lprimary;
-  }
 
   overflow-y: scroll;
 }
@@ -147,9 +199,6 @@ export default {
       flex-direction: column;
       justify-content: center;
       align-items: center;
-
-      $links-bg: lighten(styles.$vars-c-dprimary, 0%);
-      background: $links-bg;
     }
   }
   :deep(*) {
@@ -192,7 +241,6 @@ export default {
   :deep(*) {
     .link:hover .link--text {
       @include styles.mxs-respond(ptablet) {
-        color: styles.$vars-c-black;
         font-weight: 600;
       }
     }
@@ -204,8 +252,6 @@ export default {
   :deep(*) {
     .link::before {
       @include styles.mxs-respond(ptablet) {
-        background: styles.$vars-c-lprimary;
-
         width: 100%;
         height: 0;
 
@@ -260,7 +306,6 @@ export default {
 .burger {
   &-checkbox:checked ~ &-btn &-line {
     width: 100%;
-    background: styles.$vars-c-lprimary;
   }
   &-checkbox:checked ~ &block {
     opacity: 1;

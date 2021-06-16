@@ -26,9 +26,7 @@
       <!-- bg block -->
       <div class="col col--2">
         <div class="model-container">
-          <div class="model-img" ref="model" @click="colorSchemeTrigger()">
-            &nbsp;
-          </div>
+          <div class="model-img" ref="model">&nbsp;</div>
         </div>
       </div>
     </div>
@@ -54,44 +52,6 @@ export default {
   components: {
     BtnPrimary,
     SocialLinks,
-  },
-  methods: {
-    colorSchemeInit() {
-      const html = document.querySelector("html");
-      const scheme = window.matchMedia("(prefers-color-scheme: dark)");
-      const matches = scheme.matches;
-
-      if (eval(matches)) html.setAttribute("dark", "");
-      else html.removeAttribute("dark");
-    },
-    colorSchemeTrigger() {
-      const html = document.querySelector("html");
-      const hasAttr = html.hasAttribute("dark") ? true : false;
-      // const scheme = window.matchMedia("(prefers-color-scheme: dark)");
-      // const matches = scheme.matches;
-      // for(let prop in html) console.log(prop)
-
-      if (!hasAttr) html.setAttribute("dark", "");
-      // else if (matches) html.setAttribute("dark", "");
-      else html.removeAttribute("dark");
-
-      // else {
-      // const bool = html.getAttribute("dark");
-      // console.log("attr",html.getAttribute("dark"))
-
-      // if(eval(bool)) {
-      //   console.log("bool true",bool, typeof bool)
-      //   html.setAttribute("dark",false)
-      // }
-      // else {
-      //   console.log("bool false",bool, typeof bool)
-      //   html.setAttribute("dark",true)
-      // }
-      // }
-    },
-  },
-  mounted() {
-    this.colorSchemeInit();
   },
 };
 </script>
@@ -132,7 +92,7 @@ export default {
 }
 
 /* dark */
-@include styles.mxs-themes() {
+@include styles.mxs-themes(dark) {
   // model
   .model {
     &-img {
