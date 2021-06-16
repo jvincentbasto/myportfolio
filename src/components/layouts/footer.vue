@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import SocialLinks from "@/components/links/SocialLinks.vue";
+import SocialLinks from "@/components/links/socialLinks.vue";
 // import { gsap } from "gsap";
 // import { ScrollTrigger } from "gsap/ScrollTrigger";
 // gsap.registerPlugin(ScrollTrigger);
