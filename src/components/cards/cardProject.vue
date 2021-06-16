@@ -31,8 +31,8 @@
 </template>
 
 <script>
-import BtnPrimary from "@/components/btns/BtnPrimary.vue";
-import Tags from "@/components/cards/Tags.vue";
+import BtnPrimary from "@/components/btns/btnPrimary.vue";
+import Tags from "@/components/cards/tags.vue";
 import { ref } from "vue";
 
 export default {
