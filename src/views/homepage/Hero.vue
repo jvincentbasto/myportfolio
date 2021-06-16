@@ -46,7 +46,7 @@
   </section>
 </template>
 
-<script>import BtnPrimary from "@/components/btns/BtnPrimary.vue";
+<script>import BtnPrimary from "@/components/btns/btnPrimary.vue";
 // import SocialLinks from "@/components/links/SocialLinks.vue";
 
 export default {
