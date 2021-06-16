@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import CardInfoItem from "@/components/cards/CardInfoItem.vue";
+import CardInfoItem from "@/components/cards/cardInfoItem.vue";
 
 export default {
   props: ["data"],
