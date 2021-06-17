@@ -25,7 +25,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 @use "~@/sass/styles" as styles;
 </style>
 

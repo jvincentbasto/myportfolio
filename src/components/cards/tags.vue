@@ -18,11 +18,21 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 @use "~@/sass/styles" as styles;
 
 .tag {
-  background: styles.fns-lighten(var(--c-lprimary), 20);
+  background: var(--c-white);
+}
+
+@include styles.mxs-themes(dark) {
+  .tag {
+    background: var(--c-lprimary);
+    &--text {
+      color: var(--c-black);
+      font-weight: 400;
+    }
+  }
 }
 </style>
 

@@ -66,8 +66,19 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 @use "~@/sass/styles" as styles;
+
+@include styles.mxs-themes(dark) {
+  .info {
+    &--title {
+      color: var(--c-dprimary);
+    }
+    &--value {
+      color: styles.fns-alpha(var(--c-black), 0.8);
+    }
+  }
+}
 </style>
 
 <style scoped lang="scss">
@@ -81,6 +92,7 @@ export default {
   &--title {
     margin-right: 5px;
     @include styles.mxs-font-size(subtitle2);
+    font-weight: 600;
     white-space: nowrap;
   }
   &--value {

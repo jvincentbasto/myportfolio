@@ -23,12 +23,34 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 @use "~@/sass/styles" as styles;
 
+// navlink text
 .link {
+  &--text {
+    font-weight: 600;
+    color: var(--c-def-black);
+  }
   &::before {
-    background: rgba(white, 0.1);
+    background: var(--c-dprimary);
+  }
+  &:hover &--text {
+    color: var(--c-lprimary);
+  }
+}
+
+@include styles.mxs-themes(dark) {
+  .link {
+    &--text {
+      color: var(--c-dprimary);
+      // font-weight: 400;
+    }
+  }
+  .link:hover {
+    .link--text {
+      // font-weight: 600;
+    }
   }
 }
 </style>
@@ -76,17 +98,15 @@ export default {
 
     @include styles.mxs-font-size(body1);
     white-space: pre;
-    color: rgba(white, 0.8);
 
     padding: 0 2rem;
     position: relative;
 
+    transition: color 0.3s ease-in-out;
+
     @include styles.mxs-respond(ltablet) {
       @include styles.mxs-font-size(body2);
     }
-  }
-  &:hover &--text {
-    color: white;
   }
 }
 </style>

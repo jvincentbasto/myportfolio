@@ -13,12 +13,14 @@
 
       <!-- nav links -->
       <div class="nav-links">
-        <nav-links :data="data.links ? data.links : {}"></nav-links>
+        <nav-links id="links" :data="data.links ? data.links : {}"></nav-links>
+        <theme-btn class="themebtn themebtn--1" />
       </div>
 
       <!-- hamburger links -->
       <div class="nav-burger">
         <burger-links :data="data.links ? data.links : {}"></burger-links>
+        <theme-btn class="themebtn themebtn--2" />
       </div>
     </div>
   </nav>
@@ -27,6 +29,7 @@
 <script>
 import NavLinks from "@/components/navs/navLinks.vue";
 import BurgerLinks from "@/components/navs/burgerLinks.vue";
+import themeBtn from "@/components/theme/themeBtn.vue";
 // import styles from "@/sass/abstracts/_variables.scss";
 
 export default {
@@ -34,6 +37,7 @@ export default {
   components: {
     NavLinks,
     BurgerLinks,
+    themeBtn,
   },
   setup() {
     const logo = [
@@ -50,12 +54,21 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 @use "~@/sass/styles" as styles;
+
+.themebtn {
+  &--1 {
+  }
+  &--2 {
+    margin-right: 5rem;
+  }
+}
 
 // navbar
 .nav {
-  background: var(--c-dprimary);
+  background: var(--c-lprimary);
+  box-shadow: 0 0 10px black;
 }
 
 // nav logo
@@ -63,26 +76,42 @@ export default {
   :deep(*) {
     .link {
       &::before {
-        background: var(--c-lprimary);
+        background: var(--c-dprimary);
       }
       &--text {
-        color: var(--c-lprimary);
+        color: var(--c-dprimary);
       }
     }
     .link:hover .link--text {
-      color: var(--c-lprimary);
+      color: var(--c-dprimary);
     }
   }
 }
 
 // nav bg
 .nav-bg {
-  background: var(--c-dprimary);
+  background: var(--c-lprimary);
+}
+
+@include styles.mxs-themes(dark) {
+  .nav-logo {
+    :deep(*) {
+      .link {
+        &--text {
+          font-weight: 400;
+        }
+      }
+    }
+  }
 }
 </style>
 
 <style scoped lang="scss">
 @use "~@/sass/styles" as styles;
+
+#links {
+  margin-right: 2rem;
+}
 
 .section {
   &-margin {
@@ -144,6 +173,12 @@ export default {
 // nav links
 .nav-links {
   height: 100%;
+  display: flex;
+  align-items: center;
+
+  @include styles.mxs-respond(ptablet) {
+    display: none;
+  }
 }
 
 // nav bg
@@ -167,7 +202,8 @@ export default {
   display: none;
 
   @include styles.mxs-respond(ptablet) {
-    display: block;
+    display: flex;
+    align-items: center;
   }
 }
 </style>

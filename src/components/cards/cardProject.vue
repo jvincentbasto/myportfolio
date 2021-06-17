@@ -68,7 +68,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 @use "~@/sass/styles" as styles;
 
 .content {
@@ -81,7 +81,24 @@ export default {
 .showcase {
   &-container {
     &--abs {
-      background: styles.fns-lighten(var(--c-lprimary), 20);
+      background: var(--c-white);
+      box-shadow: 0 0px 4px rgba(black, 0.5), 0 4px 4px rgba(black, 0.5);
+    }
+  }
+}
+
+@include styles.mxs-themes(dark) {
+  // showcase size
+  .showcase {
+    &-container {
+      &--abs {
+        background: var(--c-lprimary);
+      }
+    }
+  }
+  .content {
+    &--text {
+      color: var(--c-dprimary);
     }
   }
 }

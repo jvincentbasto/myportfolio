@@ -20,9 +20,17 @@
   &--line {
     height: 40%;
     width: 110%;
-    background: styles.fns-lighten(var(--c-lprimary), 20);
+    background: var(--c-white);
 
     position: absolute;
     bottom: 0;
+  }
+}
+
+@include styles.mxs-themes(dark) {
+  .segment {
+    &--line {
+      background: var(--c-lprimary);
+    }
   }
 }

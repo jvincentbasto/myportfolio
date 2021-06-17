@@ -1,5 +1,5 @@
 <template>
-  <section class="section section-skill" id="skills" ref="sectSkills">
+  <section class="section section-skills" id="skills" ref="sectSkills">
     <div class="section-margin block block--1">
       <div class="segment segment-titlegroup">
         <h4 class="segment--title">my skills</h4>
@@ -57,21 +57,24 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 @use "~@/sass/styles" as styles;
 
 .section {
   &-skills {
-    background: styles.fns-lighten(var(--c-lprimary), 3);
+    background: styles.fns-lighten(var(--c-lprimary), 6);
+  }
+}
+
+@include styles.mxs-themes(dark) {
+  .section {
+    &-skills {
+      background: styles.fns-lighten(var(--c-lprimary), 3);
+    }
   }
 }
 </style>
 
 <style scoped lang="scss">
 @use "~@/sass/styles" as styles;
-
-.section {
-  &-skills {
-  }
-}
 </style>

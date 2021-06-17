@@ -43,17 +43,29 @@ export default {
 
 // progress bar
 .pgbar {
-  & > * {
-    border: 2px solid var(--c-black);
-  }
   &--border {
-    border-color: var(--c-black);
+    border: 2px solid black;
   }
   &--bg {
-    background: styles.fns-lighten(var(--c-lprimary), 15);
+    background: var(--c-white);
   }
   &--center-line {
-    border-right: 2px dashed rgba(0, 0, 0, 0.5);
+    border-right: 2px dashed rgba(black, 0.8);
+  }
+}
+
+@include styles.mxs-themes(dark) {
+  .pg {
+    &--title {
+      color: var(--c-dprimary);
+    }
+  }
+
+  // progress bar
+  .pgbar {
+    &--bg {
+      background: var(--c-dprimary);
+    }
   }
 }
 </style>
@@ -123,7 +135,6 @@ export default {
     height: 100%;
     min-width: 40rem;
     width: 100%;
-    // border-radius: 5px;
 
     max-width: 80%;
     @include styles.mxs-respond(lphone) {
@@ -142,9 +153,9 @@ export default {
     height: inherit;
     width: inherit;
 
-    // border-radius: inherit;
-    border: 2px solid black;
+    border-width: 2px;
 
+    // border-radius: inherit;
     position: absolute;
     top: 0;
     left: 0;
@@ -165,8 +176,6 @@ export default {
 
   &--center-line {
     border-radius: 0;
-    border: none;
-
     width: 50%;
   }
 }

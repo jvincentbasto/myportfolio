@@ -48,51 +48,58 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 @use "~@/sass/styles" as styles;
 
-.section {
-  &-footer {
-    background: var(--c-black);
-    color: var(--c-lprimary);
+@include styles.mxs-themes(default) {
+  .section {
+    &-footer {
+      background: styles.$vars-c-black;
+    }
   }
-}
 
-.section {
-  &-copyright {
-    color: styles.fns-lighten(var(--c-black), 60);
+  .section {
+    &-copyright {
+      color: darken(styles.$vars-c-white, 10%);
+    }
   }
-}
 
-// segment
-.segment {
-  &--title {
-    color: var(--c-lprimary);
+  // segment
+  .segment {
+    &--title {
+      color: styles.$vars-c-lprimary;
+    }
+    &--line {
+      background: lighten(styles.$vars-c-black, 4%);
+    }
   }
-  &--line {
-    background: styles.fns-lighten(var(--c-black), 5);
+
+  .pitch {
+    &-content {
+      color: styles.$vars-c-lprimary;
+    }
   }
-}
 
-// link
-.col--1 {
-  :deep(.link) {
-    .link {
-      &-icongroup {
-        background: var(--c-lprimary);
-      }
-      &-icon {
-        background: styles.fns-lighten(var(--c-black), 0);
-      }
-      &--text {
-        color: var(--c-lprimary);
-      }
+  // link
+  .col--1 {
+    :deep(.link) {
+      .link {
+        &-icongroup {
+          background: styles.$vars-c-lprimary;
+        }
+        &-icon {
+          background: lighten(styles.$vars-c-black, 0%);
+        }
+        &--text {
+          color: styles.$vars-c-lprimary;
+        }
 
-      &-icongroup:hover {
-        background: styles.fns-lighten(var(--c-black), 0);
-      }
-      &-icongroup:hover .link-icon {
-        background: var(--c-lprimary);
+        &-icongroup:hover {
+          background: lighten(styles.$vars-c-black, 0%);
+        }
+        &-icongroup:hover .link-icon {
+          background: styles.$vars-c-lprimary;
+        }
       }
     }
   }

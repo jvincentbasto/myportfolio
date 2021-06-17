@@ -57,7 +57,7 @@ export default {
 </script>
 
 <!-- Global -->
-<style lang="scss">
+<style scoped lang="scss">
 @use "~@/sass/styles" as styles;
 
 // option
@@ -75,28 +75,44 @@ export default {
   &-subtitle {
     color: var(--c-dprimary);
   }
+  &-text {
+    color: var(--c-defblack);
+  }
 }
 
 // model
 .model {
   &-img {
-    background: styles.fns-darken(var(--c-lprimary), 10);
+    box-shadow: 0 0px 4px rgba(black, 0.5), 0 4px 4px rgba(black, 0.5);
+    background: styles.fns-darken(var(--c-lprimary), 5);
   }
 }
 
 // bg
 .bg {
   &--bar {
-    background: styles.fns-lighten(var(--c-lprimary), 3);
+    background: styles.fns-lighten(var(--c-lprimary), 2);
   }
 }
 
 /* dark */
 @include styles.mxs-themes(dark) {
+  // headline
+  .headline {
+    &-text {
+      color: styles.fns-alpha(var(--c-dprimary), 0.8);
+    }
+  }
   // model
   .model {
     &-img {
-      background: styles.fns-lighten(var(--c-lprimary), 10);
+      background: styles.fns-lighten(var(--c-lprimary), 5);
+    }
+  }
+  // bg
+  .bg {
+    &--bar {
+      background: styles.fns-lighten(var(--c-lprimary), 1);
     }
   }
 }

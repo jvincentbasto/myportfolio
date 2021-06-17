@@ -16,8 +16,11 @@
   </label>
 
   <!-- burger links -->
-  <div class="burgerblock" @click="closeNav($event)">
+  <div class="burgerblock">
     <nav-links class="scrollbar" :data="data"></nav-links>
+
+    <!-- burger blur -->
+    <div class="burgerblur" @click="closeNav($event)">&nbsp;</div>
   </div>
 </template>
 
@@ -55,27 +58,44 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 @use "~@/sass/styles" as styles;
+
+// burgerblur
+.burgerblur {
+  height: 100%;
+  width: 100%;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
 
 // burger btn
 .burger {
   &-line {
-    background: var(--c-lprimary);
+    background: var(--c-dprimary);
   }
 }
 
 // scrollbar
 .scrollbar {
-  // Works on Divs | Track & Thumb
+  $scrollbar: styles.fns-darken(var(--c-lprimary), 20);
+  scrollbar-width: 15px;
+  scrollbar-color: $scrollbar;
+
+  &::-webkit-scrollbar {
+    width: 15px;
+  }
   &::-webkit-scrollbar-track {
-    background: var(--c-dprimary);
+    background: var(--c-white);
   }
   &::-webkit-scrollbar-thumb {
-    background: var(--c-black);
+    background: var(--c-dprimary);
   }
   &::-webkit-scrollbar-thumb:hover {
-    background: var(--c-lprimary);
+    // background: var(--c-black);
   }
 }
 
@@ -83,7 +103,7 @@ export default {
 .burgerblock {
   .scrollbar {
     @include styles.mxs-respond(ptablet) {
-      background: styles.fns-lighten(var(--c-dprimary), 0);
+      background: styles.fns-lighten(var(--c-lprimary), 0);
     }
   }
 }
@@ -93,7 +113,18 @@ export default {
   :deep(*) {
     .link:hover .link--text {
       @include styles.mxs-respond(ptablet) {
-        color: var(--c-black);
+        color: var(--c-white);
+      }
+    }
+  }
+}
+
+// burger Links
+.burgerblock {
+  :deep(*) {
+    .link {
+      @include styles.mxs-respond(ptablet) {
+        border-bottom: 2px solid var(--c-dprimary);
       }
     }
   }
@@ -104,7 +135,7 @@ export default {
   :deep(*) {
     .link::before {
       @include styles.mxs-respond(ptablet) {
-        background: var(--c-lprimary);
+        background: var(--c-dprimary);
       }
     }
   }
@@ -113,7 +144,7 @@ export default {
 // burger css functions
 .burger {
   &-checkbox:checked ~ &-btn &-line {
-    background: var(--c-lprimary);
+    background: var(--c-dprimary);
   }
 }
 </style>
@@ -178,11 +209,15 @@ export default {
 
 // scrollbar
 .scrollbar {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  &::-webkit-scrollbar {
-    width: 0;
-    height: 0;
+  z-index: 500;
+
+  @include styles.mxs-respond(ptablet) {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
   }
 
   overflow-y: scroll;
@@ -197,15 +232,17 @@ export default {
 
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
+
+      box-shadow: 0 0 10px black;
     }
   }
   :deep(*) {
     .link {
       @include styles.mxs-respond(ptablet) {
         min-height: 6rem;
-        width: 100%;
+        width: 80%;
         background: transparent;
 
         margin-right: 0;

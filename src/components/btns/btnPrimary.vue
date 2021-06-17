@@ -94,6 +94,7 @@ export default {
 
     padding: 1.5rem 3rem;
     transition: all 0.3s ease-in-out;
+    transition-property: transform;
 
     @include styles.mxs-respond(lphone) {
       padding: 1.5rem 2rem;

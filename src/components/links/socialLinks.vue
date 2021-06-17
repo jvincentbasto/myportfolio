@@ -45,11 +45,14 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 @use "~@/sass/styles" as styles;
 
 // links
 .link {
+  &--text {
+    color: var(--c-dprimary);
+  }
   &-icongroup {
     background: var(--c-dprimary);
   }
@@ -98,7 +101,7 @@ export default {
 
     cursor: pointer;
     overflow: hidden;
-    transition: all 0.3s ease-in-out;
+    transition: color 0.3s ease-in-out;
 
     @include styles.mxs-respond(lphone) {
       height: 3rem;

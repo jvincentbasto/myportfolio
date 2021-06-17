@@ -82,19 +82,38 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 @use "~@/sass/styles" as styles;
 
 .section {
   &-about {
-    background: styles.fns-lighten(var(--c-lprimary), 6);
+    background: styles.fns-lighten(var(--c-lprimary), 4);
   }
 }
 
 // illus
 .illus {
   &--bg {
-    background: styles.fns-lighten(var(--c-lprimary), 15);
+    background: var(--c-lprimary);
+    box-shadow: 0 0 10px black;
+  }
+  &-img {
+    filter: drop-shadow(8px 4px 8px rgba(black, 0.5));
+  }
+}
+
+@include styles.mxs-themes(dark) {
+  .section {
+    &-about {
+      background: styles.fns-lighten(var(--c-lprimary), 2);
+    }
+  }
+
+  // illus
+  .illus {
+    &--bg {
+      background: var(--c-lprimary);
+    }
   }
 }
 </style>
@@ -159,6 +178,7 @@ export default {
   &--bg {
     height: 16rem;
     width: 40rem;
+    border-radius: 5px;
 
     position: absolute;
     top: 0;

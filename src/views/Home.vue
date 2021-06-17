@@ -28,7 +28,7 @@ export default {
         hash: "#about",
       },
       {
-        title: "Sklls",
+        title: "Skills",
         hash: "#skills",
       },
       {
