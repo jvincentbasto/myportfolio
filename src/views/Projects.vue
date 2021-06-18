@@ -17,12 +17,32 @@ export default {
         router: "/",
       },
     ];
+    const links = [
+      {
+        title: "About",
+        router: "/#about",
+      },
+      {
+        title: "Skills",
+        router: "/#skills",
+      },
+      {
+        title: "Projects",
+        router: "/#projects",
+      },
+      {
+        title: "Contacts",
+        hash: "#contacts",
+      },
+    ];
     const data = {
       logo,
+      // links,
     };
 
     return {
       logo,
+      links,
       data,
     };
   },

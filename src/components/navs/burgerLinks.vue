@@ -127,6 +127,9 @@ export default {
         border-bottom: 2px solid var(--c-dprimary);
       }
     }
+    .link:last-child {
+      border: none;
+    }
   }
 }
 
@@ -210,6 +213,7 @@ export default {
 // scrollbar
 .scrollbar {
   z-index: 500;
+  padding: 2rem 0rem;
 
   @include styles.mxs-respond(ptablet) {
     scrollbar-width: none;

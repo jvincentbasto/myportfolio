@@ -1,6 +1,6 @@
 <template>
   <div class="theme theme-btn" @click="themeBtn()">
-    <div class="theme-icon theme-icon--">&nbsp;</div>
+    <div class="theme-icon theme-icon--bulb">&nbsp;</div>
   </div>
 </template>
 
@@ -40,19 +40,40 @@ export default {
 @use "~@/sass/styles" as styles;
 
 .theme {
+  &-icon {
+    &--bulb {
+      background-image: url("~@/assets/icons/day@2x.png");
+    }
+  }
+
   &-btn {
-    background: rgba(white, 0.2);
-    transition: all 0.3s ease-in-out;
+    background: styles.fns-darken(var(--c-lprimary), 5);
   }
   &-icon {
-    background: var(--c-dprimary);
-    transition: all 0.3s ease-in-out;
+    background: styles.fns-lighten(var(--c-dprimary), 15);
   }
   &-btn:hover {
-    background: rgba(white, 0.4);
+    background: styles.fns-lighten(var(--c-lprimary), 5);
   }
   &-btn:hover &-icon {
-    // background: var(--c-lprimary);
+    background: var(--c-black);
+  }
+}
+
+@include styles.mxs-themes(dark) {
+  .theme {
+    &-btn {
+      background: styles.fns-lighten(var(--c-lprimary), 5);
+    }
+    &-icon {
+      background: styles.fns-darken(var(--c-dprimary), 15);
+    }
+    &-btn:hover {
+      background: styles.fns-lighten(var(--c-dprimary), 5);
+    }
+    &-btn:hover .theme-icon {
+      background: var(--c-white);
+    }
   }
 }
 </style>
@@ -74,11 +95,23 @@ export default {
 
     position: relative;
     z-index: 6000;
+
+    transition: all 0.3s ease-in-out;
   }
   &-icon {
     height: 2rem;
     width: 2rem;
     border-radius: inherit;
+
+    @include styles.mxs-img-contain;
+    transition: background-color 0.3s ease-in-out;
+
+    &--bulb {
+      @supports (mask: url("~@/assets/icons/day.svg")) {
+        mask: url("~@/assets/icons/day.svg");
+        @include styles.mxs-svg-contain;
+      }
+    }
   }
 }
 </style>

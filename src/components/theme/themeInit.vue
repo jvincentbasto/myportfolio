@@ -38,20 +38,20 @@ export default {
       else mode = "light";
       html.setAttribute("theme", mode);
 
-      this.themeLog("Set Theme", `${mode}(${typeof mode})`);
+      // this.themeLog("Set Theme", `${mode}(${typeof mode})`);
     },
     themeInit() {
       const scheme = window.matchMedia("(prefers-color-scheme: dark)");
       const matches = eval(scheme.matches);
-      this.themeLog("Theme Init Dark?", `${matches}(${typeof matches})`);
+      // this.themeLog("Theme Init Dark?", `${matches}(${typeof matches})`);
 
       const setTheme = this.setTheme;
-      const themeLog = this.themeLog;
+      // const themeLog = this.themeLog;
 
       setTheme(matches);
       scheme.addListener((e) => {
         setTheme(e.matches);
-        themeLog("Event", `${e.matches}(${typeof e.matches})`);
+        // themeLog("Event", `${e.matches}(${typeof e.matches})`);
       });
     },
   },

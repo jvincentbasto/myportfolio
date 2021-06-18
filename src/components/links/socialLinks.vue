@@ -53,6 +53,19 @@ export default {
   &--text {
     color: var(--c-dprimary);
   }
+
+  &-icon {
+    &--facebook {
+      background-image: url("~@/assets/social/facebook@2x.png");
+    }
+    &--github {
+      background-image: url("~@/assets/social/github@2x.png");
+    }
+    &--gmail {
+      background-image: url("~@/assets/social/google@2x.png");
+    }
+  }
+
   &-icongroup {
     background: var(--c-dprimary);
   }
@@ -60,10 +73,34 @@ export default {
     background: styles.fns-lighten(var(--c-lprimary), 3);
   }
   &-icongroup:hover {
-    background: styles.fns-lighten(var(--c-lprimary), 3);
+    background: var(--c-dprimary);
   }
   &-icongroup:hover &-icon {
-    background: var(--c-dprimary);
+    background: var(--c-white);
+  }
+}
+
+@include styles.mxs-themes(dark) {
+  .link {
+    &--text {
+      color: styles.fns-lighten(var(--c-white), 30);
+    }
+    &--text:hover {
+      color: var(--c-dprimary);
+    }
+
+    &-icongroup {
+      background: var(--c-lprimary);
+    }
+    &-icon {
+      background: styles.fns-lighten(var(--c-white), 30);
+    }
+    &-icongroup:hover {
+      background: var(--c-lprimary);
+    }
+    &-icongroup:hover .link-icon {
+      background: var(--c-dprimary);
+    }
   }
 }
 </style>
@@ -74,6 +111,9 @@ export default {
 // link text
 .link {
   &--text {
+    font-weight: 600;
+    transition: color 0.3s ease-in-out;
+
     @include styles.mxs-respond(lphone) {
       @include styles.mxs-font-size(body2);
     }
@@ -92,6 +132,7 @@ export default {
   &-icongroup {
     height: 4rem;
     width: 4rem;
+    border-radius: 5px;
 
     margin-right: 1rem;
 
@@ -101,7 +142,7 @@ export default {
 
     cursor: pointer;
     overflow: hidden;
-    transition: color 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
 
     @include styles.mxs-respond(lphone) {
       height: 3rem;
@@ -110,33 +151,29 @@ export default {
   }
 
   &-icon {
-    height: 80%;
-    width: 80%;
+    height: 60%;
+    width: 60%;
 
     @include styles.mxs-img-contain;
-
-    transition: all 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
 
     &--facebook {
-      // @supports(mask: url("~@/assets/.svg") ) {
-      // mask: url("~@/assets/.svg")
-      // @include styles.mxs-svg-contain;
-      // }
-      // background-image: url("~@/assets/.png");
+      @supports (mask: url("~@/assets/social/facebook.svg")) {
+        mask: url("~@/assets/social/facebook.svg");
+        @include styles.mxs-svg-contain;
+      }
     }
     &--github {
-      // @supports(mask: url("~@/assets/.svg") ) {
-      // mask: url("~@/assets/.svg")
-      // @include styles.mxs-svg-contain;
-      // }
-      // background-image: url("~@/assets/.png");
+      @supports (mask: url("~@/assets/social/github.svg")) {
+        mask: url("~@/assets/social/github.svg");
+        @include styles.mxs-svg-contain;
+      }
     }
     &--gmail {
-      // @supports(mask: url("~@/assets/.svg") ) {
-      // mask: url("~@/assets/.svg")
-      // @include styles.mxs-svg-contain;
-      // }
-      // background-image: url("~@/assets/.png");
+      @supports (mask: url("~@/assets/social/google.svg")) {
+        mask: url("~@/assets/social/google.svg");
+        @include styles.mxs-svg-contain;
+      }
     }
   }
 }

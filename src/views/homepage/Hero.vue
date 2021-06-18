@@ -268,6 +268,7 @@ export default {
   &-img {
     height: 100%;
     width: 35rem;
+    border-radius: 5px;
 
     position: absolute;
     top: 0;

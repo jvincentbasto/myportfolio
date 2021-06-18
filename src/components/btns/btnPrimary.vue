@@ -54,21 +54,23 @@ export default {
   &--content {
     background: var(--c-dprimary);
   }
-  &--text {
-    color: var(--c-lprimary);
-  }
   &--border {
     border: 2px solid var(--c-dprimary);
+  }
+  &--text {
+    color: var(--c-lprimary);
   }
 }
 
 // btn icon
 .btn {
-  &-icongroup {
-    background: var(--c-dprimary);
+  &-icon {
+    &--download {
+      background-image: url("~@/assets/icons/download@2x.png");
+    }
   }
   &-icon {
-    background: styles.fns-lighten(var(--c-lprimary), 3);
+    background: var(--c-lprimary);
   }
 }
 </style>
@@ -103,6 +105,7 @@ export default {
   &--text {
     font-family: tsemibold;
     @include styles.mxs-font-size(btn);
+    font-weight: 600;
 
     @include styles.mxs-respond(lphone) {
       font-size: 12px;
@@ -128,7 +131,7 @@ export default {
     height: 2rem;
     width: 2rem;
 
-    margin-right: 1rem;
+    margin-right: 5px;
 
     display: flex;
     justify-content: center;
@@ -136,22 +139,24 @@ export default {
 
     cursor: pointer;
     overflow: hidden;
-    transition: all 0.3s ease-in-out;
 
     @include styles.mxs-respond(lphone) {
-      margin-right: 5px;
+      margin-right: 2px;
     }
   }
   &-icon {
-    height: 100%;
-    width: 100%;
+    height: 80%;
+    width: 80%;
 
     @include styles.mxs-img-contain;
 
     transition: all 0.3s ease-in-out;
 
     &--download {
-      // background-image: url("~@/assets/.png");
+      @supports (mask: url("~@/assets/icons/download.svg")) {
+        mask: url("~@/assets/icons/download.svg");
+        @include styles.mxs-svg-contain;
+      }
     }
   }
 }

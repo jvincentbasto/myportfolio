@@ -84,18 +84,21 @@ export default {
   .col--1 {
     :deep(.link) {
       .link {
-        &-icongroup {
-          background: styles.$vars-c-lprimary;
-        }
-        &-icon {
-          background: lighten(styles.$vars-c-black, 0%);
-        }
         &--text {
+          color: lighten(styles.$vars-c-black, 30%);
+        }
+        &--text:hover {
           color: styles.$vars-c-lprimary;
         }
 
+        &-icongroup {
+          background: lighten(styles.$vars-c-black, 4%);
+        }
+        &-icon {
+          background: lighten(styles.$vars-c-black, 30%);
+        }
         &-icongroup:hover {
-          background: lighten(styles.$vars-c-black, 0%);
+          background: lighten(styles.$vars-c-black, 4%);
         }
         &-icongroup:hover .link-icon {
           background: styles.$vars-c-lprimary;
