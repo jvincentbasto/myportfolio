@@ -11,17 +11,36 @@
         <nav-links :data="data.logo ? data.logo : logo"></nav-links>
       </div>
 
-      <!-- nav links -->
-      <div class="nav-links">
-        <nav-links id="links" :data="data.links ? data.links : {}"></nav-links>
-        <theme-btn class="themebtn themebtn--1" />
-      </div>
+      <!-- links exsists -->
+      <template v-if="data.links">
+        <!-- nav links -->
+        <div class="nav-links">
+          <nav-links
+            id="links"
+            :data="data.links ? data.links : {}"
+          ></nav-links>
+          <theme-btn class="themebtn themebtn--1" />
+        </div>
 
-      <!-- hamburger links -->
-      <div class="nav-burger">
-        <burger-links :data="data.links ? data.links : {}"></burger-links>
-        <theme-btn class="themebtn themebtn--2" />
-      </div>
+        <!-- hamburger links -->
+        <div class="nav-burger">
+          <burger-links :data="data.links ? data.links : {}"></burger-links>
+          <theme-btn class="themebtn themebtn--2" />
+        </div>
+      </template>
+
+      <!-- no links -->
+      <template v-else>
+        <!-- nav links -->
+        <div class="nav-links">
+          <theme-btn class="themebtn themebtn--1" />
+        </div>
+
+        <!-- hamburger links -->
+        <div class="nav-burger">
+          <theme-btn class="themebtn themebtn--2" />
+        </div>
+      </template>
     </div>
   </nav>
 </template>

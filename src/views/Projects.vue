@@ -1,14 +1,19 @@
 <template>
   <navbar :data="data" />
-  <p>projects</p>
+  <project-view />
+  <my-footer />
 </template>
 
 <script>
 import Navbar from "@/components/layouts/navbar.vue";
+import ProjectView from "@/views/projectpage/ProjectView.vue";
+import MyFooter from "@/components/layouts/footer.vue";
 
 export default {
   components: {
     Navbar,
+    ProjectView,
+    MyFooter,
   },
   setup() {
     const logo = [
@@ -20,11 +25,7 @@ export default {
     const links = [
       {
         title: "About",
-        router: "/#about",
-      },
-      {
-        title: "Skills",
-        router: "/#skills",
+        hash: "#",
       },
       {
         title: "Projects",
@@ -37,7 +38,7 @@ export default {
     ];
     const data = {
       logo,
-      // links,
+      links,
     };
 
     return {

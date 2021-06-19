@@ -4,6 +4,7 @@
   <About />
   <Skills />
   <Projects />
+  <my-footer />
 </template>
 
 <script>
@@ -12,6 +13,7 @@ import Hero from "./homepage/Hero.vue";
 import About from "./homepage/About.vue";
 import Skills from "./homepage/Skills.vue";
 import Projects from "./homepage/Projects.vue";
+import MyFooter from "@/components/layouts/footer.vue";
 
 export default {
   components: {
@@ -20,6 +22,7 @@ export default {
     About,
     Skills,
     Projects,
+    MyFooter,
   },
   setup() {
     const links = [

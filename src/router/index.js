@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
+import error404 from "../components/errors/error404.vue";
 
 const routes = [
   {
@@ -16,21 +17,20 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "projects" */ "../views/Projects.vue"),
   },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "NotFound",
+    component: error404,
+  },
 ];
 
 const scrollBehavior = function (to, from, savedPostion) {
-  const position = {};
-
   if (savedPostion) {
-    console.log("savedPostion", savedPostion);
     return savedPostion;
+  } else if (to.hash) {
+    return { el: to.hash };
   } else {
-    console.log("hash", to);
-    if (to.hash) {
-      position.selector = to.hash;
-      console.log("to hash", position);
-    }
-    return position;
+    return { top: 0 };
   }
 
   // return new Promise(resolve => {
@@ -39,10 +39,10 @@ const scrollBehavior = function (to, from, savedPostion) {
   //     position.y = 0;
   //   }
 
-  //   // this.app.$root.$once("triggerScroll",() => {
+  //   this.app.$root.$once("triggerScroll",() => {
   //     console.log("resolve",position)
   //     resolve(position)
-  //   // })
+  //   })
   // });
 };
 

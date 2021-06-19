@@ -1,13 +1,12 @@
 <template>
-  <p>&nbsp;</p>
-  <!-- 	<ul class="theme theme-container">
-		<template v-for="(obj, index) in data" :key="index">
-			<li class="theme-item">
-				<p class="theme-content theme-content--1">{{ obj.string }}</p>				
-				<p class="theme-content theme-content--2">{{ obj.value }}</p>				
-			</li>
-		</template>
-	</ul> -->
+  <ul class="theme theme-container">
+    <template v-for="(obj, index) in data" :key="index">
+      <li class="theme-item">
+        <p class="theme-content theme-content--1">{{ obj.string }}</p>
+        <p class="theme-content theme-content--2">{{ obj.value }}</p>
+      </li>
+    </template>
+  </ul>
 </template>
 
 <script>
@@ -70,6 +69,8 @@ export default {
     height: auto;
     width: 100%;
     margin-top: 8rem;
+
+    display: none;
   }
   &-item {
     width: 100%;

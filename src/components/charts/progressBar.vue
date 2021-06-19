@@ -43,6 +43,9 @@ export default {
 
 // progress bar
 .pgbar {
+  &--container {
+    box-shadow: 0 0px 4px rgba(black, 0.5), 0 4px 4px rgba(black, 0.5);
+  }
   &--border {
     border: 2px solid black;
   }

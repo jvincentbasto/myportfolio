@@ -18,8 +18,8 @@
 
         <div class="col col--2">
           <div class="pitch pitch-group">
-            <h6 class="pitch-content pitch-content--1">are you interested?</h6>
-            <h2 class="pitch-content pitch-content--2">Lets Talk!</h2>
+            <h6 class="pitch-content pitch-content--1">send me a message,</h6>
+            <h2 class="pitch-content pitch-content--2">Hire Me!</h2>
           </div>
         </div>
       </div>
@@ -87,20 +87,23 @@ export default {
         &--text {
           color: lighten(styles.$vars-c-black, 30%);
         }
-        &--text:hover {
-          color: styles.$vars-c-lprimary;
-        }
-
         &-icongroup {
           background: lighten(styles.$vars-c-black, 4%);
         }
         &-icon {
           background: lighten(styles.$vars-c-black, 30%);
         }
-        &-icongroup:hover {
+      }
+    }
+    :deep(.link:hover) {
+      .link {
+        &--text {
+          color: styles.$vars-c-lprimary;
+        }
+        &-icongroup {
           background: lighten(styles.$vars-c-black, 4%);
         }
-        &-icongroup:hover .link-icon {
+        &-icongroup .link-icon {
           background: styles.$vars-c-lprimary;
         }
       }

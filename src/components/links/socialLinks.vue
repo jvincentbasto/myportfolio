@@ -3,7 +3,7 @@
 
   <div class="links">
     <template v-for="(obj, index) in links" :key="index">
-      <a :target="obj.target" :href="obj.link" class="link">
+      <a class="link" :target="obj.target" :href="obj.link">
         <div class="link-icongroup">
           <div class="link-icon" :class="`link-icon--${obj.icon}`">&nbsp;</div>
         </div>
@@ -72,10 +72,11 @@ export default {
   &-icon {
     background: styles.fns-lighten(var(--c-lprimary), 3);
   }
-  &-icongroup:hover {
+
+  &:hover &-icongroup {
     background: var(--c-dprimary);
   }
-  &-icongroup:hover &-icon {
+  &:hover &-icongroup &-icon {
     background: var(--c-white);
   }
 }
@@ -85,20 +86,20 @@ export default {
     &--text {
       color: styles.fns-lighten(var(--c-white), 30);
     }
-    &--text:hover {
-      color: var(--c-dprimary);
-    }
-
     &-icongroup {
       background: var(--c-lprimary);
     }
     &-icon {
       background: styles.fns-lighten(var(--c-white), 30);
     }
-    &-icongroup:hover {
+
+    &:hover .link--text {
+      color: var(--c-dprimary);
+    }
+    &:hover .link-icongroup {
       background: var(--c-lprimary);
     }
-    &-icongroup:hover .link-icon {
+    &:hover .link-icongroup .link-icon {
       background: var(--c-dprimary);
     }
   }
@@ -111,6 +112,10 @@ export default {
 // link text
 .link {
   &--text {
+    height: 100%;
+    display: flex;
+    align-items: center;
+
     font-weight: 600;
     transition: color 0.3s ease-in-out;
 
@@ -122,6 +127,7 @@ export default {
 
 // links
 .link {
+  height: 4rem;
   max-width: fit-content;
   cursor: pointer;
 
@@ -130,7 +136,7 @@ export default {
   margin-bottom: 1rem;
 
   &-icongroup {
-    height: 4rem;
+    height: 100%;
     width: 4rem;
     border-radius: 5px;
 

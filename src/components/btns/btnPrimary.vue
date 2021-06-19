@@ -27,7 +27,12 @@
     </router-link>
   </template>
   <template v-else>
-    <a :href="data.hash ? data.hash : '#'" class="btn" ref="btn">
+    <a
+      :target="data.target ? data.target : ''"
+      :href="data.hash ? data.hash : '#'"
+      class="btn"
+      ref="btn"
+    >
       <div class="btn--content">
         <p class="btn--text">
           <slot>
