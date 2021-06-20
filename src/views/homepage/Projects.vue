@@ -19,40 +19,75 @@ export default {
     CardProject,
   },
   setup() {
+    // project card
     const content = {
       title: "Covid Status Site",
       text: `This is a simple Covid Site built in Vue js. 
             It has information about global and continental cases 
             and a search feature for country cases.`,
     };
+    const tags = ["Vue Js", "Sass", "Gsap"];
+    const imagesPaths = {
+      sm: "projectimgs/site-covid-sm.png",
+      md: "projectimgs/site-covid-md.png",
+      lg: "projectimgs/site-covid-lg.png",
+    };
     const showcase = {
-      image1: {
-        image: "projectimgs/site-covid-lg.png",
+      sm: {
+        image: imagesPaths.sm,
         ypos: 0,
       },
-      image2: {
-        image: "projectimgs/site-covid-md.png",
+      md: {
+        image: imagesPaths.md,
         ypos: "-75rem",
       },
+      lg: {
+        image: imagesPaths.lg,
+        ypos: 0,
+      },
     };
-    const tags = ["Vue Js", "Sass", "Gsap"];
+
+    // project view
+    const visit = {
+      type: "hash",
+      hash: "https://status-covid.netlify.app",
+      target: "__blank",
+    };
+    const props = {
+      content,
+      screenshots: imagesPaths,
+      visit,
+    };
     const btn = {
-      type: "router",
+      type: "routerPush",
       title: "View",
-      router: "/projects",
+      routerPush: {
+        name: "project-view",
+      },
     };
+
+    // project corona
     const project = {
       content,
-      showcase,
       tags,
+      showcase,
       btn,
+      props,
     };
 
     return {
+      // project card
       content,
-      showcase,
+      imagesPaths,
       tags,
+      showcase,
+
+      // project view
+      visit,
+      props,
       btn,
+
+      // project corona
       project,
     };
   },

@@ -1,18 +1,20 @@
 <template>
-  <navbar :data="data" />
-  <project-view />
+  <navbar :data="navs" />
+  <!-- <project-view /> -->
+  <router-view />
   <my-footer />
 </template>
 
 <script>
 import Navbar from "@/components/layouts/navbar.vue";
-import ProjectView from "@/views/projectpage/ProjectView.vue";
+// import ProjectView from "@/views/projectpage/ProjectView.vue";
 import MyFooter from "@/components/layouts/footer.vue";
 
 export default {
+  props: ["data"],
   components: {
     Navbar,
-    ProjectView,
+    // ProjectView,
     MyFooter,
   },
   setup() {
@@ -36,7 +38,7 @@ export default {
         hash: "#contacts",
       },
     ];
-    const data = {
+    const navs = {
       logo,
       links,
     };
@@ -44,7 +46,7 @@ export default {
     return {
       logo,
       links,
-      data,
+      navs,
     };
   },
 };

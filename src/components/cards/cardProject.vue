@@ -18,10 +18,10 @@
     <div class="project-col project-col--2">
       <div class="showcase showcase-container--rel">
         <div class="showcase showcase-container--abs">
-          <div class="showcase-img showcase-img--1" :style="image(1)">
+          <div class="showcase-img showcase-img--1" :style="image('lg')">
             &nbsp;
           </div>
-          <div class="showcase-img showcase-img--2" :style="image(2)">
+          <div class="showcase-img showcase-img--2" :style="image('md')">
             &nbsp;
           </div>
         </div>
@@ -33,6 +33,7 @@
 <script>
 import BtnPrimary from "@/components/btns/btnPrimary.vue";
 import Tags from "@/components/cards/tags.vue";
+import ProjectView from "@/views/projectpage/ProjectView.vue";
 import { ref } from "vue";
 
 export default {
@@ -51,19 +52,32 @@ export default {
     };
   },
   methods: {
-    image(num) {
-      const prop = this.showcase[`image${num}`].image;
+    image(size) {
+      const prop = this.showcase[size].image;
       const path = require(`@/assets/${prop}`);
 
-      const pos = this.pos(num);
+      const pos = this.pos(size);
       return `background-image: url(${path}); ${pos}`;
     },
-    pos(num) {
+    pos(size) {
       let pos = "0px";
-      pos = this.showcase[`image${num}`].ypos;
+      pos = this.showcase[size].ypos;
 
       return `background-position-y: ${pos}`;
     },
+    newRoute() {
+      const data = this.data.props ? this.data.props : false;
+
+      this.$router.addRoute("projects", {
+        path: "view",
+        name: "project-view",
+        component: ProjectView,
+        props: { data },
+      });
+    },
+  },
+  mounted() {
+    this.newRoute();
   },
 };
 </script>

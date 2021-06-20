@@ -3,9 +3,12 @@
     <div class="section-margin section-margin--project">
       <div class="project project-container">
         <div class="headline headline--container">
-          <h4 class="headline--title">{{ content.title }}</h4>
-          <p class="headline--text">{{ content.text }}</p>
-          <btn-primary id="link" :data="visit">Visit Site</btn-primary>
+          <div class="headline-content">
+            <h4 class="headline--title">{{ data.content.title }}</h4>
+            <p class="headline--text">{{ data.content.text }}</p>
+            <btn-primary :data="data.visit">Visit Site</btn-primary>
+          </div>
+          <div class="headline-bg">&nbsp;</div>
         </div>
         <div class="screenshots screenshots--container">
           <div class="screenshots--group">
@@ -13,16 +16,16 @@
               <source
                 class="screenshots-imgsize screenshots-imgsize--1"
                 media="(max-width: 480px)"
-                :srcset="`${sourceset('sm')}`"
+                :srcset="`${sourceset(data.screenshots.sm)}`"
               />
               <source
                 class="screenshots-imgsize screenshots-imgsize--1"
                 media="(max-width: 992px)"
-                :srcset="sourceset('md')"
+                :srcset="sourceset(data.screenshots.md)"
               />
               <img
                 class="screenshots-imgsize screenshots-imgsize--1"
-                :src="`${sourceset('lg')}`"
+                :src="`${sourceset(data.screenshots.lg)}`"
                 alt="project image"
               />
             </picture>
@@ -37,56 +40,16 @@
 import BtnPrimary from "@/components/btns/btnPrimary.vue";
 
 export default {
+  props: ["data"],
   components: {
     BtnPrimary,
   },
   setup() {
-    const visit = {
-      type: "hash",
-      hash: "https://status-covid.netlify.app",
-      target: "__blank",
-    };
-    const content = {
-      title: "Covid Status Site",
-      text: `This is a simple Covid Site built in Vue js. 
-            It has information about global and continental cases 
-            and a search feature for country cases.`,
-    };
-    const showcase = {
-      image1: {
-        image: "projectimgs/site-covid-lg.png",
-        ypos: 0,
-      },
-      image2: {
-        image: "projectimgs/site-covid-md.png",
-        ypos: "-75rem",
-      },
-    };
-    const tags = ["Vue Js", "Sass", "Gsap"];
-    const btn = {
-      type: "router",
-      title: "View",
-      router: "/projects",
-    };
-    const project = {
-      content,
-      showcase,
-      tags,
-      btn,
-    };
-
-    return {
-      visit,
-      content,
-      showcase,
-      tags,
-      btn,
-      project,
-    };
+    return {};
   },
   methods: {
     sourceset(val) {
-      const path = require(`@/assets/projectimgs/site-covid-${val}.png`);
+      const path = require(`@/assets/${val}`);
       return path;
     },
   },
@@ -96,21 +59,20 @@ export default {
 <style scoped lang="scss">
 @use "~@/sass/styles" as styles;
 
-#link {
-  margin-left: -1rem;
+.headline-content {
+  :deep(.btn) {
+    margin-left: -2rem;
+  }
 }
 
 .section {
   &-project-view {
-    background: var(--c-white);
+    background: var(--c-lprimary);
   }
 }
 
 .section-margin {
   &--project {
-    @include styles.mxs-respond(lphone) {
-      max-width: 100%;
-    }
   }
 }
 
@@ -127,7 +89,13 @@ export default {
     min-height: 40rem;
     height: auto;
     width: 100%;
-    background: var(--c-lprimary);
+
+    position: relative;
+  }
+  &-content {
+    min-height: 100%;
+    height: auto;
+    width: 100%;
 
     padding: 8rem 0;
     text-align: center;
@@ -136,14 +104,30 @@ export default {
     flex-direction: column;
     align-items: center;
 
+    position: relative;
+    z-index: 1;
+
+    @include styles.mxs-respond(lphone) {
+      padding-top: 5rem;
+      padding-bottom: 18rem;
+    }
+  }
+  &-bg {
+    height: 100%;
+    width: 100%;
+    background: var(--c-lprimary);
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
     border-radius: 0 0 10px 10px;
     box-shadow: 0 0px 4px rgba(black, 0.5), 0 4px 4px rgba(black, 0.5);
 
     @include styles.mxs-respond(lphone) {
-      max-width: 85%;
-      margin: 0 auto;
-      padding-top: 5rem;
+      width: 130%;
       border-radius: 0;
+      margin-left: -15%;
     }
   }
   &--title,
@@ -170,6 +154,12 @@ export default {
     width: 100%;
     display: flex;
     justify-content: center;
+
+    @include styles.mxs-respond(lphone) {
+      margin-top: -15rem;
+      position: relative;
+      z-index: 1;
+    }
   }
   &-group {
     width: auto;
@@ -183,7 +173,11 @@ export default {
 
     &--1 {
       height: auto;
-      width: 75%;
+      width: 80%;
+
+      @include styles.mxs-respond(lphone) {
+        width: 100%;
+      }
     }
   }
 }

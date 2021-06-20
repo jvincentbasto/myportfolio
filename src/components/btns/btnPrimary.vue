@@ -1,4 +1,5 @@
 <template>
+  <!-- download -->
   <template v-if="data.type === 'download'">
     <a target="__blank" :href="data.download" class="btn" ref="btn" download>
       <div class="btn--content">
@@ -14,6 +15,8 @@
       <div class="btn--border">&nbsp;</div>
     </a>
   </template>
+
+  <!-- router link -->
   <template v-else-if="data.type === 'router'">
     <router-link :to="data.router ? data.router : '/'" class="btn" ref="btn">
       <div class="btn--content">
@@ -26,6 +29,22 @@
       <div class="btn--border">&nbsp;</div>
     </router-link>
   </template>
+
+  <!-- router push -->
+  <template v-else-if="data.type === 'routerPush'">
+    <div class="btn" ref="btn" @click="routerFn()">
+      <div class="btn--content">
+        <p class="btn--text">
+          <slot>
+            {{ data.title ? data.title : "Router Push" }}
+          </slot>
+        </p>
+      </div>
+      <div class="btn--border">&nbsp;</div>
+    </div>
+  </template>
+
+  <!-- normal link -->
   <template v-else>
     <a
       :target="data.target ? data.target : ''"
@@ -48,6 +67,11 @@
 <script>
 export default {
   props: ["data"],
+  methods: {
+    routerFn() {
+      if (this.data.routerPush) this.$router.push(this.data.routerPush);
+    },
+  },
 };
 </script>
 
