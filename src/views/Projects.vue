@@ -26,7 +26,7 @@ export default {
     ];
     const links = [
       {
-        title: "About",
+        title: "Details",
         hash: "#",
       },
       {

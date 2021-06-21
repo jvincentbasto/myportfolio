@@ -19,6 +19,9 @@
 
 <script>
 import PgBar from "@/components/charts/progressBar.vue";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 export default {
   components: {
@@ -35,7 +38,7 @@ export default {
     };
     const php = {
       title: "Php",
-      value: 58,
+      value: 52,
     };
     const vue = {
       title: "Vue js",
@@ -43,7 +46,7 @@ export default {
     };
     const larvel = {
       title: "Larvel",
-      value: 65,
+      value: 55,
     };
 
     return {
@@ -53,6 +56,57 @@ export default {
       vue,
       larvel,
     };
+  },
+  methods: {
+    // animations
+    skills() {
+      const scroll = (el) =>
+        gsap.timeline({
+          scrollTrigger: {
+            // markers: {
+            //   startColor: "green",
+            //   endColor: "red",
+            //   fontSize: "16px"
+            // },
+
+            // trigger | (trigger, viewport)
+            trigger: el,
+            start: "top 85%",
+            end: "bottom bottom",
+          },
+        });
+
+      function animateObj(duration = 0.5) {
+        return {
+          ease: "ease",
+          opacity: 0,
+          duration,
+        };
+      }
+
+      const skills = scroll(".section-skills .segment--title");
+      skills.from(".section-skills .segment--title", {
+        x: -20,
+        ...animateObj(),
+      });
+      skills.from(".section-skills .segment--line", {
+        x: -10,
+        ...animateObj(),
+      });
+      skills.from(".section-skills .pg-row", {
+        x: -10,
+        ...animateObj(0.5),
+        stagger: 0.2,
+      });
+      skills.from(
+        ".section-skills .pgbar--bg",
+        { width: 0, ...animateObj(), stagger: 0.3 },
+        "<+.3"
+      );
+    },
+  },
+  mounted() {
+    this.skills();
   },
 };
 </script>

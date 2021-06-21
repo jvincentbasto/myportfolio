@@ -13,6 +13,9 @@
 
 <script>
 import CardProject from "@/components/cards/cardProject.vue";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 export default {
   components: {
@@ -90,6 +93,70 @@ export default {
       // project corona
       project,
     };
+  },
+  methods: {
+    projects() {
+      const scroll = (el, scrollObj = {}) =>
+        gsap.timeline({
+          scrollTrigger: {
+            // markers: {
+            //   startColor: "green",
+            //   endColor: "red",
+            //   fontSize: "16px"
+            // },
+
+            // trigger | (trigger, viewport)
+            trigger: el,
+            start: "top 85%",
+            end: "bottom bottom",
+            // scrub: 1,
+            ...scrollObj,
+          },
+          // repeat: -1
+        });
+
+      function animateObj(duration = 0.5) {
+        return {
+          ease: "ease",
+          opacity: 0,
+          duration,
+        };
+      }
+
+      const content = scroll(".section-projects .segment--title");
+      content.from(".section-projects .segment--title", {
+        x: -20,
+        ...animateObj(),
+      });
+      content.from(".section-projects .segment--line", {
+        x: -10,
+        ...animateObj(),
+      });
+
+      const project = scroll(".section-projects .project-col--1", {
+        endTrigger: ".section-projects .btn",
+      });
+      project.from(".section-projects .content--title", {
+        x: -10,
+        ...animateObj(),
+      });
+      project.from(".section-projects .tags", {
+        y: -10,
+        ...animateObj(),
+        stagger: 0.3,
+      });
+      project.from(".section-projects .content--text", {
+        x: -10,
+        ...animateObj(),
+      });
+      project.from(".section-projects .btn", { y: -10, ...animateObj() });
+
+      const showcase = scroll(".section-projects .project-col--2");
+      showcase.from(".section-projects .showcase", { y: 10, ...animateObj() });
+    },
+  },
+  mounted() {
+    this.projects();
   },
 };
 </script>

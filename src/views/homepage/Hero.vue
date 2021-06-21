@@ -13,13 +13,15 @@
           <p class="headline-subtitle" ref="subtitle">
             Front End Web Developer
           </p>
-          <p class="headline-text">
+          <p class="headline-text" ref="text">
             Welcome! I'm a guy who aspires to become a Full Stack Web Developer.
             I enjoys building websites with javscript frameworks like Vue js.
             How can I help you?
           </p>
 
-          <btn-primary :data="{ hash: '#about' }">About Me</btn-primary>
+          <btn-primary :data="{ hash: '#about' }" ref="btn"
+            >About Me</btn-primary
+          >
         </div>
       </div>
 
@@ -47,11 +49,76 @@
 <script>
 import BtnPrimary from "@/components/btns/btnPrimary.vue";
 import SocialLinks from "@/components/links/socialLinks.vue";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 export default {
   components: {
     BtnPrimary,
     SocialLinks,
+  },
+  methods: {
+    fadeIns() {
+      function animateObj() {
+        return {
+          opacity: 0,
+          ease: "ease",
+          duration: 0.5,
+        };
+      }
+
+      const headline = gsap.timeline({
+        /*repeat: -1*/
+      });
+
+      // content
+      headline.from(this.$refs.title1, { x: -50, ...animateObj() }, "+1");
+      headline.from(this.$refs.title2, { x: -50, ...animateObj() });
+      headline.from(this.$refs.subtitle, { y: -10, ...animateObj() });
+      headline.from(this.$refs.text, { x: -50, ...animateObj() });
+      headline.from(this.$refs.btn.$refs.btn, { y: 10, ...animateObj() });
+
+      // bg
+      headline.from(this.$refs.model, { y: 20, ...animateObj() }, "<+.2");
+      return headline;
+    },
+    links() {
+      const scroll = (el) =>
+        gsap.timeline({
+          scrollTrigger: {
+            // markers: {
+            //   startColor: "green",
+            //   endColor: "red",
+            //   fontSize: "16px"
+            // },
+
+            // trigger | (trigger, viewport)
+            trigger: el,
+            start: "top 85%",
+            end: "bottom bottom",
+          },
+        });
+
+      function animateObj() {
+        return {
+          ease: "ease",
+          opacity: 0,
+          duration: 1,
+          stagger: 0.3,
+        };
+      }
+
+      const icons = scroll(".section-hero .col .links");
+      icons.from(".section-hero .col .links .link", {
+        x: -20,
+        ...animateObj(),
+      });
+    },
+  },
+  mounted() {
+    this.fadeIns();
+    this.links();
   },
 };
 </script>

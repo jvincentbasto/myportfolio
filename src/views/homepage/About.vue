@@ -27,6 +27,9 @@
 <script>
 import CardInfo from "@/components/cards/cardInfo.vue";
 import BtnPrimary from "@/components/btns/btnPrimary.vue";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 export default {
   components: {
@@ -78,7 +81,61 @@ export default {
       data,
     };
   },
-  methods: {},
+  methods: {
+    about() {
+      const scroll = (el, endEl) =>
+        gsap.timeline({
+          scrollTrigger: {
+            // markers: {
+            //   startColor: "green",
+            //   endColor: "red",
+            //   fontSize: "16px"
+            // },
+
+            // trigger | (trigger, viewport)
+            trigger: el,
+            start: "top 85%",
+            end: "bottom bottom",
+            endTrigger: endEl ? endEl : el,
+            // scrub: 1
+          },
+          // repeat: -1
+        });
+
+      function animateObj(duration = 0.5) {
+        return {
+          ease: "ease",
+          opacity: 0,
+          duration,
+        };
+      }
+
+      const segment = scroll(".section-about .segment--title");
+      segment.from(".section-about .segment--title", {
+        x: -20,
+        ...animateObj(),
+      });
+      segment.from(".section-about .segment--line", {
+        x: -10,
+        ...animateObj(),
+      });
+
+      const infogroup = scroll(".section-about .info-group");
+      infogroup.from(".section-about .info-group", {
+        x: -10,
+        ...animateObj(),
+        stagger: 0.5,
+      });
+      infogroup.from(".section-about .btn", { y: -10, ...animateObj() });
+
+      const illus = scroll(".section-about .illus");
+      illus.from(".section-about .illus--bg", { width: 0, ...animateObj() });
+      illus.from(".section-about .illus-img--1", { x: 10, ...animateObj() });
+    },
+  },
+  mounted() {
+    this.about();
+  },
 };
 </script>
 

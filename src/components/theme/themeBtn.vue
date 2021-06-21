@@ -1,11 +1,22 @@
 <template>
-  <div class="theme theme-btn" @click="themeBtn()">
-    <div class="theme-icon theme-icon--bulb">&nbsp;</div>
+  <div>
+    <div class="theme theme-btn" @click="themeBtn()">
+      <div class="theme-icon theme-icon--bulb">&nbsp;</div>
+    </div>
   </div>
 </template>
 
 <script>
+import { ref } from "vue";
+
 export default {
+  setup() {
+    const bool = ref(false);
+
+    return {
+      bool,
+    };
+  },
   methods: {
     setTheme(matches) {
       const html = document.documentElement;
@@ -19,6 +30,8 @@ export default {
       const html = document.documentElement;
       const hasAttr = html.hasAttribute("theme") ? true : false;
       const setTheme = this.setTheme;
+
+      this.bool = !this.bool;
 
       if (!hasAttr) {
         // if no theme attribute
@@ -38,6 +51,28 @@ export default {
 
 <style scoped lang="scss">
 @use "~@/sass/styles" as styles;
+
+.bg {
+  height: 100%;
+  width: 100%;
+  background: green;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 4000;
+}
+
+.ball {
+  height: 40%;
+  width: 40%;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4001;
+}
 
 .theme {
   &-icon {

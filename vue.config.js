@@ -5,5 +5,9 @@ module.exports = {
       .test(/\.pdf$/)
       .use("file-loader")
       .loader("file-loader");
+    // .tap(options => {
+    //   console.log(options)
+    //   return options
+    // })
   },
 };

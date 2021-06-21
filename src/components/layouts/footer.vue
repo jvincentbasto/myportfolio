@@ -35,16 +35,76 @@
 
 <script>
 import SocialLinks from "@/components/links/socialLinks.vue";
-// import { gsap } from "gsap";
-// import { ScrollTrigger } from "gsap/ScrollTrigger";
-// gsap.registerPlugin(ScrollTrigger);
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 export default {
   components: {
     SocialLinks,
   },
-  methods: {},
-  mounted() {},
+  methods: {
+    footer() {
+      const scroll = (el, scrollObj = {}) =>
+        gsap.timeline({
+          scrollTrigger: {
+            // markers: {
+            //   startColor: "green",
+            //   endColor: "red",
+            //   fontSize: "16px"
+            // },
+
+            // trigger | (trigger, viewport)
+            trigger: el,
+            start: "top 90%",
+            end: "bottom bottom",
+            ...scrollObj,
+          },
+          // repeat: -1
+        });
+
+      function animateObj() {
+        return {
+          ease: "ease",
+          opacity: 0,
+          duration: 0.5,
+        };
+      }
+
+      const segment = scroll(".section-footer .segment--title");
+      segment.from(".section-footer .segment--title", {
+        x: -20,
+        ...animateObj(),
+      });
+      segment.from(".section-footer .segment--line", {
+        x: -10,
+        ...animateObj(),
+      });
+
+      const icons = scroll(".section-footer .col .links");
+      icons.from(".section-footer .col .links .link", {
+        x: -20,
+        ...animateObj(),
+        stagger: 0.3,
+      });
+
+      const pitch = scroll(".section-footer .pitch-content");
+      pitch.from(".section-footer .pitch-content--1", {
+        x: -20,
+        ...animateObj(),
+      });
+      pitch.from(".section-footer .pitch-content--2", {
+        y: -10,
+        ...animateObj(),
+      });
+
+      const copyright = scroll(".section-footer");
+      copyright.from(".section-footer .section-copyright", { ...animateObj() });
+    },
+  },
+  mounted() {
+    this.footer();
+  },
 };
 </script>
 

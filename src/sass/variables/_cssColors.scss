@@ -9,11 +9,27 @@
 	--c-sat-primary: 41%;
 	--c-lum-primary: 70%;
 
-	@include mxs.varHsl(--c-lprimary,202,41%,70%);
-	@include mxs.varHsl(--c-dprimary,202,41%,10%);
-	@include mxs.varHsl(--c-white,202,41%,90%);
-	@include mxs.varHsl(--c-grey,202,11%,70%);
-	@include mxs.varHsl(--c-black,202,11%,10%);
+	// granny smith green
+	// hsl(95, 46%, 73%)
+	// torq blue
+	// hsl(124, 36%, 78%)
+
+
+	// @include mxs.varHsl(--c-lprimary,202,41%,70%);
+	// @include mxs.varHsl(--c-dprimary,202,41%,10%);
+	// @include mxs.varHsl(--c-white,202,41%,90%);
+	// @include mxs.varHsl(--c-grey,202,11%,70%);
+	// @include mxs.varHsl(--c-black,202,11%,10%);
+
+
+	// @include mxs.varHsl(--c-defwhite,0,0%,90%);
+	// @include mxs.varHsl(--c-defblack,0,0%,0%);
+
+	@include mxs.varHsl(--c-lprimary,124,46%,78%);
+	@include mxs.varHsl(--c-dprimary,124,46%,8%);
+	@include mxs.varHsl(--c-white,124,46%,98%);
+	@include mxs.varHsl(--c-grey,124,16%,78%);
+	@include mxs.varHsl(--c-black,124,16%,8%);
 
 
 	@include mxs.varHsl(--c-defwhite,0,0%,90%);
@@ -55,13 +71,24 @@
 
 // dark theme
 @include mxs.themes(dark) {
+
+	// @include mxs.varHsl(--c-lprimary,202,41%,10%);
+	// @include mxs.varHsl(--c-dprimary,202,41%,70%);
+	// @include mxs.varHsl(--c-white,202,11%,10%);
+	// @include mxs.varHsl(--c-grey,202,11%,70%);
+	// @include mxs.varHsl(--c-black,202,41%,90%);
+
+
+	// @include mxs.varHsl(--c-defwhite,0,0%,0%);
+	// @include mxs.varHsla(--c-defblack,0,0%,90%,.9);	
+
+
+	@include mxs.varHsl(--c-lprimary,124,46%,8%);
+	@include mxs.varHsl(--c-dprimary,124,46%,78%);
+	@include mxs.varHsl(--c-white,124,16%,8%);
+	@include mxs.varHsl(--c-grey,124,16%,8%);
+	@include mxs.varHsl(--c-black,124,46%,98%);
+
 	@include mxs.varHsl(--c-defwhite,0,0%,0%);
 	@include mxs.varHsla(--c-defblack,0,0%,90%,.9);
-
-
-	@include mxs.varHsl(--c-lprimary,202,41%,10%);
-	@include mxs.varHsl(--c-dprimary,202,41%,70%);
-	@include mxs.varHsl(--c-white,202,11%,10%);
-	@include mxs.varHsl(--c-grey,202,11%,70%);
-	@include mxs.varHsl(--c-black,202,41%,90%);
 }

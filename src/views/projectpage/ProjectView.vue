@@ -38,6 +38,7 @@
 
 <script>
 import BtnPrimary from "@/components/btns/btnPrimary.vue";
+import { gsap } from "gsap";
 
 export default {
   props: ["data"],
@@ -52,6 +53,40 @@ export default {
       const path = require(`@/assets/${val}`);
       return path;
     },
+    projectView() {
+      const scroll = (/*scrollObj = {}*/) =>
+        gsap.timeline({
+          // ...scrollObj
+        });
+
+      function animateObj(duration = 0.5) {
+        return {
+          ease: "ease",
+          opacity: 0,
+          duration,
+        };
+      }
+
+      const content = scroll();
+      content.from(".section-project-view .headline--title", {
+        y: -20,
+        ...animateObj(),
+      });
+      content.from(".section-project-view .headline--text", {
+        y: -20,
+        ...animateObj(),
+      });
+      content.from(".section-project-view .btn", { y: -10, ...animateObj() });
+
+      const screenshots = scroll();
+      screenshots.from(".section-project-view .screenshots--group", {
+        y: 10,
+        ...animateObj(),
+      });
+    },
+  },
+  mounted() {
+    this.projectView();
   },
 };
 </script>
@@ -139,13 +174,17 @@ export default {
     @include styles.mxs-respond(ptablet) {
       @include styles.mxs-font-size(heading5);
     }
-    @include styles.mxs-respond(pphone) {
-      @include styles.mxs-font-size(heading6);
-    }
   }
   &--text {
     max-width: 65ch;
     margin-bottom: 6rem;
+
+    @include styles.mxs-respond(lphone) {
+      max-width: 50ch;
+    }
+    @include styles.mxs-respond(pphone) {
+      max-width: 35ch;
+    }
   }
 }
 
