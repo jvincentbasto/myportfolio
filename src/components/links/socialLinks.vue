@@ -135,6 +135,11 @@ export default {
   align-items: center;
   margin-bottom: 1rem;
 
+  @include styles.mxs-respond(lphone) {
+    height: 3rem;
+    margin-bottom: 5px;
+  }
+
   &-icongroup {
     height: 100%;
     width: 4rem;
@@ -151,7 +156,6 @@ export default {
     transition: background-color 0.3s ease-in-out;
 
     @include styles.mxs-respond(lphone) {
-      height: 3rem;
       width: 3rem;
     }
   }

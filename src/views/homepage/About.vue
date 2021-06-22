@@ -71,7 +71,8 @@ export default {
     const resume = require("@/files/resume.pdf");
     const data = {
       type: "download",
-      download: resume,
+      file: resume,
+      filename: "resume.pdf",
     };
 
     return {

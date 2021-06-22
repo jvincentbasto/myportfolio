@@ -110,6 +110,7 @@ export default {
 // nav bg
 .nav-bg {
   background: var(--c-lprimary);
+  box-shadow: 0 0 10px black;
 }
 
 @include styles.mxs-themes(dark) {

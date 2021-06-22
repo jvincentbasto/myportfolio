@@ -1,7 +1,13 @@
 <template>
   <!-- download -->
   <template v-if="data.type === 'download'">
-    <a target="__blank" :href="data.download" class="btn" ref="btn" download>
+    <a
+      target="__blank"
+      :href="data.file"
+      class="btn"
+      ref="btn"
+      :download="data.filename ? data.filename : 'download'"
+    >
       <div class="btn--content">
         <div class="btn-icongroup">
           <div class="btn-icon btn-icon--download">&nbsp;</div>

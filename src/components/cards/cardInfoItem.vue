@@ -75,7 +75,14 @@ export default {
       color: var(--c-dprimary);
     }
     &--value {
-      color: styles.fns-alpha(var(--c-black), 0.8);
+      color: var(--c-dprimary);
+    }
+  }
+}
+@include styles.mxs-themes(dark) {
+  .info {
+    &--value {
+      color: styles.fns-alpha(var(--c-dprimary), 0.8);
     }
   }
 }

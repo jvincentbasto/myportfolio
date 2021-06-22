@@ -1,9 +1,9 @@
 /* Primary Colors */
 
 	// hsl
-	// $c-hue-primary: 202;
-	// $c-sat-primary: 41%;
-	// $c-lum-primary: 70%;
+	$c-hue-primary: 202;
+	$c-sat-primary: 41%;
+	$c-lum-primary: 70%;
 
 	// granny smith green
 	// hsl(95, 46%, 73%)
@@ -12,9 +12,9 @@
 
 
 	// hsl
-	$c-hue-primary: 124;
-	$c-sat-primary: 46%;
-	$c-lum-primary: 78%;
+	// $c-hue-primary: 124;
+	// $c-sat-primary: 46%;
+	// $c-lum-primary: 78%;
 
 	// primary 
 	$c-lprimary: hsl($c-hue-primary, $c-sat-primary, $c-lum-primary);

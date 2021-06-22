@@ -4,6 +4,7 @@
     class="section section-footer"
     id="contacts"
     ref="sectFooter"
+    theme="static"
   >
     <div class="section-margin block block--1">
       <div class="segment segment-titlegroup">
@@ -111,61 +112,61 @@ export default {
 <style scoped lang="scss">
 @use "~@/sass/styles" as styles;
 
-@include styles.mxs-themes(default) {
-  .section {
-    &-footer {
-      background: styles.$vars-c-black;
-    }
+.section {
+  &-footer {
+    background: var(--sc-black);
   }
+}
 
-  .section {
-    &-copyright {
-      color: darken(styles.$vars-c-white, 10%);
-    }
+.section {
+  &-copyright {
+    color: styles.fns-darken(var(--sc-white), 10);
   }
+}
 
-  // segment
+// segment
+.section-footer {
   .segment {
     &--title {
-      color: styles.$vars-c-lprimary;
+      color: var(--sc-lprimary);
     }
     &--line {
-      background: lighten(styles.$vars-c-black, 4%);
+      background: styles.fns-lighten(var(--sc-black), 4);
     }
   }
+}
 
-  .pitch {
-    &-content {
-      color: styles.$vars-c-lprimary;
-    }
+.pitch {
+  &-content {
+    color: var(--sc-lprimary);
   }
+}
 
-  // link
-  .col--1 {
-    :deep(.link) {
-      .link {
-        &--text {
-          color: lighten(styles.$vars-c-black, 30%);
-        }
-        &-icongroup {
-          background: lighten(styles.$vars-c-black, 4%);
-        }
-        &-icon {
-          background: lighten(styles.$vars-c-black, 30%);
-        }
+// link
+.col--1 {
+  :deep(.link) {
+    .link {
+      &--text {
+        color: styles.fns-lighten(var(--sc-black), 30);
+      }
+      &-icongroup {
+        background: styles.fns-lighten(var(--sc-black), 4);
+      }
+      &-icon {
+        background: styles.fns-lighten(var(--sc-black), 30);
       }
     }
-    :deep(.link:hover) {
-      .link {
-        &--text {
-          color: styles.$vars-c-lprimary;
-        }
-        &-icongroup {
-          background: lighten(styles.$vars-c-black, 4%);
-        }
-        &-icongroup .link-icon {
-          background: styles.$vars-c-lprimary;
-        }
+  }
+  :deep(.link:hover) {
+    .link {
+      &--text {
+        color: var(--sc-lprimary);
+      }
+      &-icongroup {
+        background: styles.fns-lighten(var(--sc-black), 4);
+      }
+      &-icongroup .link-icon {
+        background: var(--sc-lprimary);
       }
     }
   }

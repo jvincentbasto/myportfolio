@@ -2,36 +2,112 @@
 @use "~@/sass/functions/functions" as fns;
 
 
-/* root colors */
-:root {
-
-	--c-hue-primary: 202;
-	--c-sat-primary: 41%;
-	--c-lum-primary: 70%;
+@mixin colorPropValues($color: blue) {
 
 	// granny smith green
 	// hsl(95, 46%, 73%)
 	// torq blue
 	// hsl(124, 36%, 78%)
 
+	@if $color == blue {
+		--dc-hue: 202;
+		--dc-sat: 41%;
+		--dc-lum: 70%;
 
-	// @include mxs.varHsl(--c-lprimary,202,41%,70%);
-	// @include mxs.varHsl(--c-dprimary,202,41%,10%);
-	// @include mxs.varHsl(--c-white,202,41%,90%);
-	// @include mxs.varHsl(--c-grey,202,11%,70%);
-	// @include mxs.varHsl(--c-black,202,11%,10%);
+		--dc-lightsat: 90%;
+		--dc-darksat: 11%;
+		--dc-lightlum: 90%;
+		--dc-darklum: 10%;
+	}
+	@if $color == green {
+		--dc-hue: 95;
+		--dc-sat: 46%;
+		--dc-lum: 73%;
+
+		--dc-lightsat: 96%;
+		--dc-darksat: 16%;
+		--dc-lightlum: 93%;
+		--dc-darklum: 13%;
+	}
+}
 
 
-	// @include mxs.varHsl(--c-defwhite,0,0%,90%);
-	// @include mxs.varHsl(--c-defblack,0,0%,0%);
+// color props/modes mixins
+@mixin colorProps($mode: light) {
 
-	@include mxs.varHsl(--c-lprimary,124,46%,78%);
-	@include mxs.varHsl(--c-dprimary,124,46%,8%);
-	@include mxs.varHsl(--c-white,124,46%,98%);
-	@include mxs.varHsl(--c-grey,124,16%,78%);
-	@include mxs.varHsl(--c-black,124,16%,8%);
+  @if $mode == light {
+		--c-hue: var(--dc-hue);
+		--c-sat: var(--dc-sat);
+		--c-lum: var(--dc-lum);
+
+		--c-lightsat: var(--dc-lightsat);
+		--c-darksat: var(--dc-darksat);
+		--c-lightlum: var(--dc-lightlum);
+		--c-darklum: var(--dc-darklum);
+
+		// natural colors
+		@include mxs.varHsla(--c-defwhite,0,0%,90%,.9);
+		@include mxs.varHsl(--c-defblack,0,0%,0%);
+  }
+  @if $mode == dark {
+		--c-hue: var(--dc-hue);
+		--c-sat: var(--dc-sat);
+		--c-lum: var(--dc-darklum);
+
+		--c-lightsat: var(--dc-lightsat);
+		--c-darksat: var(--dc-darksat);
+		--c-lightlum: var(--dc-darklum);
+		--c-darklum: var(--dc-lum);
+
+		// natural colors
+		@include mxs.varHsl(--c-defwhite,0,0%,0%);
+		@include mxs.varHsla(--c-defblack,0,0%,90%,.9);
+  }
+}
+
+// color variables
+@mixin colorVars {
+	@include mxs.varHsl(--c-lprimary,var(--c-hue),var(--c-sat),var(--c-lum));
+	@include mxs.varHsl(--c-dprimary,var(--c-hue),var(--c-sat),var(--c-darklum));
+	@include mxs.varHsl(--c-white,var(--c-hue),var(--c-sat),var(--c-lightlum));
+	@include mxs.varHsl(--c-black,var(--c-hue),var(--c-darksat),var(--c-darklum));
+	@include mxs.varHsl(--c-grey,var(--c-hue),var(--c-darksat),var(--c-lum));
+}
 
 
+
+/* root colors */
+:root {
+
+	// dynamic color properties
+	@include colorPropValues(blue);
+	// base var color properties
+	@include colorProps(light);
+	// base var colors
+	@include colorVars;
+
+
+
+	// static color properties
+	--sc-hue: var(--dc-hue);
+	--sc-sat: var(--dc-sat);
+	--sc-lum: var(--dc-lum);
+
+	--sc-lightsat: var(--dc-lightsat);
+	--sc-darksat: var(--dc-darksat);
+	--sc-lightlum: var(--dc-lightlum);
+	--sc-darklum: var(--dc-darklum);
+
+
+	// static colors
+	@include mxs.varHsl(--sc-lprimary,var(--sc-hue),var(--sc-sat),var(--sc-lum));
+	@include mxs.varHsl(--sc-dprimary,var(--sc-hue),var(--sc-sat),var(--sc-darklum));
+	@include mxs.varHsl(--sc-white,var(--sc-hue),var(--sc-sat),var(--sc-lightlum));
+	@include mxs.varHsl(--sc-black,var(--sc-hue),var(--sc-darksat),var(--sc-darklum));
+	@include mxs.varHsl(--sc-grey,var(--sc-hue),var(--sc-darksat),var(--sc-lum));
+
+
+	// natural colors
 	@include mxs.varHsl(--c-defwhite,0,0%,90%);
 	@include mxs.varHsl(--c-defblack,0,0%,0%);
 }
@@ -54,41 +130,38 @@
 }
 
 
-// light theme
-// @include mxs.themes(light) {
-
-// 	--c-lprimary: --c-lprimary;
-// 	--c-dprimary: --c-dprimary;
-// 	--c-white: --c-white;
-// 	--c-grey: --c-grey;
-// 	--c-black: --c-black;
 
 
-// 	--c-defwhite: --c-defwhite;
-// 	--c-defblack: --c-defblack;
-// }
+// color generate
+@mixin colorGenerate($color: blue,$mode: light) {
+	@include colorPropValues($color);
+	@include colorProps($mode);
+	@include colorVars;
+}
 
 
-// dark theme
+// global light color themes
+@include mxs.colorTheme(blue) {
+	@include colorGenerate(blue,light);
+}
+@include mxs.colorTheme(green) {
+	@include colorGenerate(green,light);
+}
+// global dark color themes
 @include mxs.themes(dark) {
-
-	// @include mxs.varHsl(--c-lprimary,202,41%,10%);
-	// @include mxs.varHsl(--c-dprimary,202,41%,70%);
-	// @include mxs.varHsl(--c-white,202,11%,10%);
-	// @include mxs.varHsl(--c-grey,202,11%,70%);
-	// @include mxs.varHsl(--c-black,202,41%,90%);
+	@include colorProps(dark);
+}
 
 
-	// @include mxs.varHsl(--c-defwhite,0,0%,0%);
-	// @include mxs.varHsla(--c-defblack,0,0%,90%,.9);	
 
 
-	@include mxs.varHsl(--c-lprimary,124,46%,8%);
-	@include mxs.varHsl(--c-dprimary,124,46%,78%);
-	@include mxs.varHsl(--c-white,124,16%,8%);
-	@include mxs.varHsl(--c-grey,124,16%,8%);
-	@include mxs.varHsl(--c-black,124,46%,98%);
-
-	@include mxs.varHsl(--c-defwhite,0,0%,0%);
-	@include mxs.varHsla(--c-defblack,0,0%,90%,.9);
+// invert light theme
+@include mxs.invertTheme(light) {
+	@include colorProps(dark);
+	@include colorVars;
+}
+// invert dark theme
+@include mxs.invertTheme(dark) {
+	@include colorProps(light);
+	@include colorVars;
 }

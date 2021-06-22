@@ -1,19 +1,33 @@
-// dark theme
-@mixin themes($theme: light) {
+// global colors theme
+@mixin colorTheme($theme: blue) {
+  html[color="#{$theme}"] { @content };
+}
 
-  @if $theme == light {
+
+// global color modes
+@mixin themes($mode: light) {
+
+  @if $mode == light {
 		html[theme="light"] { @content };
   }
-  @if $theme == dark {
+  @if $mode == dark {
     html[theme="dark"] { @content };
   }
-  @if $theme == sepia {
-		html[theme="sepia"] { @content };
+}
+
+
+// // scoped color themes and modes
+// @mixin scopedColorScheme($theme: blue, $mode: light) {
+//   html[theme=""] [color=""] { @content };
+// }
+
+
+// global and scoped inverted color modes
+@mixin invertTheme($theme: light) {
+  @if $theme == light {
+    html[theme="light"][invert="true"], html[theme="light"] [invert="true"] { @content };
   }
-  @if $theme == default {
-    html[theme="light"],html[theme="dark"],html[theme="sepia"] { @content };
+  @if $theme == dark {
+    html[theme="dark"][invert="true"], html[theme="dark"] [invert="true"] { @content };
   }
-  // @else {
-		// html[dark] { @content };
-  // }
 }
