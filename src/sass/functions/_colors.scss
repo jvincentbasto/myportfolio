@@ -27,72 +27,83 @@
 
 
 // hsl lighten
-@function lighten($color,$perc,$opacity: 1){
+@function lighten($color,$perc,$opacity: 1,$mode: true){
   $color: str-replace($color, 'var(' );
   $color: str-replace($color, ')' );
   $color-h: var(#{$color + '-h'});
   $color-s: var(#{$color + '-s'});
   $color-l: var(#{$color + '-l'});
   $color-a: var(#{$color + '-a'});
-  $varOpacity: $color-a;
 
+  $varOpacity: $color-a;
   @if($opacity) { $varOpacity: $opacity; }
   @else if($color-a) { $varOpacity: $color-a; }
   @else { $varOpacity: 1; }
 
-  @return hsl($color-h,$color-s,calc(#{$color-l} + #{$perc}%),$varOpacity);
+  $sign: var(--c-pos);
+  @if $mode == false { $sign: '+'; }
+
+  @return hsl($color-h,$color-s,calc(#{$color-l} #{$sign} #{$perc}%),$varOpacity);
 }
 
 
 // hsl darken
-@function darken($color,$perc,$opacity: 1){
+@function darken($color,$perc,$opacity: 1,$mode: true){
   $color: str-replace($color, 'var(' );
   $color: str-replace($color, ')' );
   $color-h: var(#{$color + '-h'});
   $color-s: var(#{$color + '-s'});
   $color-l: var(#{$color + '-l'});
   $color-a: var(#{$color + '-a'});
-  $varOpacity: $color-a;
 
+  $varOpacity: $color-a;
   @if($opacity) { $varOpacity: $opacity; }
   @else if($color-a) { $varOpacity: $color-a; }
   @else { $varOpacity: 1; }
 
-  @return hsl($color-h,$color-s,calc(#{$color-l} - #{$perc}%),$varOpacity);
+  $sign: var(--c-neg);
+  @if $mode == false { $sign: '-'; }
+
+  @return hsl($color-h,$color-s,calc(#{$color-l} #{$sign} #{$perc}%),$varOpacity);
 }
 
 
 // hsl saturation
-@function saturate($color,$perc,$opacity: 1){
+@function saturate($color,$perc,$opacity: 1,$mode: true){
   $color: str-replace($color, "var(" );
   $color: str-replace($color, ")" );
   $color-h: var(#{$color + "-h"});
   $color-s: var(#{$color + "-s"});
   $color-l: var(#{$color + "-l"});
   $color-a: var(#{$color + '-a'});
-  $varOpacity: $color-a;
 
+  $varOpacity: $color-a;
   @if($opacity) { $varOpacity: $opacity; }
   @else if($color-a) { $varOpacity: $color-a; }
   @else { $varOpacity: 1; }
 
-  @return hsl($color-h,calc(#{$color-s} + #{$perc}%), $color-l,$varOpacity);
+  $sign: var(--c-pos);
+  @if $mode == false { $sign: '+'; }
+
+  @return hsl($color-h,calc(#{$color-s} #{$sign} #{$perc}%), $color-l,$varOpacity);
 }
 
 // hsl desaturate
-@function desaturate($color,$perc,$opacity: 1){
+@function desaturate($color,$perc,$opacity: 1,$mode: true){
   $color: str-replace($color, "var(" );
   $color: str-replace($color, ")" );
   $color-h: var(#{$color + "-h"});
   $color-s: var(#{$color + "-s"});
   $color-l: var(#{$color + "-l"});
   $color-a: var(#{$color + '-a'});
-  $varOpacity: $color-a;
 
+  $varOpacity: $color-a;
   @if($opacity) { $varOpacity: $opacity; }
   @else if($color-a) { $varOpacity: $color-a; }
   @else { $varOpacity: 1; }
 
-  @return hsl($color-h,calc(#{$color-s} - #{$perc}%), $color-l,$varOpacity);
-}
+  $sign: var(--c-neg);
+  @if $mode == false { $sign: '-'; }
 
+  @return hsl($color-h,calc(#{$color-s} #{$sign} #{$perc}%), $color-l,$varOpacity);
+}

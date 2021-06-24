@@ -1,33 +1,72 @@
-// global colors theme
-@mixin colorTheme($theme: blue) {
-  html[color="#{$theme}"] { @content };
+// configure color themes
+@mixin configColorThemes($theme: 'blue') {
+  html[color=#{$theme}],
+  html [color=#{$theme}], 
+  html[theme="light"] [color=#{$theme}] { @content };
 }
 
-
-// global color modes
-@mixin themes($mode: light) {
-
+// configure color modes
+@mixin configColorModes($mode: light) {
   @if $mode == light {
-		html[theme="light"] { @content };
+    html[theme="light"], html { @content };
   }
   @if $mode == dark {
-    html[theme="dark"] { @content };
+    html[theme="dark"],
+    html[theme="dark"] [color] { @content };
   }
 }
 
-
-// // scoped color themes and modes
-// @mixin scopedColorScheme($theme: blue, $mode: light) {
-//   html[theme=""] [color=""] { @content };
-// }
-
-
-// global and scoped inverted color modes
-@mixin invertTheme($theme: light) {
+// configure inverted modes
+@mixin configInvertedModes($theme: light) {
   @if $theme == light {
-    html[theme="light"][invert="true"], html[theme="light"] [invert="true"] { @content };
+    html[invert="true"], 
+    html[theme="light"][invert="true"], 
+    html[theme="light"] [invert="true"] { @content };
   }
   @if $theme == dark {
-    html[theme="dark"][invert="true"], html[theme="dark"] [invert="true"] { @content };
+    html[theme="dark"][invert="true"], 
+    html[theme="dark"] [invert="true"] { @content };
   }
 }
+
+
+
+// reusable color modes
+@mixin themes($mode: light) {
+  @if $mode == light {
+    html[theme="light"], html,
+    html[theme="dark"][invert="true"], html[invert="true"],
+    html[theme="dark"] [invert="true"] { @content };
+  }
+  @if $mode == dark {
+    html[theme="dark"], 
+    html[theme="light"][invert="true"],
+    html[theme="light"] [invert="true"] { @content };
+  }
+}
+
+
+// reusable scoped colors
+@mixin colorThemes($theme: 'blue',$mode: light,$selector: '') {
+  
+  @if $mode == light {
+    html #{$selector}[color=#{$theme}], 
+    html[theme="light"] #{$selector}[color=#{$theme}] { @content };
+  }
+  @if $mode == dark {
+    html[theme="dark"] #{$selector}[color=#{$theme}] { @content };
+  }
+}
+
+// reusable scoped colors
+@mixin colorInvert($mode: light,$selector: '') {
+  
+  @if $mode == light {
+    html #{$selector}[theme=#{$mode}], 
+    html[theme="light"] #{$selector}[theme=#{$mode}] { @content };
+  }
+  @if $mode == dark {
+    html[theme="dark"] #{$selector}[theme=#{$mode}] { @content };
+  }
+}
+

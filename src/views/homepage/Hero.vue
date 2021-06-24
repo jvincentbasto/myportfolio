@@ -130,13 +130,14 @@ export default {
 // option
 // :global() {}
 
+// headline
+
 .section {
   &-hero {
     background: var(--c-lprimary);
   }
 }
 
-// headline
 .headline {
   &-title,
   &-subtitle {
@@ -147,6 +148,7 @@ export default {
   }
 }
 
+// @include styles.mxs-themes(light) {
 // model
 .model {
   &-img {
@@ -154,6 +156,7 @@ export default {
     background: styles.fns-darken(var(--c-lprimary), 5);
   }
 }
+// }
 
 // bg
 .bg {
@@ -170,10 +173,11 @@ export default {
       color: styles.fns-alpha(var(--c-dprimary), 0.8);
     }
   }
+
   // model
   .model {
     &-img {
-      background: styles.fns-lighten(var(--c-lprimary), 5);
+      // background: styles.fns-darken(var(--c-lprimary), 8);
     }
   }
   // bg

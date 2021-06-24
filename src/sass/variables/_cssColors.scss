@@ -2,14 +2,15 @@
 @use "~@/sass/functions/functions" as fns;
 
 
-@mixin colorPropValues($color: blue) {
+// color property values
+@mixin colorPropValues($color: 'blue') {
 
 	// granny smith green
 	// hsl(95, 46%, 73%)
 	// torq blue
 	// hsl(124, 36%, 78%)
 
-	@if $color == blue {
+	@if $color == 'blue' {
 		--dc-hue: 202;
 		--dc-sat: 41%;
 		--dc-lum: 70%;
@@ -19,7 +20,7 @@
 		--dc-lightlum: 90%;
 		--dc-darklum: 10%;
 	}
-	@if $color == green {
+	@if $color == 'green' {
 		--dc-hue: 95;
 		--dc-sat: 46%;
 		--dc-lum: 73%;
@@ -31,9 +32,23 @@
 	}
 }
 
+// color property values
+@mixin colorSigns($mode: light) {
 
-// color props/modes mixins
-@mixin colorProps($mode: light) {
+	// dynamic sign
+	@if $mode == light {
+		--c-pos: +;
+		--c-neg: -;
+	}
+	@if $mode == dark {
+		--c-pos: -;
+		--c-neg: +;
+	}
+}
+
+
+// color property variables
+@mixin colorPropVars($mode: light) {
 
   @if $mode == light {
 		--c-hue: var(--dc-hue);
@@ -80,11 +95,13 @@
 :root {
 
 	// dynamic color properties
-	@include colorPropValues(blue);
-	// base var color properties
-	@include colorProps(light);
-	// base var colors
+	@include colorPropValues('blue');
+	// base color property variables
+	@include colorPropVars(light);
+	// base color variables
 	@include colorVars;
+	// base color signs
+	@include colorSigns(light);
 
 
 
@@ -132,36 +149,214 @@
 
 
 
-// color generate
-@mixin colorGenerate($color: blue,$mode: light) {
+// mixin config color variables
+@mixin configColorVars($color: 'blue',$mode: light) {
 	@include colorPropValues($color);
-	@include colorProps($mode);
+	@include colorPropVars($mode);
 	@include colorVars;
 }
 
 
-// global light color themes
-@include mxs.colorTheme(blue) {
-	@include colorGenerate(blue,light);
+// config light mode & color themes
+@include mxs.configColorThemes('blue') {
+	@include configColorVars('blue',light);
 }
-@include mxs.colorTheme(green) {
-	@include colorGenerate(green,light);
+@include mxs.configColorThemes('green') {
+	@include configColorVars('green',light);
 }
-// global dark color themes
-@include mxs.themes(dark) {
-	@include colorProps(dark);
+// config signs light modes
+@include mxs.configColorModes(light) {
+	@include colorSigns(light);
 }
-
-
-
-
-// invert light theme
-@include mxs.invertTheme(light) {
-	@include colorProps(dark);
+// config dark mode
+@include mxs.configColorModes(dark) {
+	@include colorPropVars(dark);
+	@include colorSigns(dark);
 	@include colorVars;
 }
-// invert dark theme
-@include mxs.invertTheme(dark) {
-	@include colorProps(light);
+
+
+
+// configure inverted light mode
+@include mxs.configInvertedModes(light) {
+	@include colorPropVars(dark);
+	@include colorSigns(dark);
 	@include colorVars;
 }
+// configure inverted dark mode
+@include mxs.configInvertedModes(dark) {
+	@include colorPropVars(light);
+	@include colorSigns(light);
+	@include colorVars;
+}
+
+
+/* 
+Legends: 
+	- [space]: white space/ spacebar
+
+Uses:
+	- CSS Variables: mutates values. Sass variables are not mutatable since they are pre-defined on build
+	- Sass's Color Functions ONLY takes sass variables as arguements. 
+	- Implemented Color Manipulating Functions (Copied on Google) like Sass's Color Functions: 
+		- Lighten, Darken, Alpha, Saturate, Desature
+	- Use of Scoped Inverted Color Modes are to be able to Invert a Component's UI Static Colors 
+		but its really not ideal, Static Colors should do the job.
+
+		Example:
+			- Inverted Modes: Light background, Dark Navbar (Reacts in Changing Modes)
+			- Static Colors - Light Mode: Light background, Dark Navbar 
+			- Static Colors - Dark Mode: Dark background, Dark Navbar
+
+	- Use of Scoped Colors in Components are the same with Inverted Colors but it would be quite annoying to 
+		redefine all styles in many places.
+
+
+
+Briefing: 
+1) Uses HSLA Color (Hue,Saturation,Lightness,Alpha)
+2) Define Base Colors, Static Colors, Natural Colors: "black/white" in "Root Psuedo Selector" (:root{})  
+3) Uses Html Attributes to Scope Styles: 
+	- Colors: html[color="colorVariable"], 
+	- Modes: [mode="light/dark"], 
+	-	Inverted Modes: Prefered Inverted => [colorInverted]
+	- Inverted Modes: Edge Case => [colorInverted="light/dark"]
+	- Scoped/Local Colors: html [space] [scopedColor="colorVariable"]
+
+4) Uses Dynamic "HSLA" Properties Variables (light and dark)
+5) Defining colors Requires of Light Color ONLY
+6) All Dark colors are handled automatically in 1 base code(@mixin), which takes in a "Dynamic Color Property Variables" (HSLA Props)
+7) Base Code for Dark mode defines the outlook of opposite of a color. 
+	
+	Example: Manually Defined
+		- Light Mode: --white: white, --black: black 
+		- Dark Mode: --black: white, --white: black
+	Example: Dynamically Defined
+		- Light Mode: --dynamic-hue: blue, --dynamic-hue: green;
+		- Dark Mode: --static-hue: --dynamic-hue
+		- Scoping: 
+			- html[color="blue"] { --dynamic-hue: blue }
+			- html[color="green"] { --dynamic-hue: green }
+
+
+8) Define 2 for each @mixins or @functions:
+	- Configure @mixin or @function 
+	- Reusable @mixin or @function
+
+
+Challenges:
+1) Scoping modes 
+	a. Somed Code Fallbacks to default Html Scoped if html[dark/light] are not defined
+		- html, html[mode="dark"], html[mode="light"]
+
+2) Scoping Independent Colors (Local/Component Scale)
+	a. Requires coding in "2 Modes(Light/Dark)" Multiply by the "Number of Colors" => 2*Nth_Color.
+		If not defined and relies on the default html dynamic dark mode, changes will not take effect 
+		b. Use html attribute to scope styles: [scopedColor="colorVariable"]
+
+		- html [space] [color="currentColor"], html[mode="light"] [space] [color="currentColor"]
+		- html[mode="dark"] [space] [color="currentColor"]
+
+3) Scoping Independent Colors and Modes (Local/Component Scale)
+	a. Ideally, codes used in light or dark mode should be reused. Therefore, css variables should not mutate 
+		and only rely on code defined in classes.
+	b. Use html attribute to scope styles; [colorInverted] or [colorInverted="light/dark"]
+
+		Example: @mixin
+		* mutated/local css variables are accessed throught a parent tag which has a special attribute (Ex: [colorInverted]), 
+			it is because of the scoping made in Sass's { @content }
+		* Use Sass interpolation to also access mutated/local css variables in target tags. (If Possible) 
+			default: 
+				- html, html[mode="light"],
+				- html[mode="dark"],
+			target: 
+				- html[mode="dark"] [space] #_{$selector}[colorinverted] { @content }
+			color invert children: 
+				- html[mode="dark"] [space] [colorinverted] { @content }
+					=> html[mode="dark"] [space] [colorinverted] * 
+				- html[mode="light"] [space] [colorinverted] { @content }
+					=> html[mode="light"] [space] [colorInverted] * 
+
+	c. Inverted colors are not equal to the ones defined in color modes(light/dark), reasons:
+		* Special functions that manipulate colors are not reactive to changes. 
+		* Manipulating colors should not increment "Away" the base color but "Toward" the base color 
+			to avoid over brightened and darkened colors
+
+			NOTE: Variables are Inverted 
+				- Light Mode: --light-color = --dark-color 
+				- Dark Mode: --dark-color = --light-color 
+			Example: 
+			 - Lightn Mode: darken(--light-color,percentage) => Toward
+			 - Dark Mode: lighten(--dark-color,percentage) => Toward
+			 - Inverted Light Mode: darken(--light-color,percentage) => darken(--dark-color,percentage) Away (Over Darkened)
+			 - Inverted Dark Mode: lighten(--dark-color,percentage) => lighten(--light-color,percentage) Away (Over Lightened)
+
+
+Limitations:
+	- Implementing it with Only Sass and Css will populate css styles with different css variables and duplication.
+	- Scoped Colors and Inverted Color Modes have similar issues like redefining styles in both modes. 
+	- It is a Declarative way that limits in reacting to changes since it cannot access the DOM.
+	- It would be better to implement it with javascript in tandem with css and sass.
+	- Confusion with color variables in dark and inverted modes
+		Example: 
+			+ Light Mode: --white: white, --black: black, 
+			+ Dark Mode: --white: black, --black: white
+
+
+Warnings: 
+	- Color Functions can be made reactive to Color Modes by defining the css variables to mutate but it may cause an error if changes are made to newer sass versions.
+	- Probable Solution is to add signs in values: calc($light + "-32%"), calc($dark - "+32%")
+		Example: 
+		* types
+			-	string: '+', '-'
+			- string? expression? math conditions?: +, - (without quotes)
+		* @mixins
+			- lighten: light mode => '+' | dark mode => '-' 
+			- darken: light mode => '-' | dark mode => '+'
+	
+	- Sass differentiates css values as a data type from string values. These data types might be similar but it Sass treats them seperately, same applies to any other language. 
+		Example: Colors
+			- string: 'blue'
+			- css value: blue (without quotes)
+			- string: '+'
+			- expression?: + (without quotes)
+
+
+Possible Approach: (Not Ideal)
+	* Give up Reactive Global Changes in Dark Mode and avoid using confusing color varables but redefining manaully all styles in dark mode 
+	* Retain Global Configurations: (As much it can)
+	* Separate Special Cases like: Inverted Colors and Scoped Colors, then manually re-define styles in these scopes if needed and only the ones that needed changes.
+	* Re-define variables in Inverted Color Modes and Scoped Colors with Modes 
+	* Normally, Reusable @mixin or @functions for color modes are not needed in light mode and only make changes for dark mode. But it might be safe to also defined the styles enclosed in "light mode" and "base html"
+		
+		Example: 
+			- Light Mode: html, html[mode="light"] { color: darken(--white: black,percentage) } 
+			- Dark Mode: html[mode="dark"] { color: lighten(--black: white,percentage) }
+
+			* Colors in Inverted State:
+				+ --white: black
+				+ --black: white
+
+			* Redefine styles in Inverted Mode, Scoped Colors would have the same process:
+				+ Inverted Light Mode: html[mode="light"] { color: lighten(--white,percentage) }
+				+ Inverted Dark Mode: html[mode="dark"] { color: darken(--black,percentage) }
+				+ Scoped Color Light Mode: html[mode="light"] { color: lighten(--white,percentage) }
+				+ Scoped Color Dark Mode: html[mode="dark"] { color: darken(--black,percentage) }
+
+	* ONLY Mutate Scope Variables in Scoped Inverted Modes IF Munipulating Color Functions are reactive to Color Modes. 
+		If Resolved, mutated variables in Inverted Modes will be applied Html Targets that has Inverted Attributes 
+		by redifining color variables properties and color vairiables itself. 
+
+Conclusion: 
+	- This is possible but it may break down if updates occur. (Achieved)
+	- ALWAYS defined in styles in html or html[mode="light"]. html[mode="dark"], inveted colors or scoped colors is optional.
+	- Define Only once in html or html[mode="light"]. html[mode="dark"],[colorInverted],[color="colorVariable"] adapts to changes based on default styles in html, html[mode="light"] just by adding these specific attributes
+	- Redefine styles html[mode="dark"],[colorInverted],[color="colorVariable"] Only if needed or for special cases. 
+	- Redifining styles in special attributes can be targeted by @mixin and passing a string literal to adding and interpolating them. These is for class/scoped styles
+		Example: 
+			- Interpolation: #_{$selector} 
+			- @mixin($selector) { html #_{$seletor}[colorInverted] }
+		}
+	- It also does not stack in children selectors which is good so to avoid confusion and debugging
+
+ */

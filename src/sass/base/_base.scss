@@ -10,7 +10,6 @@
 	padding: 0;
 	margin: 0;
 	box-sizing: inherit;
-	color: var(--c-defblack);
 
 	// outline: none !important;
 	// -webkit-tap-highlight-color: transparent !important;
@@ -22,7 +21,9 @@
 // html
 html { 
 	font-size: 62.5%;
-	scroll-behavior: smooth; 
+	scroll-behavior: smooth;
+	background: var(--c-lprimary);
+	color: var(--c-defblack);
 }
 
 
@@ -30,7 +31,6 @@ html {
 body {
 	font-size: 1.6rem;
 	box-sizing: border-box;
-	background: var(--c-lprimary);
 }
 
 
