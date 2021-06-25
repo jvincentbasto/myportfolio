@@ -40,11 +40,8 @@
   @else if($color-a) { $varOpacity: $color-a; }
   @else { $varOpacity: 1; }
 
-  $sign: var(--c-pos);
-  @if $mode == false { $sign: '+'; }
-  
-
-  @return hsl($color-h,$color-s,calc(#{$color-l} + #{$sign} * #{$perc}),$varOpacity);
+  $val: calc(var(--c-pos) * $perc)%;
+  @return hsl($color-h,$color-s,calc(#{$color-l} + #{$val}),$varOpacity);
 }
 
 
@@ -62,10 +59,8 @@
   @else if($color-a) { $varOpacity: $color-a; }
   @else { $varOpacity: 1; }
 
-  $sign: var(--c-neg);
-  @if $mode == false { $sign: '-'; }
-
-  @return hsl($color-h,$color-s,calc(#{$color-l} + #{$perc}),$varOpacity);
+  $val: calc(var(--c-neg) * $perc)%;
+  @return hsl($color-h,$color-s,calc(#{$color-l} + #{$val}),$varOpacity);
 }
 
 
