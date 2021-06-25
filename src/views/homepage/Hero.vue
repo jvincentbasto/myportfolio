@@ -154,7 +154,7 @@ export default {
   &-img {
     box-shadow: 0 0px 4px rgba(black, 0.5), 0 4px 4px rgba(black, 0.5);
     // --num: calc(var(--c-neg) * 5%);
-    background: styles.fns-darken(var(--c-lprimary), 5%);
+    background: styles.fns-darken(var(--c-lprimary), 5);
   }
 }
 // }
