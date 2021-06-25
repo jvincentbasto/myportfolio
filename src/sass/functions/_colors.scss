@@ -42,9 +42,9 @@
 
   $sign: var(--c-pos);
   @if $mode == false { $sign: '+'; }
-//   #{$sign}
+  
 
-  @return hsl($color-h,$color-s,calc(#{$color-l} + #{$perc}),$varOpacity);
+  @return hsl($color-h,$color-s,calc(#{$color-l} + #{$sign} * #{$perc}),$varOpacity);
 }
 
 
