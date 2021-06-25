@@ -37,12 +37,12 @@
 
 	// dynamic sign
 	@if $mode == light {
-		--c-pos: +;
-		--c-neg: -;
+		--c-pos: +1;
+		--c-neg: -1;
 	}
 	@if $mode == dark {
-		--c-pos: -;
-		--c-neg: +;
+		--c-pos: -1;
+		--c-neg: +1;
 	}
 }
 
