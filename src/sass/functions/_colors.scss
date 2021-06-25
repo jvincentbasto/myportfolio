@@ -81,7 +81,8 @@
   $sign: var(--c-pos);
   @if $mode == false { $sign: '+'; }
 
-  @return hsl($color-h,calc(#{$color-s} + #{$perc}), $color-l,$varOpacity);
+  $val: calc(var(--c-pos) * #{$perc}%);
+  @return hsl($color-h,calc(#{$color-s} + #{$val}), $color-l,$varOpacity);
 }
 
 // hsl desaturate
@@ -101,5 +102,6 @@
   $sign: var(--c-neg);
   @if $mode == false { $sign: '-'; }
 
-  @return hsl($color-h,calc(#{$color-s} - #{$perc}), $color-l,$varOpacity);
+  $val: calc(var(--c-neg) * #{$perc}%);
+  @return hsl($color-h,calc(#{$color-s} - #{$val}), $color-l,$varOpacity);
 }
