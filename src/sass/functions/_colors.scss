@@ -40,7 +40,7 @@
   @else if($color-a) { $varOpacity: $color-a; }
   @else { $varOpacity: 1; }
 
-  $sign: var(--c-pos) + $perc;
+  $sign: var(--c-pos) * $perc;
   @if $mode == false { $sign: '+'; }
 
   @return hsl($color-h,$color-s,calc(#{$color-l} + #{$sign}),$varOpacity);
