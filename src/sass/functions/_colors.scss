@@ -41,6 +41,8 @@
   @else { $varOpacity: 1; }
 
   $val: calc(var(--c-pos) * #{$perc}%);
+  @if $mode == false { $val: calc(1 * #{$perc}%); }
+
   @return hsl($color-h,$color-s,calc(#{$color-l} + #{$val}),$varOpacity);
 }
 
@@ -60,6 +62,8 @@
   @else { $varOpacity: 1; }
 
   $val: calc(var(--c-neg) * #{$perc}%);
+  @if $mode == false { $val: calc(-1 * #{$perc}%); }
+
   @return hsl($color-h,$color-s,calc(#{$color-l} + #{$val}),$varOpacity);
 }
 
@@ -78,10 +82,9 @@
   @else if($color-a) { $varOpacity: $color-a; }
   @else { $varOpacity: 1; }
 
-  $sign: var(--c-pos);
-  @if $mode == false { $sign: '+'; }
-
   $val: calc(var(--c-pos) * #{$perc}%);
+  @if $mode == false { $val: calc(1 * #{$perc}%); }
+
   @return hsl($color-h,calc(#{$color-s} + #{$val}), $color-l,$varOpacity);
 }
 
@@ -99,9 +102,8 @@
   @else if($color-a) { $varOpacity: $color-a; }
   @else { $varOpacity: 1; }
 
-  $sign: var(--c-neg);
-  @if $mode == false { $sign: '-'; }
-
   $val: calc(var(--c-neg) * #{$perc}%);
-  @return hsl($color-h,calc(#{$color-s} - #{$val}), $color-l,$varOpacity);
+  @if $mode == false { $val: calc(-1 * #{$perc}%); }
+
+  @return hsl($color-h,calc(#{$color-s} + #{$val}), $color-l,$varOpacity);
 }

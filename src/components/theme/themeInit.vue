@@ -35,7 +35,7 @@ export default {
 
       if (matches) mode = "dark";
       else mode = "light";
-      html.setAttribute("theme", mode);
+      html.setAttribute("color-mode", mode);
 
       // this.themeLog("Set Theme", `${mode}(${typeof mode})`);
     },

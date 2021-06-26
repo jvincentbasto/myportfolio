@@ -24,11 +24,11 @@ export default {
 
       if (matches) mode = "dark";
       else mode = "light";
-      html.setAttribute("theme", mode);
+      html.setAttribute("color-mode", mode);
     },
     themeBtn() {
       const html = document.documentElement;
-      const hasAttr = html.hasAttribute("theme") ? true : false;
+      const hasAttr = html.hasAttribute("color-mode") ? true : false;
       const setTheme = this.setTheme;
 
       this.bool = !this.bool;
@@ -40,9 +40,9 @@ export default {
         setTheme(matches);
       } else {
         // toggle
-        let mode = html.getAttribute("theme");
+        let mode = html.getAttribute("color-mode");
         mode = mode === "dark" ? "light" : "dark";
-        html.setAttribute("theme", mode);
+        html.setAttribute("color-mode", mode);
       }
     },
   },

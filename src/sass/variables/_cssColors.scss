@@ -100,7 +100,7 @@
 	@include colorPropVars(light);
 	// base color variables
 	@include colorVars;
-	// base color signs
+	// base signs 
 	@include colorSigns(light);
 
 
@@ -122,6 +122,10 @@
 	@include mxs.varHsl(--sc-white,var(--sc-hue),var(--sc-sat),var(--sc-lightlum));
 	@include mxs.varHsl(--sc-black,var(--sc-hue),var(--sc-darksat),var(--sc-darklum));
 	@include mxs.varHsl(--sc-grey,var(--sc-hue),var(--sc-darksat),var(--sc-lum));
+
+	// static signs
+	--sc-pos: +1;
+	--sc-neg: -1;
 
 
 	// natural colors
@@ -187,6 +191,20 @@
 @include mxs.configInvertedModes(dark) {
 	@include colorPropVars(light);
 	@include colorSigns(light);
+	@include colorVars;
+}
+
+
+// configure static light mode
+@include mxs.configStaticModes(light) {
+	@include colorPropVars(light);
+	@include colorSigns(light);
+	@include colorVars;
+}
+// configure static dark mode
+@include mxs.configStaticModes(dark) {
+	@include colorPropVars(dark);
+	@include colorSigns(dark);
 	@include colorVars;
 }
 

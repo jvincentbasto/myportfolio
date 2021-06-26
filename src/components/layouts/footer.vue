@@ -120,7 +120,7 @@ export default {
 
 .section {
   &-copyright {
-    color: styles.fns-darken(var(--sc-white), 10);
+    color: styles.fns-darken(var(--sc-white), 10, 1, false);
   }
 }
 
@@ -131,7 +131,7 @@ export default {
       color: var(--sc-lprimary);
     }
     &--line {
-      background: styles.fns-lighten(var(--sc-black), 4);
+      background: styles.fns-lighten(var(--sc-black), 4, 1, false);
     }
   }
 }
@@ -147,13 +147,13 @@ export default {
   :deep(.link) {
     .link {
       &--text {
-        color: styles.fns-lighten(var(--sc-black), 30);
+        color: styles.fns-lighten(var(--sc-black), 30, 1, false);
       }
       &-icongroup {
-        background: styles.fns-lighten(var(--sc-black), 4);
+        background: styles.fns-lighten(var(--sc-black), 4, 1, false);
       }
       &-icon {
-        background: styles.fns-lighten(var(--sc-black), 30);
+        background: styles.fns-lighten(var(--sc-black), 30, 1, false);
       }
     }
   }
@@ -163,7 +163,7 @@ export default {
         color: var(--sc-lprimary);
       }
       &-icongroup {
-        background: styles.fns-lighten(var(--sc-black), 4);
+        background: styles.fns-lighten(var(--sc-black), 4, 1, false);
       }
       &-icongroup .link-icon {
         background: var(--sc-lprimary);

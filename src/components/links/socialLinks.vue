@@ -84,7 +84,7 @@ export default {
 @include styles.mxs-themes(dark) {
   .link {
     &--text {
-      color: styles.fns-lighten(var(--c-white), 30);
+      // color: styles.fns-lighten(var(--c-white), 30);
     }
     &-icongroup {
       background: var(--c-lprimary);
