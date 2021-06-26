@@ -171,6 +171,24 @@ export default {
     }
   }
 }
+
+@include styles.mxs-themes(dark) {
+  .col--1 {
+    :deep(.link:hover) {
+      .link {
+        &--text {
+          color: var(--sc-lprimary);
+        }
+        &-icongroup {
+          background: styles.fns-lighten(var(--sc-black), 4, 1, false);
+        }
+        &-icongroup .link-icon {
+          background: var(--sc-lprimary);
+        }
+      }
+    }
+  }
+}
 </style>
 
 <style scoped lang="scss">

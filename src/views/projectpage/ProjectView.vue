@@ -93,16 +93,26 @@ export default {
 
 <style scoped lang="scss">
 @use "~@/sass/styles" as styles;
+.section-project-view {
+  background: var(--c-lprimary);
+}
+.headline {
+  &-bg {
+    background: var(--c-lprimary);
+  }
+  &--title,
+  &--text {
+    color: var(--c-dprimary);
+  }
+}
+</style>
+
+<style scoped lang="scss">
+@use "~@/sass/styles" as styles;
 
 .headline-content {
   :deep(.btn) {
     margin-left: -2rem;
-  }
-}
-
-.section {
-  &-project-view {
-    background: var(--c-lprimary);
   }
 }
 
@@ -150,7 +160,6 @@ export default {
   &-bg {
     height: 100%;
     width: 100%;
-    background: var(--c-lprimary);
 
     position: absolute;
     top: 0;
@@ -164,10 +173,6 @@ export default {
       border-radius: 0;
       margin-left: -15%;
     }
-  }
-  &--title,
-  &--text {
-    color: var(--c-dprimary);
   }
   &--title {
     margin-bottom: 4rem;

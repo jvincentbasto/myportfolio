@@ -143,13 +143,9 @@ export default {
 <style scoped lang="scss">
 @use "~@/sass/styles" as styles;
 
-.section {
-  &-about {
-    background: styles.fns-lighten(var(--c-lprimary), 4);
-  }
+.section-about {
+  background: styles.fns-lighten(var(--c-lprimary), 4);
 }
-
-// illus
 .illus {
   &--bg {
     background: var(--c-lprimary);
@@ -161,17 +157,8 @@ export default {
 }
 
 @include styles.mxs-themes(dark) {
-  .section {
-    &-about {
-      background: styles.fns-lighten(var(--c-lprimary), 2);
-    }
-  }
-
-  // illus
-  .illus {
-    &--bg {
-      background: var(--c-lprimary);
-    }
+  .section-about {
+    background: styles.fns-darken(var(--c-lprimary), 2);
   }
 }
 </style>

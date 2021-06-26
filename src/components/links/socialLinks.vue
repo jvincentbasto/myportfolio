@@ -70,12 +70,9 @@ export default {
     background: var(--c-dprimary);
   }
   &-icon {
-    background: styles.fns-lighten(var(--c-lprimary), 3);
+    background: styles.fns-lighten(var(--c-lprimary), 2);
   }
 
-  &:hover &-icongroup {
-    background: var(--c-dprimary);
-  }
   &:hover &-icongroup &-icon {
     background: var(--c-white);
   }
@@ -83,24 +80,21 @@ export default {
 
 @include styles.mxs-themes(dark) {
   .link {
-    &--text {
-      // color: styles.fns-lighten(var(--c-white), 30);
-    }
     &-icongroup {
       background: var(--c-lprimary);
     }
     &-icon {
-      background: styles.fns-lighten(var(--c-white), 30);
+      background: styles.fns-lighten(var(--c-dprimary), 10);
+    }
+    &--text {
+      color: styles.fns-lighten(var(--c-dprimary), 10);
     }
 
     &:hover .link--text {
-      color: var(--c-dprimary);
-    }
-    &:hover .link-icongroup {
-      background: var(--c-lprimary);
+      color: var(--c-black);
     }
     &:hover .link-icongroup .link-icon {
-      background: var(--c-dprimary);
+      background: var(--c-black);
     }
   }
 }

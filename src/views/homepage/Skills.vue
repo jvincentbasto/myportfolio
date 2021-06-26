@@ -121,10 +121,8 @@ export default {
 }
 
 @include styles.mxs-themes(dark) {
-  .section {
-    &-skills {
-      background: styles.fns-lighten(var(--c-lprimary), 3);
-    }
+  .section-skills {
+    background: styles.fns-darken(var(--c-lprimary), 3);
   }
 }
 </style>

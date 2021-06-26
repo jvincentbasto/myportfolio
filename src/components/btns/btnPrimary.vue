@@ -84,7 +84,6 @@ export default {
 <style lang="scss">
 @use "~@/sass/styles" as styles;
 
-// btn
 .btn {
   &--content {
     background: var(--c-dprimary);
@@ -96,8 +95,6 @@ export default {
     color: var(--c-lprimary);
   }
 }
-
-// btn icon
 .btn {
   &-icon {
     &--download {
@@ -184,7 +181,6 @@ export default {
     width: 80%;
 
     @include styles.mxs-img-contain;
-
     transition: all 0.3s ease-in-out;
 
     &--download {

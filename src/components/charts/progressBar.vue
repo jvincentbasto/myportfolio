@@ -64,7 +64,6 @@ export default {
     }
   }
 
-  // progress bar
   .pgbar {
     &--bg {
       background: var(--c-dprimary);

@@ -127,65 +127,27 @@ export default {
 <style scoped lang="scss">
 @use "~@/sass/styles" as styles;
 
-// option
-// :global() {}
-
-// headline
-
-.section {
-  &-hero {
-    background: var(--c-lprimary);
-  }
+.section-hero {
+  background: var(--c-lprimary);
 }
-
 .headline {
   &-title,
-  &-subtitle {
+  &-subtitle,
+  &-text {
     color: var(--c-dprimary);
   }
-  &-text {
-    color: var(--c-defblack);
-  }
+}
+.model-img {
+  box-shadow: 0 0px 4px rgba(black, 0.5), 0 4px 4px rgba(black, 0.5);
+  background: styles.fns-darken(var(--c-lprimary), 5);
+}
+.bg--bar {
+  background: styles.fns-lighten(var(--c-lprimary), 2);
 }
 
-// @include styles.mxs-themes(light) {
-// model
-.model {
-  &-img {
-    box-shadow: 0 0px 4px rgba(black, 0.5), 0 4px 4px rgba(black, 0.5);
-    // --num: calc(var(--c-neg) * 5%);
-    background: styles.fns-darken(var(--c-lprimary), 5);
-  }
-}
-// }
-
-// bg
-.bg {
-  &--bar {
-    background: styles.fns-lighten(var(--c-lprimary), 2);
-  }
-}
-
-/* dark */
 @include styles.mxs-themes(dark) {
-  // headline
-  .headline {
-    &-text {
-      color: styles.fns-alpha(var(--c-dprimary), 0.8);
-    }
-  }
-
-  // model
-  .model {
-    &-img {
-      // background: styles.fns-darken(var(--c-lprimary), 8);
-    }
-  }
-  // bg
-  .bg {
-    &--bar {
-      background: styles.fns-lighten(var(--c-lprimary), 1);
-    }
+  .bg--bar {
+    background: styles.fns-darken(var(--c-lprimary), 1);
   }
 }
 </style>

@@ -164,17 +164,13 @@ export default {
 <style scoped lang="scss">
 @use "~@/sass/styles" as styles;
 
-.section {
-  &-projects {
-    background: styles.fns-lighten(var(--c-lprimary), 4);
-  }
+.section-projects {
+  background: styles.fns-lighten(var(--c-lprimary), 4);
 }
 
 @include styles.mxs-themes(dark) {
-  .section {
-    &-projects {
-      background: styles.fns-lighten(var(--c-lprimary), 2);
-    }
+  .section-projects {
+    background: styles.fns-darken(var(--c-lprimary), 2);
   }
 }
 </style>
