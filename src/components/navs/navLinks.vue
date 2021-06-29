@@ -36,5 +36,6 @@ export default {
 .links {
   height: 100%;
   display: flex;
+  z-index: 5;
 }
 </style>

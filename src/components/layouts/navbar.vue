@@ -19,13 +19,19 @@
             id="links"
             :data="data.links ? data.links : {}"
           ></nav-links>
-          <theme-btn class="themebtn themebtn--1" />
+          <theme-btn
+            :data="{ id: 'theme-toggle--1' }"
+            class="themebtn themebtn--1"
+          />
         </div>
 
         <!-- hamburger links -->
         <div class="nav-burger">
           <burger-links :data="data.links ? data.links : {}"></burger-links>
-          <theme-btn class="themebtn themebtn--2" />
+          <theme-btn
+            :data="{ id: 'theme-toggle--2' }"
+            class="themebtn themebtn--2"
+          />
         </div>
       </template>
 
@@ -33,12 +39,18 @@
       <template v-else>
         <!-- nav links -->
         <div class="nav-links">
-          <theme-btn class="themebtn themebtn--1" />
+          <theme-btn
+            :data="{ id: 'theme-toggle--1' }"
+            class="themebtn themebtn--1"
+          />
         </div>
 
         <!-- hamburger links -->
         <div class="nav-burger">
-          <theme-btn class="themebtn themebtn--2" />
+          <theme-btn
+            :data="{ id: 'theme-toggle--2' }"
+            class="themebtn themebtn--2"
+          />
         </div>
       </template>
     </div>
@@ -80,7 +92,7 @@ export default {
   &--1 {
   }
   &--2 {
-    margin-right: 5rem;
+    margin-left: 1rem;
   }
 }
 
@@ -88,6 +100,7 @@ export default {
 .nav {
   background: var(--c-lprimary);
   box-shadow: 0 0 10px black;
+  overflow: unset;
 }
 
 // nav logo
@@ -130,7 +143,7 @@ export default {
 @use "~@/sass/styles" as styles;
 
 #links {
-  margin-right: 2rem;
+  margin-right: 1rem;
 }
 
 .section {
@@ -205,16 +218,11 @@ export default {
 .nav-bg {
   height: 7rem;
   width: 100%;
-  display: none;
 
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1;
-
-  @include styles.mxs-respond(ptablet) {
-    display: block;
-  }
 }
 
 // nav burger
@@ -222,6 +230,7 @@ export default {
   display: none;
 
   @include styles.mxs-respond(ptablet) {
+    height: 100%;
     display: flex;
     align-items: center;
   }

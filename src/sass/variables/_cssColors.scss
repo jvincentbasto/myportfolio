@@ -2,6 +2,66 @@
 @use "~@/sass/functions/functions" as fns;
 
 
+@mixin multiColors($color: 'blue') {
+		@if $color == 'blue' {
+		--dmcblue-hue: 202;
+		--dmcblue-sat: 41%;
+		--dmcblue-lum: 70%;
+
+		--dmcblue-lightsat: 90%;
+		--dmcblue-darksat: 11%;
+		--dmcblue-lightlum: 90%;
+		--dmcblue-darklum: 10%;
+	}
+	@if $color == 'green' {
+		--dmcgreen-hue: 95;
+		--dmcgreen-sat: 46%;
+		--dmcgreen-lum: 73%;
+
+		--dmcgreen-lightsat: 96%;
+		--dmcgreen-darksat: 16%;
+		--dmcgreen-lightlum: 93%;
+		--dmcgreen-darklum: 13%;
+	}
+}
+
+@mixin multiColorMode($color: light, $name: '') {
+	@if $color == light {
+		--c#{$name}-hue: var(--dmc#{$name}-hue);
+		--c#{$name}-sat: var(--dmc#{$name}-sat);
+		--c#{$name}-lum: var(--dmc#{$name}-lum);
+
+		--c#{$name}-lightsat: var(--dmc#{$name}-lightsat);
+		--c#{$name}-darksat: var(--dmc#{$name}-darksat);
+		--c#{$name}-lightlum: var(--dmc#{$name}-lightlum);
+		--c#{$name}-darklum: var(--dmc#{$name}-darklum);
+	}
+	@if $color == dark {
+		--c#{$name}-hue: var(--dmc#{$name}-hue);
+		--c#{$name}-sat: var(--dmc#{$name}-sat);
+		--c#{$name}-lum: var(--dmc#{$name}-darklum);
+
+		--c#{$name}-lightsat: var(--dmc#{$name}-lightsat);
+		--c#{$name}-darksat: var(--dmc#{$name}-darksat);
+		--c#{$name}-lightlum: var(--dmc#{$name}-darklum);
+		--c#{$name}-darklum: var(--dmc#{$name}-lum);
+	}
+}
+
+
+@mixin defineMultiColors($color: 'blue',$mode: light) {
+	@include multiColors($color);
+	@include multiColorMode($mode,$color);
+
+	@include mxs.varHsl(--c#{$color}-lprimary,var(--c#{$color}-hue),var(--c#{$color}-sat),var(--c#{$color}-lum));
+	@include mxs.varHsl(--c#{$color}-dprimary,var(--c#{$color}-hue),var(--c#{$color}-sat),var(--c#{$color}-darklum));
+	@include mxs.varHsl(--c#{$color}-white,var(--c#{$color}-hue),var(--c#{$color}-sat),var(--c#{$color}-lightlum));
+	@include mxs.varHsl(--c#{$color}-black,var(--c#{$color}-hue),var(--c#{$color}-darksat),var(--c#{$color}-darklum));
+	@include mxs.varHsl(--c#{$color}-grey,var(--c#{$color}-hue),var(--c#{$color}-darksat),var(--c#{$color}-lum));
+}
+
+
+
 // color property values
 @mixin colorPropValues($color: 'blue') {
 
@@ -128,6 +188,11 @@
 	--sc-neg: -1;
 
 
+	// multiple colors
+	@include defineMultiColors('blue',light);
+	@include defineMultiColors('green',light);
+
+
 	// natural colors
 	@include mxs.varHsl(--c-defwhite,0,0%,90%);
 	@include mxs.varHsl(--c-defblack,0,0%,0%);
@@ -177,6 +242,10 @@
 	@include colorPropVars(dark);
 	@include colorSigns(dark);
 	@include colorVars;
+
+	// multiple colors
+	@include defineMultiColors('blue',dark);
+	@include defineMultiColors('green',dark);
 }
 
 

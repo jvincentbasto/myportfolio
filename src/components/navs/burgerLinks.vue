@@ -5,8 +5,8 @@
     class="burger-checkbox"
     id="nav-toggle"
     ref="checkbox"
-    @click="toggle($event)"
   />
+  <!-- @click="toggle($event)" -->
 
   <!-- burger button -->
   <label class="burger-btn" for="nav-toggle">
@@ -163,13 +163,13 @@ export default {
     display: none;
   }
 
-  &-checkbox,
-  &-btn {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-  }
+  // &-checkbox,
+  // &-btn {
+  //   position: absolute;
+  //   top: 50%;
+  //   right: 0;
+  //   transform: translateY(-50%);
+  // }
 }
 
 // burger btn
@@ -181,10 +181,9 @@ export default {
 
     z-index: 100;
 
-    @include styles.mxs-respond(ptablet) {
-      display: flex;
-      flex-wrap: wrap;
-    }
+    display: flex;
+    flex-wrap: wrap;
+    transform: rotateY(180deg);
   }
   &-line {
     display: block;
