@@ -7,11 +7,11 @@
       </div>
 
       <div class="pg-block">
-        <pg-bar :data="css"></pg-bar>
-        <pg-bar :data="javascript"></pg-bar>
+        <pg-bar :data="basics"></pg-bar>
+        <pg-bar :data="sass"></pg-bar>
         <pg-bar :data="php"></pg-bar>
-        <pg-bar :data="larvel"></pg-bar>
         <pg-bar :data="vue"></pg-bar>
+        <pg-bar :data="react"></pg-bar>
       </div>
     </div>
   </section>
@@ -28,33 +28,33 @@ export default {
     PgBar,
   },
   setup() {
-    const css = {
-      title: "CSS",
-      value: 78,
-    };
-    const javascript = {
-      title: "Javascript",
+    const basics = {
+      title: "Html, Css, and Javascript",
       value: 75,
     };
+    const sass = {
+      title: "Sass",
+      value: 60,
+    };
     const php = {
-      title: "Php",
-      value: 52,
+      title: "Php and Laravel",
+      value: 50,
     };
     const vue = {
       title: "Vue js",
-      value: 70,
+      value: 68,
     };
-    const larvel = {
-      title: "Larvel",
-      value: 55,
+    const react = {
+      title: "React js",
+      value: 50,
     };
 
     return {
-      css,
-      javascript,
+      basics,
+      sass,
       php,
       vue,
-      larvel,
+      react,
     };
   },
   methods: {

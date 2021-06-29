@@ -1,35 +1,6 @@
 <template>
-  <div class="theme theme-container">
-    <!-- checkbox -->
-    <input
-      type="checkbox"
-      class="theme-checkbox"
-      :id="data.id ? data.id : 'theme-toggle'"
-      ref="checkbox"
-    />
-
-    <div class="theme-block">
-      <!-- theme toggle btn -->
-      <label class="theme-togglebtn" :for="data.id ? data.id : 'theme-toggle'">
-        <span class="theme-circle theme-circle--1">&nbsp;</span>
-        <span class="theme-circle theme-circle--2">&nbsp;</span>
-        <span class="theme-circle theme-circle--3">&nbsp;</span>
-        <div class="theme-bg theme-bg--1">&nbsp;</div>
-      </label>
-
-      <div class="theme-options">
-        <div class="theme theme-btn" @click="themeBtn()">
-          <div class="theme-icon theme-icon--bulb">&nbsp;</div>
-        </div>
-        <template v-for="(color, index) in colors" :key="index">
-          <div class="theme-btngroup" @click="colorTheme(color)">
-            <div class="theme-color" :class="'theme-color--' + color">
-              &nbsp;
-            </div>
-          </div>
-        </template>
-      </div>
-    </div>
+  <div class="colormode colormode-btn" @click="themeBtn()">
+    <div class="colormode-icon colormode-icon--bulb">&nbsp;</div>
   </div>
 </template>
 
@@ -37,48 +8,23 @@
 import { ref } from "vue";
 
 export default {
-  props: ["data"],
   setup() {
     const bool = ref(false);
-    const colors = ["blue", "green"];
 
     return {
       bool,
-      colors,
     };
   },
   methods: {
-    setTheme(matches) {
-      const html = document.documentElement;
-      let mode = "light";
-
-      if (matches) mode = "dark";
-      else mode = "light";
-      html.setAttribute("color-mode", mode);
-    },
     themeBtn() {
       const html = document.documentElement;
-      const hasAttr = html.hasAttribute("color-mode") ? true : false;
-      const setTheme = this.setTheme;
-
       this.bool = !this.bool;
 
-      if (!hasAttr) {
-        // if no theme attribute
-        const scheme = window.matchMedia("(prefers-color-scheme: dark)");
-        const matches = eval(scheme.matches);
-        setTheme(matches);
-      } else {
-        // toggle
-        let mode = html.getAttribute("color-mode");
-        mode = mode === "dark" ? "light" : "dark";
-        html.setAttribute("color-mode", mode);
-      }
-    },
-    colorTheme(color) {
-      console.log(color);
-      const html = document.documentElement;
-      html.setAttribute("color-theme", color);
+      // toggle
+      let mode = html.getAttribute("color-mode");
+      mode = mode === "dark" ? "light" : "dark";
+      localStorage.setItem("colorMode", mode);
+      html.setAttribute("color-mode", mode);
     },
   },
 };
@@ -109,7 +55,7 @@ export default {
     height: 4rem;
     width: 4rem;
 
-    border: 2px solid styles.fns-alpha(var(--c-lprimary), 0.2);
+    border: 2px solid styles.fns-alpha(var(--c-dprimary), 0.2);
     border-radius: 5rem;
     margin: 4px;
 
@@ -126,14 +72,27 @@ export default {
     border-radius: inherit;
 
     &--blue {
-      background: var(--cblue-dprimary);
+      background: styles.fns-lighten(var(--cblue-dprimary), 10);
     }
     &--green {
-      background: var(--cgreen-dprimary);
+      background: styles.fns-lighten(var(--cgreen-dprimary), 10);
     }
   }
   &-btngroup:hover {
-    background: styles.fns-alpha(var(--c-lprimary), 0.5);
+    border-color: styles.fns-alpha(var(--sc-white), 1);
+  }
+}
+
+@include styles.mxs-themes(dark) {
+  .theme {
+    &-color {
+      &--blue {
+        background: var(--cblue-dprimary);
+      }
+      &--green {
+        background: var(--cgreen-dprimary);
+      }
+    }
   }
 }
 
@@ -143,7 +102,6 @@ export default {
     height: 5rem;
     width: 5rem;
 
-    background: styles.fns-darken(var(--c-lprimary), 5);
     border-radius: 50%;
     border: 2px solid styles.fns-alpha(var(--c-dprimary), 0.1);
     cursor: pointer;
@@ -190,7 +148,7 @@ export default {
     transform: translate(-50%, -50%);
   }
   &-togglebtn:hover {
-    background: styles.fns-lighten(var(--c-lprimary), 10);
+    background: var(--sc-white);
   }
   &togglebtn:hover &-circle {
     background: var(--c-black);
@@ -204,6 +162,7 @@ export default {
     padding: 5px;
 
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
 
     background: var(--c-lprimary);
@@ -212,7 +171,7 @@ export default {
 
     position: absolute;
     right: 0;
-    top: -100%;
+    top: -50rem;
     margin-top: 10rem;
     z-index: -2;
 
@@ -237,29 +196,7 @@ export default {
   }
 }
 
-.bg {
-  height: 100%;
-  width: 100%;
-  background: green;
-
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 50;
-}
-
-.ball {
-  height: 40%;
-  width: 40%;
-
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 55;
-}
-
-.theme {
+.colormode {
   &-icon {
     &--bulb {
       background-image: url("~@/assets/icons/day@2x.png");
@@ -281,7 +218,7 @@ export default {
 }
 
 @include styles.mxs-themes(dark) {
-  .theme {
+  .colormode {
     &-btn {
       background: styles.fns-darken(var(--c-lprimary), 5);
     }
@@ -291,7 +228,7 @@ export default {
     &-btn:hover {
       background: var(--c-dprimary);
     }
-    &-btn:hover .theme-icon {
+    &-btn:hover .colormode-icon {
       background: var(--c-white);
     }
   }
@@ -301,7 +238,7 @@ export default {
 <style scoped lang="scss">
 @use "~@/sass/styles" as styles;
 
-.theme {
+.colormode {
   &-btn {
     height: 4rem;
     width: 4rem;
@@ -333,18 +270,6 @@ export default {
         @include styles.mxs-svg-contain;
       }
     }
-  }
-}
-
-.theme {
-  &-block {
-    height: 100%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    position: relative;
   }
 }
 </style>

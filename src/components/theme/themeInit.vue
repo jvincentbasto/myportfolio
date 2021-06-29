@@ -26,30 +26,49 @@ export default {
         string,
         value,
       };
-      console.log(obj);
       this.data.push(obj);
     },
-    setTheme(matches) {
+    setColorTheme() {
+      const html = document.documentElement;
+      const lsColor = localStorage.getItem("colorTheme");
+
+      if (lsColor) {
+        localStorage.getItem("colorTheme", lsColor);
+        html.setAttribute("color-theme", lsColor);
+      }
+    },
+    setColorMode(matches) {
       const html = document.documentElement;
       let mode = "light";
 
       if (matches) mode = "dark";
       else mode = "light";
-      html.setAttribute("color-mode", mode);
 
+      localStorage.setItem("colorMode", mode);
+      html.setAttribute("color-mode", mode);
       // this.themeLog("Set Theme", `${mode}(${typeof mode})`);
     },
     themeInit() {
+      const html = document.documentElement;
       const scheme = window.matchMedia("(prefers-color-scheme: dark)");
       const matches = eval(scheme.matches);
+      const lsMode = localStorage.getItem("colorMode");
       // this.themeLog("Theme Init Dark?", `${matches}(${typeof matches})`);
 
-      const setTheme = this.setTheme;
+      const setColorMode = this.setColorMode;
       // const themeLog = this.themeLog;
 
-      setTheme(matches);
+      if (lsMode.toLowerCase() === "light" || lsMode.toLowerCase() === "dark") {
+        this.setColorTheme();
+        localStorage.setItem("colorMode", lsMode);
+        html.setAttribute("color-mode", lsMode);
+      } else {
+        this.setColorTheme();
+        setColorMode(matches);
+      }
+
       scheme.addListener((e) => {
-        setTheme(e.matches);
+        setColorMode(e.matches);
         // themeLog("Event", `${e.matches}(${typeof e.matches})`);
       });
     },

@@ -19,7 +19,7 @@
             id="links"
             :data="data.links ? data.links : {}"
           ></nav-links>
-          <theme-btn
+          <color-scheme
             :data="{ id: 'theme-toggle--1' }"
             class="themebtn themebtn--1"
           />
@@ -28,7 +28,7 @@
         <!-- hamburger links -->
         <div class="nav-burger">
           <burger-links :data="data.links ? data.links : {}"></burger-links>
-          <theme-btn
+          <color-scheme
             :data="{ id: 'theme-toggle--2' }"
             class="themebtn themebtn--2"
           />
@@ -39,7 +39,7 @@
       <template v-else>
         <!-- nav links -->
         <div class="nav-links">
-          <theme-btn
+          <color-scheme
             :data="{ id: 'theme-toggle--1' }"
             class="themebtn themebtn--1"
           />
@@ -47,7 +47,7 @@
 
         <!-- hamburger links -->
         <div class="nav-burger">
-          <theme-btn
+          <color-scheme
             :data="{ id: 'theme-toggle--2' }"
             class="themebtn themebtn--2"
           />
@@ -60,7 +60,7 @@
 <script>
 import NavLinks from "@/components/navs/navLinks.vue";
 import BurgerLinks from "@/components/navs/burgerLinks.vue";
-import themeBtn from "@/components/theme/themeBtn.vue";
+import colorScheme from "@/components/theme/colorScheme.vue";
 // import styles from "@/sass/abstracts/_variables.scss";
 
 export default {
@@ -68,7 +68,7 @@ export default {
   components: {
     NavLinks,
     BurgerLinks,
-    themeBtn,
+    colorScheme,
   },
   setup() {
     const logo = [
