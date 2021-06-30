@@ -3,6 +3,11 @@
 
 
 @mixin multiColors($color: 'blue') {
+		// torquoise green
+		// hsl(142, 40%, 73%)
+		// tan
+		// hsl(40, 42%, 70%)
+
 		@if $color == 'blue' {
 		--dmcblue-hue: 202;
 		--dmcblue-sat: 41%;
@@ -14,14 +19,24 @@
 		--dmcblue-darklum: 10%;
 	}
 	@if $color == 'green' {
-		--dmcgreen-hue: 95;
-		--dmcgreen-sat: 46%;
+		--dmcgreen-hue: 142;
+		--dmcgreen-sat: 40%;
 		--dmcgreen-lum: 73%;
 
-		--dmcgreen-lightsat: 96%;
-		--dmcgreen-darksat: 16%;
+		--dmcgreen-lightsat: 90%;
+		--dmcgreen-darksat: 10%;
 		--dmcgreen-lightlum: 93%;
 		--dmcgreen-darklum: 13%;
+	}
+	@if $color == 'brown' {
+		--dmcbrown-hue: 40;
+		--dmcbrown-sat: 42%;
+		--dmcbrown-lum: 70%;
+
+		--dmcbrown-lightsat: 92%;
+		--dmcbrown-darksat: 12%;
+		--dmcbrown-lightlum: 90%;
+		--dmcbrown-darklum: 10%;
 	}
 }
 
@@ -64,12 +79,6 @@
 
 // color property values
 @mixin colorPropValues($color: 'blue') {
-
-	// granny smith green
-	// hsl(95, 46%, 73%)
-	// torq blue
-	// hsl(124, 36%, 78%)
-
 	@if $color == 'blue' {
 		--dc-hue: 202;
 		--dc-sat: 41%;
@@ -81,14 +90,26 @@
 		--dc-darklum: 10%;
 	}
 	@if $color == 'green' {
-		--dc-hue: 95;
-		--dc-sat: 46%;
+
+		--dc-hue: 142;
+		--dc-sat: 40%;
 		--dc-lum: 73%;
 
-		--dc-lightsat: 96%;
-		--dc-darksat: 16%;
+		--dc-lightsat: 90%;
+		--dc-darksat: 10%;
 		--dc-lightlum: 93%;
 		--dc-darklum: 13%;
+	}
+	@if $color == 'brown' {
+
+		--dc-hue: 40;
+		--dc-sat: 42%;
+		--dc-lum: 70%;
+
+		--dc-lightsat: 92%;
+		--dc-darksat: 12%;
+		--dc-lightlum: 90%;
+		--dc-darklum: 10%;
 	}
 }
 
@@ -191,6 +212,7 @@
 	// multiple colors
 	@include defineMultiColors('blue',light);
 	@include defineMultiColors('green',light);
+	@include defineMultiColors('brown',light);
 
 
 	// natural colors
@@ -233,6 +255,9 @@
 @include mxs.configColorThemes('green') {
 	@include configColorVars('green',light);
 }
+@include mxs.configColorThemes('brown') {
+	@include configColorVars('brown',light);
+}
 // config signs light modes
 @include mxs.configColorModes(light) {
 	@include colorSigns(light);
@@ -246,6 +271,7 @@
 	// multiple colors
 	@include defineMultiColors('blue',dark);
 	@include defineMultiColors('green',dark);
+	@include defineMultiColors('brown',dark);
 }
 
 

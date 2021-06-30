@@ -166,7 +166,7 @@ export default {
     left: 0;
 
     border-radius: 0 0 10px 10px;
-    box-shadow: 0 0px 4px rgba(black, 0.5), 0 4px 4px rgba(black, 0.5);
+    box-shadow: 0 0px 4px rgba(black, 0.5), 0 4px 4px black;
 
     @include styles.mxs-respond(lphone) {
       width: 130%;

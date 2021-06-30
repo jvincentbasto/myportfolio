@@ -182,6 +182,9 @@ export default {
       @include styles.mxs-respond(lphone) {
         height: 35rem;
       }
+      @include styles.mxs-respond(pphone) {
+        height: 30rem;
+      }
     }
     &--abs {
       height: 100%;
@@ -193,6 +196,10 @@ export default {
       @include styles.mxs-respond(lphone) {
         width: 40rem;
       }
+      @include styles.mxs-respond(pphone) {
+        width: 100%;
+        min-width: 32rem;
+      }
     }
   }
 }
@@ -200,13 +207,18 @@ export default {
 // showcase images
 .showcase {
   &-img {
-    height: 50rem;
+    height: 100%;
     width: 25rem;
 
     position: absolute;
     top: 0;
 
     @include styles.mxs-img-cover;
+    box-shadow: 0 0 10px black;
+
+    @include styles.mxs-respond(pphone) {
+      width: 20rem;
+    }
 
     &--1 {
       z-index: 2;

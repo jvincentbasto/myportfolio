@@ -12,7 +12,7 @@
 export default {
   props: ["data"],
   setup() {
-    const colors = ["blue", "green"];
+    const colors = ["blue", "green", "brown"];
 
     return {
       colors,
@@ -52,6 +52,9 @@ export default {
     &--green {
       background: styles.fns-lighten(var(--cgreen-dprimary), 10);
     }
+    &--brown {
+      background: styles.fns-lighten(var(--cbrown-dprimary), 10);
+    }
   }
   &-group:hover {
     border-color: styles.fns-alpha(var(--sc-white), 1);
@@ -66,6 +69,9 @@ export default {
       }
       &--green {
         background: var(--cgreen-dprimary);
+      }
+      &--brown {
+        background: var(--cbrown-dprimary);
       }
     }
   }
