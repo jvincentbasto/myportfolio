@@ -84,19 +84,19 @@
 		@include defineColorProperties($name,142,40%,70%,90%,10%,90%,10%);
 	}
 	@if $color == 'brown' {
-		@include defineColorProperties($name,16,100%,50%,100%,10%,90%,10%);
+		@include defineColorProperties($name,40,40%,70%,90%,10%,90%,10%);
 	}
 }
 // CUSTOM light color properties
 @mixin customLightColorProperties($color: 'blue',$name: '') {
 	@if $color == 'brown' {
-		@include defineColorProperties($name,16,100%,50%,100%,10%,90%,10%);
+		@include defineColorProperties($name,40,40%,70%,90%,10%,90%,10%);
 	}
 }
 // CUSTOM dark color properties
 @mixin customDarkColorProperties($color: 'blue',$name: '') {
 	// @if $color == 'brown' {
-	// 	@include defineColorProperties($name,16,100%,50%,100%,10%,90%,10%);
+		// @include defineColorProperties($name,40,40%,70%,90%,10%,90%,10%);
 	// }
 }
 // CUSTOM color properties

@@ -47,13 +47,13 @@ export default {
   }
   &-color {
     &--blue {
-      background: styles.fns-lighten(var(--cblue-dprimary), 10);
+      background: styles.fns-lighten(var(--c-iblue-dprimary), 10);
     }
     &--green {
-      background: styles.fns-lighten(var(--cgreen-dprimary), 10);
+      background: styles.fns-lighten(var(--c-igreen-dprimary), 10);
     }
     &--brown {
-      background: styles.fns-lighten(var(--cbrown-dprimary), 10);
+      background: styles.fns-lighten(var(--c-ibrown-dprimary), 10);
     }
   }
   &-group:hover {
@@ -65,13 +65,13 @@ export default {
   .colortheme {
     &-color {
       &--blue {
-        background: var(--cblue-dprimary);
+        background: var(--c-iblue-dprimary);
       }
       &--green {
-        background: var(--cgreen-dprimary);
+        background: var(--c-igreen-dprimary);
       }
       &--brown {
-        background: var(--cbrown-dprimary);
+        background: var(--c-ibrown-dprimary);
       }
     }
   }
