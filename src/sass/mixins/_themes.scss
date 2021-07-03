@@ -1,8 +1,14 @@
 // configure color themes
-@mixin configColorThemes($theme: 'blue') {
-  html[color-theme=#{$theme}],
-  html [color-theme=#{$theme}], 
-  html[color-theme="light"] [color-theme=#{$theme}] { @content };
+@mixin configColorThemes($theme: 'blue',$mode: light) {
+  @if $mode == light {
+    html[color-theme=#{$theme}],
+    html [color-theme=#{$theme}], 
+    html[color-mode="light"] [color-theme=#{$theme}] { @content };
+  }
+  @else if $mode == dark {
+    html[color-mode="dark"][color-theme=#{$theme}], 
+    html[color-mode="dark"] [color-theme=#{$theme}] { @content };
+  }
 }
 
 // configure color modes
@@ -48,14 +54,31 @@
     html[color-mode="dark"] [color-mode-invert="true"],
     html[color-static=#{$mode}], 
     html[color-mode="light"][color-static=#{$mode}], 
-    html[color-mode="light"] [color-static=#{$mode}] { @content };
+    html[color-mode="light"] [color-static=#{$mode}],
+    html[color-mode="dark"][color-static=#{$mode}], 
+    html[color-mode="dark"] [color-static=#{$mode}] { @content };
   }
   @if $mode == dark {
     html[color-mode="dark"], 
     html[color-mode="light"][color-mode-invert="true"],
     html[color-mode="light"] [color-mode-invert="true"], 
     html[color-mode="dark"][color-static=#{$mode}], 
-    html[color-mode="dark"] [color-static=#{$mode}] { @content };
+    html[color-mode="dark"] [color-static=#{$mode}],
+    html[color-mode="light"][color-static=#{$mode}], 
+    html[color-mode="light"] [color-static=#{$mode}] { @content };
+  }
+}
+
+
+// scoped colors
+@mixin colorThemes($theme: 'blue',$mode: light) {
+  
+  @if $mode == light {
+    html[color-theme=#{$theme}], 
+    html[color-mode="light"][color-theme=#{$theme}] { @content };
+  }
+  @if $mode == dark {
+    html[color-mode="dark"][color-theme=#{$theme}] { @content };
   }
 }
 
@@ -64,11 +87,11 @@
 @mixin scopedColorThemes($theme: 'blue',$mode: light) {
   
   @if $mode == light {
-    html [colorTheme=#{$theme}], 
-    html[color-mode="light"] [colorTheme=#{$theme}] { @content };
+    html [color-theme=#{$theme}], 
+    html[color-mode="light"] [color-theme=#{$theme}] { @content };
   }
   @if $mode == dark {
-    html[color-mode="dark"] [colorTheme=#{$theme}] { @content };
+    html[color-mode="dark"] [color-theme=#{$theme}] { @content };
   }
 }
 
@@ -85,9 +108,13 @@
 }
 
 // reusable inverted color modes
-@mixin scopedStaticModes($mode: light) {
-  html [color-static=#{$mode}], 
-  html[color-mode="light"] [color-static=#{$mode}],
-  html[color-mode="dark"] [color-static=#{$mode}] { @content };
+@mixin scopedStaticModes($base: light,$mode: light) {
+  @if $base == light {
+    html [color-static=#{$mode}], 
+    html[color-mode="light"] [color-static=#{$mode}] { @content };    
+  }
+  @if $base == dark {
+    html[color-mode="dark"] [color-static=#{$mode}] { @content };
+  }
 }
 
