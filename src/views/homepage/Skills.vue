@@ -9,9 +9,8 @@
       <div class="pg-block">
         <pg-bar :data="basics"></pg-bar>
         <pg-bar :data="sass"></pg-bar>
-        <pg-bar :data="php"></pg-bar>
         <pg-bar :data="vue"></pg-bar>
-        <pg-bar :data="react"></pg-bar>
+        <pg-bar :data="others"></pg-bar>
       </div>
     </div>
   </section>
@@ -34,27 +33,22 @@ export default {
     };
     const sass = {
       title: "Sass",
-      value: 60,
-    };
-    const php = {
-      title: "Php and Laravel",
-      value: 50,
+      value: 55,
     };
     const vue = {
       title: "Vue js",
-      value: 68,
+      value: 65,
     };
-    const react = {
-      title: "React js",
-      value: 50,
+    const others = {
+      title: "Laravel, React js and Tailwind Css",
+      value: 40,
     };
 
     return {
       basics,
       sass,
-      php,
       vue,
-      react,
+      others,
     };
   },
   methods: {

@@ -28,7 +28,9 @@
       <!-- bg block -->
       <div class="col col--2">
         <div class="model-container">
-          <div class="model-img" ref="model">&nbsp;</div>
+          <div class="model-gradient" ref="model">
+            <div class="model-img">&nbsp;</div>
+          </div>
         </div>
       </div>
     </div>
@@ -137,9 +139,18 @@ export default {
     color: var(--c-dprimary);
   }
 }
-.model-img {
+.model-gradient {
   box-shadow: 0 0px 4px rgba(black, 0.5), 0 4px 4px rgba(black, 0.5);
-  background: styles.fns-darken(var(--c-lprimary), 5);
+  // background: styles.fns-darken(var(--c-lprimary), 5);
+  background: linear-gradient(135deg, var(--sc-lprimary), var(--sc-dprimary));
+}
+.model-img {
+  background-image: url("~@/assets/imgs/profile.png");
+  @include styles.mxs-img-cover;
+  background-size: 180%;
+  background-position: 50% 40%;
+
+  filter: drop-shadow(4px 4px 15px black);
 }
 .bg--bar {
   background: styles.fns-lighten(var(--c-lprimary), 2);
@@ -299,7 +310,7 @@ export default {
       min-width: 12rem;
     }
   }
-  &-img {
+  &-gradient {
     height: 100%;
     width: 35rem;
     border-radius: 5px;
@@ -311,6 +322,10 @@ export default {
       width: 30rem;
       margin: unset;
     }
+  }
+  &-img {
+    height: 100%;
+    width: 100%;
   }
 }
 
