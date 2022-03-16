@@ -32,8 +32,8 @@
 
 <script>
 import BtnPrimary from "@/components/btns/btnPrimary.vue";
-import Tags from "@/components/cards/tags.vue";
-import ProjectView from "@/views/projectpage/ProjectView.vue";
+import Tags from "@/components/cards/cardTags.vue";
+import ProjectView from "@/views/projectpage/projectView.vue";
 import { ref } from "vue";
 
 export default {

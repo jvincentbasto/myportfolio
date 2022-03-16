@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
-import error404 from "../components/errors/error404.vue";
+import Home from "../views/mainHome.vue";
+import error404 from "../components/errors/siteError404.vue";
 
 const routes = [
   {
@@ -15,7 +15,7 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "projects" */ "../views/Projects.vue"),
+      import(/* webpackChunkName: "projects" */ "../views/mainProjects.vue"),
   },
   {
     path: "/:pathMatch(.*)*",
