@@ -30,6 +30,7 @@ import BtnPrimary from "@/components/btns/btnPrimary.vue";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
+import resume from "@/files/resume.pdf";
 
 export default {
   components: {
@@ -65,10 +66,13 @@ export default {
     // ];
 
     const publicpath = process.env.BASE_URL;
-    // const resume = `${publicpath}files/resume.pdf`;
+    // from public folder. unsafe
+    // const resume = `${publicpath}resume.pdf`;
     // const resume = `<%= BASE_URL %>files/resume.pdf`;
 
-    const resume = require("@/files/resume.pdf");
+    // using require
+    // const resume = require("@/files/resume.pdf");
+
     const data = {
       type: "download",
       file: resume,

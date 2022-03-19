@@ -6,9 +6,9 @@
 </template>
 
 <script>
-import Navbar from "@/components/layouts/navbar.vue";
-// import ProjectView from "@/views/projectpage/ProjectView.vue";
-import MyFooter from "@/components/layouts/footer.vue";
+import Navbar from "@/components/layouts/siteNavbar.vue";
+// import ProjectView from "@/views/projectpage/projectView.vue";
+import MyFooter from "@/components/layouts/siteFooter.vue";
 
 export default {
   props: ["data"],

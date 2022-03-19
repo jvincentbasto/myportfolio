@@ -8,12 +8,12 @@
 </template>
 
 <script>
-import Navbar from "@/components/layouts/navbar.vue";
-import Hero from "./homepage/Hero.vue";
-import About from "./homepage/About.vue";
-import Skills from "./homepage/Skills.vue";
-import Projects from "./homepage/Projects.vue";
-import MyFooter from "@/components/layouts/footer.vue";
+import Navbar from "@/components/layouts/siteNavbar.vue";
+import Hero from "./homepage/homeHero.vue";
+import About from "./homepage/homeAbout.vue";
+import Skills from "./homepage/homeSkills.vue";
+import Projects from "./homepage/homeProjects.vue";
+import MyFooter from "@/components/layouts/siteFooter.vue";
 
 export default {
   components: {
